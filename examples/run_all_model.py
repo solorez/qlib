@@ -399,4 +399,4 @@ class ModelRunner:
 
 
 if __name__ == "__main__":
-    fire.Fire(ModelRunner)  # run all the model
+    fire.Fire(ModelRunner, command="run")  # run all the model

@@ -1,0 +1,1917 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class BaseException {
+   args: 
+   __cause__: 
+   __context__: 
+   __suppress_context__: 
+   __traceback__: 
+   __init__(self, *args: object): 
+   __setstate__(self, __state: dict[str, Any] | None): 
+   with_traceback(self, __tb: TracebackType | None): 
+}
+class Exception
+class TypedDict
+class node3 as "abc.ABC" {
+   __slots__: 
+}
+class node7 as "abc.ABCMeta" {
+   __abstractmethods__: 
+   __new__(
+            mcls: type[_typeshed.Self], name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs: Any
+        ): 
+   __instancecheck__(cls: ABCMeta, instance: Any): 
+   __subclasscheck__(cls: ABCMeta, subclass: type): 
+   _dump_registry(cls: ABCMeta, file: SupportsWrite[str] | None = None): 
+   register(cls: ABCMeta, subclass: type[_T]): 
+}
+class dict {
+   __hash__: 
+   __init__(self): 
+   __init__(self: dict[str, _VT], **kwargs: _VT): 
+   __init__(self, __map: SupportsKeysAndGetItem[_KT, _VT]): 
+   __init__(self: dict[str, _VT], __map: SupportsKeysAndGetItem[str, _VT], **kwargs: _VT): 
+   __init__(self, __iterable: Iterable[tuple[_KT, _VT]]): 
+   __init__(self: dict[str, _VT], __iterable: Iterable[tuple[str, _VT]], **kwargs: _VT): 
+   __init__(self: dict[str, str], __iterable: Iterable[list[str]]): 
+   __init__(self: dict[bytes, bytes], __iterable: Iterable[list[bytes]]): 
+   __new__(cls, *args: Any, **kwargs: Any): 
+   copy(self): 
+   keys(self): 
+   values(self): 
+   items(self): 
+   fromkeys(cls, __iterable: Iterable[_T], __value: None = None): 
+   fromkeys(cls, __iterable: Iterable[_T], __value: _S): 
+   get(self, __key: _KT): 
+   get(self, __key: _KT, __default: _VT): 
+   get(self, __key: _KT, __default: _T): 
+   pop(self, __key: _KT): 
+   pop(self, __key: _KT, __default: _VT): 
+   pop(self, __key: _KT, __default: _T): 
+   __len__(self): 
+   __getitem__(self, __key: _KT): 
+   __setitem__(self, __key: _KT, __value: _VT): 
+   __delitem__(self, __key: _KT): 
+   __iter__(self): 
+   __eq__(self, __value: object): 
+   __reversed__(self): 
+}
+class node0 as "enum.Enum" {
+   _name_: 
+   _value_: 
+   _ignore_: 
+   _order_: 
+   __order__: 
+   name(self): 
+   value(self): 
+   _missing_(cls, value: object): 
+   _generate_next_value_(name: str, start: int, count: int, last_values: list[Any]): 
+   __new__(cls, value: object): 
+   __dir__(self): 
+   __hash__(self): 
+   __format__(self, format_spec: str): 
+   __reduce_ex__(self, proto: Unused): 
+}
+class node42 as "enum.EnumMeta" {
+   _member_names_: 
+   _member_map_: 
+   _value2member_map_: 
+   __new__(metacls: type[_typeshed.Self], cls: str, bases: tuple[type, ...], classdict: _EnumDict): 
+   __prepare__(metacls, cls: str, bases: tuple[type, ...]): 
+   __iter__(self: type[_EnumMemberT]): 
+   __reversed__(self: type[_EnumMemberT]): 
+   __contains__(self: type[Any], member: object): 
+   __getitem__(self: type[_EnumMemberT], name: str): 
+   __members__(self: type[_EnumMemberT]): 
+   __len__(self): 
+   __bool__(self): 
+   __dir__(self): 
+   __call__(cls: type[_EnumMemberT], value: Any, names: None = None): 
+   __call__(
+            cls,
+            value: str,
+            names: _EnumNames,
+            *,
+            module: str | None = None,
+            qualname: str | None = None,
+            type: type | None = None,
+            start: int = 1,
+        ): 
+}
+class node65 as "enum.IntEnum" {
+   _value_: 
+   value(self): 
+   __new__(cls, value: int): 
+}
+class node88 as "gym.core.Env" {
+   _np_random: 
+   metadata: 
+   render_mode: 
+   reward_range: 
+   spec: 
+   action_space: 
+   observation_space: 
+   _np_random: 
+   np_random(self): 
+   np_random(self, value: np.random.Generator): 
+   step(self, action: ActType): 
+   reset(
+        self,
+        *,
+        seed: Optional[int] = None,
+        options: Optional[dict] = None,
+    ): 
+   render(self): 
+   close(self): 
+   unwrapped(self): 
+   __str__(self): 
+   __enter__(self): 
+   __exit__(self, *args): 
+}
+class int {
+   __new__(cls, __x: ConvertibleToInt = ...): 
+   __new__(cls, __x: str | bytes | bytearray, base: SupportsIndex): 
+   as_integer_ratio(self): 
+   real(self): 
+   imag(self): 
+   numerator(self): 
+   denominator(self): 
+   conjugate(self): 
+   bit_length(self): 
+   to_bytes(self, length: SupportsIndex, byteorder: Literal["little", "big"], *, signed: bool = False): 
+   from_bytes(
+            cls,
+            bytes: Iterable[SupportsIndex] | SupportsBytes | ReadableBuffer,
+            byteorder: Literal["little", "big"],
+            *,
+            signed: bool = False,
+        ): 
+   __add__(self, __value: int): 
+   __sub__(self, __value: int): 
+   __mul__(self, __value: int): 
+   __floordiv__(self, __value: int): 
+   __truediv__(self, __value: int): 
+   __mod__(self, __value: int): 
+   __divmod__(self, __value: int): 
+   __radd__(self, __value: int): 
+   __rsub__(self, __value: int): 
+   __rmul__(self, __value: int): 
+   __rfloordiv__(self, __value: int): 
+   __rtruediv__(self, __value: int): 
+   __rmod__(self, __value: int): 
+   __rdivmod__(self, __value: int): 
+   __pow__(self, __x: Literal[0]): 
+   __pow__(self, __value: Literal[0], __mod: None): 
+   __pow__(self, __value: _PositiveInteger, __mod: None = None): 
+   __pow__(self, __value: _NegativeInteger, __mod: None = None): 
+   __pow__(self, __value: int, __mod: None = None): 
+   __pow__(self, __value: int, __mod: int): 
+   __rpow__(self, __value: int, __mod: int | None = None): 
+   __and__(self, __value: int): 
+   __or__(self, __value: int): 
+   __xor__(self, __value: int): 
+   __lshift__(self, __value: int): 
+   __rshift__(self, __value: int): 
+   __rand__(self, __value: int): 
+   __ror__(self, __value: int): 
+   __rxor__(self, __value: int): 
+   __rlshift__(self, __value: int): 
+   __rrshift__(self, __value: int): 
+   __neg__(self): 
+   __pos__(self): 
+   __invert__(self): 
+   __trunc__(self): 
+   __ceil__(self): 
+   __floor__(self): 
+   __round__(self, __ndigits: SupportsIndex = ...): 
+   __getnewargs__(self): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __lt__(self, __value: int): 
+   __le__(self, __value: int): 
+   __gt__(self, __value: int): 
+   __ge__(self, __value: int): 
+   __float__(self): 
+   __int__(self): 
+   __abs__(self): 
+   __hash__(self): 
+   __bool__(self): 
+   __index__(self): 
+}
+class object {
+   __doc__: 
+   __dict__: 
+   __module__: 
+   __annotations__: 
+   __class__(self): 
+   __class__(self, __type: type[object]): 
+   __init__(self): 
+   __new__(cls): 
+   __setattr__(self, __name: str, __value: Any): 
+   __delattr__(self, __name: str): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __str__(self): 
+   __repr__(self): 
+   __hash__(self): 
+   __format__(self, __format_spec: str): 
+   __getattribute__(self, __name: str): 
+   __sizeof__(self): 
+   __reduce__(self): 
+   __reduce_ex__(self, __protocol: SupportsIndex): 
+   __dir__(self): 
+   __init_subclass__(cls): 
+   __subclasshook__(cls, __subclass: type): 
+}
+class node25 as "qlib.rl.aux_info.AuxiliaryInfoCollector" {
+   env: 
+   __call__(self, simulator_state: StateType): 
+   collect(self, simulator_state: StateType): 
+}
+class node75 as "qlib.rl.contrib.train_onpolicy.LazyLoadDataset" {
+   _default_start_time_index: 
+   _order_df: 
+   _default_end_time_index: 
+   _data_dir: 
+   _ticks_index: 
+   __init__(
+        self,
+        data_dir: str,
+        order_file_path: Path,
+        default_start_time_index: int,
+        default_end_time_index: int,
+    ): 
+   __len__(self): 
+   __getitem__(self, index: int): 
+}
+class node97 as "qlib.rl.data.base.BaseIntradayBacktestData" {
+   __repr__(self): 
+   __len__(self): 
+   get_deal_price(self): 
+   get_volume(self): 
+   get_time_index(self): 
+}
+class node86 as "qlib.rl.data.base.BaseIntradayProcessedData" {
+   today: 
+   yesterday: 
+}
+class node18 as "qlib.rl.data.base.ProcessedDataProvider" {
+   get_data(
+        self,
+        stock_id: str,
+        date: pd.Timestamp,
+        feature_dim: int,
+        time_index: pd.Index,
+    ): 
+}
+class node83 as "qlib.rl.data.native.DataframeIntradayBacktestData" {
+   df: 
+   price_column: 
+   volume_column: 
+   __init__(self, df: pd.DataFrame, price_column: str = "$close0", volume_column: str = "$volume0"): 
+   __repr__(self): 
+   __len__(self): 
+   get_deal_price(self): 
+   get_volume(self): 
+   get_time_index(self): 
+}
+class node56 as "qlib.rl.data.native.HandlerIntradayProcessedData" {
+   yesterday: 
+   today: 
+   __init__(
+        self,
+        data_dir: Path,
+        stock_id: str,
+        date: pd.Timestamp,
+        feature_columns_today: List[str],
+        feature_columns_yesterday: List[str],
+        backtest: bool = False,
+        index_only: bool = False,
+    ): 
+   __repr__(self): 
+}
+class node58 as "qlib.rl.data.native.HandlerProcessedDataProvider" {
+   backtest: 
+   feature_columns_yesterday: 
+   feature_columns_today: 
+   data_dir: 
+   __init__(
+        self,
+        data_dir: str,
+        feature_columns_today: List[str],
+        feature_columns_yesterday: List[str],
+        backtest: bool = False,
+    ): 
+   get_data(
+        self,
+        stock_id: str,
+        date: pd.Timestamp,
+        feature_dim: int,
+        time_index: pd.Index,
+    ): 
+}
+class node104 as "qlib.rl.data.native.IntradayBacktestData" {
+   ticks_index: 
+   _order: 
+   _start_time: 
+   _volume: 
+   ticks_for_order: 
+   _deal_price: 
+   _exchange: 
+   _end_time: 
+   __init__(
+        self,
+        order: Order,
+        exchange: Exchange,
+        ticks_index: pd.DatetimeIndex,
+        ticks_for_order: pd.DatetimeIndex,
+    ): 
+   __repr__(self): 
+   __len__(self): 
+   get_deal_price(self): 
+   get_volume(self): 
+   get_time_index(self): 
+}
+class node101 as "qlib.rl.data.pickle_styled.PickleIntradayProcessedData" {
+   yesterday: 
+   today: 
+   __init__(
+        self,
+        data_dir: Path | str,
+        stock_id: str,
+        date: pd.Timestamp,
+        feature_dim: int,
+        time_index: pd.Index,
+    ): 
+   __repr__(self): 
+}
+class node37 as "qlib.rl.data.pickle_styled.PickleProcessedDataProvider" {
+   _data_dir: 
+   __init__(self, data_dir: Path): 
+   get_data(
+        self,
+        stock_id: str,
+        date: pd.Timestamp,
+        feature_dim: int,
+        time_index: pd.Index,
+    ): 
+}
+class node9 as "qlib.rl.data.pickle_styled.SimpleIntradayBacktestData" {
+   order_dir: 
+   data: 
+   deal_price_type: 
+   __init__(
+        self,
+        data_dir: Path | str,
+        stock_id: str,
+        date: pd.Timestamp,
+        deal_price: DealPriceType = "close",
+        order_dir: int | None = None,
+    ): 
+   __repr__(self): 
+   __len__(self): 
+   get_deal_price(self): 
+   get_volume(self): 
+   get_time_index(self): 
+}
+class node70 as "qlib.rl.interpreter.ActionInterpreter" {
+   action_space(self): 
+   __call__(self, simulator_state: StateType, action: PolicyActType): 
+   validate(self, action: PolicyActType): 
+   interpret(self, simulator_state: StateType, action: PolicyActType): 
+}
+class node71 as "qlib.rl.interpreter.GymSpaceValidationError" {
+   x: 
+   message: 
+   space: 
+   __init__(self, message: str, space: gym.Space, x: Any): 
+   __str__(self): 
+}
+class node94 as "qlib.rl.interpreter.Interpreter"
+class node39 as "qlib.rl.interpreter.StateInterpreter" {
+   observation_space(self): 
+   __call__(self, simulator_state: StateType): 
+   validate(self, obs: ObsType): 
+   interpret(self, simulator_state: StateType): 
+}
+class node96 as "qlib.rl.order_execution.interpreter.CategoricalActionInterpreter" {
+   action_values: 
+   max_step: 
+   __init__(self, values: int | List[float], max_step: Optional[int] = None): 
+   action_space(self): 
+   interpret(self, state: SAOEState, action: int): 
+}
+class node32 as "qlib.rl.order_execution.interpreter.CurrentStateObs" {
+   acquiring: 
+   cur_step: 
+   num_step: 
+   target: 
+   position: 
+}
+class node4 as "qlib.rl.order_execution.interpreter.CurrentStepStateInterpreter" {
+   max_step: 
+   __init__(self, max_step: int): 
+   observation_space(self): 
+   interpret(self, state: SAOEState): 
+}
+class node90 as "qlib.rl.order_execution.interpreter.DummyStateInterpreter" {
+   interpret(self, state: SAOEState): 
+   observation_space(self): 
+}
+class node33 as "qlib.rl.order_execution.interpreter.FullHistoryObs" {
+   data_processed: 
+   data_processed_prev: 
+   acquiring: 
+   cur_tick: 
+   cur_step: 
+   num_step: 
+   target: 
+   position: 
+   position_history: 
+}
+class node99 as "qlib.rl.order_execution.interpreter.FullHistoryStateInterpreter" {
+   processed_data_provider: 
+   data_ticks: 
+   data_dim: 
+   max_step: 
+   __init__(
+        self,
+        max_step: int,
+        data_ticks: int,
+        data_dim: int,
+        processed_data_provider: dict | ProcessedDataProvider,
+    ): 
+   interpret(self, state: SAOEState): 
+   observation_space(self): 
+   _mask_future_info(arr: pd.DataFrame, current: pd.Timestamp): 
+}
+class node105 as "qlib.rl.order_execution.interpreter.TwapRelativeActionInterpreter" {
+   action_space(self): 
+   interpret(self, state: SAOEState, action: float): 
+}
+class node91 as "qlib.rl.order_execution.network.Attention" {
+   k_net: 
+   q_net: 
+   v_net: 
+   __init__(self, in_dim, out_dim): 
+   forward(self, Q, K, V): 
+}
+class node41 as "qlib.rl.order_execution.network.Recurrent" {
+   rnn_class: 
+   raw_fc: 
+   hidden_dim: 
+   pri_fc: 
+   dire_fc: 
+   rnn_layers: 
+   prev_rnn: 
+   num_sources: 
+   pri_rnn: 
+   output_dim: 
+   raw_rnn: 
+   fc: 
+   __init__(
+        self,
+        obs_space: FullHistoryObs,
+        hidden_dim: int = 64,
+        output_dim: int = 32,
+        rnn_type: Literal["rnn", "lstm", "gru"] = "gru",
+        rnn_num_layers: int = 1,
+    ): 
+   _init_extra_branches(self): 
+   _source_features(self, obs: FullHistoryObs, device: torch.device): 
+   forward(self, batch: Batch): 
+}
+class node51 as "qlib.rl.order_execution.policy.AllOne" {
+   fill_value: 
+   __init__(self, obs_space: gym.Space, action_space: gym.Space, fill_value: float | int = 1.0): 
+   forward(
+        self,
+        batch: Batch,
+        state: dict | Batch | np.ndarray = None,
+        **kwargs: Any,
+    ): 
+}
+class node16 as "qlib.rl.order_execution.policy.DQN" {
+   __init__(
+        self,
+        network: nn.Module,
+        obs_space: gym.Space,
+        action_space: gym.Space,
+        lr: float,
+        weight_decay: float = 0.0,
+        discount_factor: float = 0.99,
+        estimation_step: int = 1,
+        target_update_freq: int = 0,
+        reward_normalization: bool = False,
+        is_double: bool = True,
+        clip_loss_grad: bool = False,
+        weight_file: Optional[Path] = None,
+    ): 
+}
+class node21 as "qlib.rl.order_execution.policy.NonLearnablePolicy" {
+   __init__(self, obs_space: gym.Space, action_space: gym.Space): 
+   learn(self, batch: Batch, **kwargs: Any): 
+   process_fn(
+        self,
+        batch: Batch,
+        buffer: ReplayBuffer,
+        indices: np.ndarray,
+    ): 
+}
+class node80 as "qlib.rl.order_execution.policy.PPO" {
+   __init__(
+        self,
+        network: nn.Module,
+        obs_space: gym.Space,
+        action_space: gym.Space,
+        lr: float,
+        weight_decay: float = 0.0,
+        discount_factor: float = 1.0,
+        max_grad_norm: float = 100.0,
+        reward_normalization: bool = True,
+        eps_clip: float = 0.3,
+        value_clip: bool = True,
+        vf_coef: float = 1.0,
+        gae_lambda: float = 1.0,
+        max_batch_size: int = 256,
+        deterministic_eval: bool = True,
+        weight_file: Optional[Path] = None,
+    ): 
+}
+class node8 as "qlib.rl.order_execution.policy.PPOActor" {
+   extractor: 
+   layer_out: 
+   __init__(self, extractor: nn.Module, action_dim: int): 
+   forward(
+        self,
+        obs: torch.Tensor,
+        state: torch.Tensor = None,
+        info: dict = {},
+    ): 
+}
+class node45 as "qlib.rl.order_execution.policy.PPOCritic" {
+   value_out: 
+   extractor: 
+   __init__(self, extractor: nn.Module): 
+   forward(
+        self,
+        obs: torch.Tensor,
+        state: torch.Tensor = None,
+        info: dict = {},
+    ): 
+}
+class node35 as "qlib.rl.order_execution.reward.PAPenaltyReward" {
+   penalty: 
+   scale: 
+   __init__(self, penalty: float = 100.0, scale: float = 1.0): 
+   reward(self, simulator_state: SAOEState): 
+}
+class node29 as "qlib.rl.order_execution.reward.PPOReward" {
+   end_time_index: 
+   max_step: 
+   start_time_index: 
+   __init__(self, max_step: int, start_time_index: int = 0, end_time_index: int = 239): 
+   reward(self, simulator_state: SAOEState): 
+}
+class node103 as "qlib.rl.order_execution.simulator_qlib.SingleAssetOrderExecution" {
+   _order: 
+   report_dict: 
+   _executor: 
+   _collect_data_loop: 
+   decisions: 
+   _last_yielded_saoe_strategy: 
+   __init__(
+        self,
+        order: Order,
+        executor_config: dict,
+        exchange_config: dict,
+        qlib_config: dict | None = None,
+        cash_limit: float | None = None,
+    ): 
+   reset(
+        self,
+        order: Order,
+        strategy_config: dict,
+        executor_config: dict,
+        exchange_config: dict,
+        qlib_config: dict | None = None,
+        cash_limit: Optional[float] = None,
+    ): 
+   _get_adapter(self): 
+   twap_price(self): 
+   _iter_strategy(self, action: Optional[float] = None): 
+   step(self, action: Optional[float]): 
+   get_state(self): 
+   done(self): 
+}
+class node69 as "qlib.rl.order_execution.simulator_simple.SingleAssetOrderExecutionSimple" {
+   market_vol_limit: 
+   twap_price: 
+   ticks_for_order: 
+   cur_time: 
+   ticks_per_step: 
+   backtest_data: 
+   cur_step: 
+   market_vol: 
+   ticks_index: 
+   feature_columns_yesterday: 
+   vol_threshold: 
+   market_price: 
+   history_exec: 
+   history_steps: 
+   feature_columns_today: 
+   position: 
+   metrics: 
+   order: 
+   data_dir: 
+   history_exec: 
+   history_steps: 
+   metrics: 
+   twap_price: 
+   ticks_index: 
+   ticks_for_order: 
+   __init__(
+        self,
+        order: Order,
+        data_dir: Path,
+        feature_columns_today: List[str] = [],
+        feature_columns_yesterday: List[str] = [],
+        data_granularity: int = 1,
+        ticks_per_step: int = 30,
+        vol_threshold: Optional[float] = None,
+    ): 
+   get_backtest_data(self): 
+   step(self, amount: float): 
+   get_state(self): 
+   done(self): 
+   _next_time(self): 
+   _cur_duration(self): 
+   _split_exec_vol(self, exec_vol_sum: float): 
+   _metrics_collect(
+        self,
+        datetime: pd.Timestamp,
+        market_vol: np.ndarray,
+        market_price: np.ndarray,
+        amount: float,  # intended to trade such amount
+        exec_vol: np.ndarray,
+    ): 
+   _get_ticks_slice(self, start: pd.Timestamp, end: pd.Timestamp, include_end: bool = False): 
+   _dataframe_append(df: pd.DataFrame, other: Any): 
+}
+class node93 as "qlib.rl.order_execution.state.SAOEMetrics" {
+   stock_id: 
+   datetime: 
+   direction: 
+   market_volume: 
+   market_price: 
+   amount: 
+   inner_amount: 
+   deal_amount: 
+   trade_price: 
+   trade_value: 
+   position: 
+   ffr: 
+   pa: 
+}
+class node19 as "qlib.rl.order_execution.state.SAOEState" {
+   order: 
+   cur_time: 
+   cur_step: 
+   position: 
+   history_exec: 
+   history_steps: 
+   metrics: 
+   backtest_data: 
+   ticks_per_step: 
+   ticks_index: 
+   ticks_for_order: 
+}
+class node73 as "qlib.rl.order_execution.strategy.ProxySAOEStrategy" {
+   _order: 
+   __init__(
+        self,
+        outer_trade_decision: BaseTradeDecision | None = None,
+        level_infra: LevelInfrastructure | None = None,
+        common_infra: CommonInfrastructure | None = None,
+        **kwargs: Any,
+    ): 
+   _generate_trade_decision(self, execute_result: list | None = None): 
+   reset(self, outer_trade_decision: BaseTradeDecision | None = None, **kwargs: Any): 
+}
+class node60 as "qlib.rl.order_execution.strategy.SAOEIntStrategy" {
+   _state_interpreter: 
+   _action_interpreter: 
+   _policy: 
+   __init__(
+        self,
+        policy: dict | BasePolicy,
+        state_interpreter: dict | StateInterpreter,
+        action_interpreter: dict | ActionInterpreter,
+        network: dict | torch.nn.Module | None = None,
+        outer_trade_decision: BaseTradeDecision | None = None,
+        level_infra: LevelInfrastructure | None = None,
+        common_infra: CommonInfrastructure | None = None,
+        **kwargs: Any,
+    ): 
+   reset(self, outer_trade_decision: BaseTradeDecision | None = None, **kwargs: Any): 
+   _generate_trade_details(self, act: np.ndarray, exec_vols: List[float]): 
+   _generate_trade_decision(self, execute_result: list | None = None): 
+}
+class node63 as "qlib.rl.order_execution.strategy.SAOEStateAdapter" {
+   twap_price: 
+   cur_time: 
+   backtest_data: 
+   ticks_per_step: 
+   executor: 
+   exchange: 
+   start_idx: 
+   history_exec: 
+   history_steps: 
+   position: 
+   metrics: 
+   data_granularity: 
+   order: 
+   __init__(
+        self,
+        order: Order,
+        trade_decision: BaseTradeDecision,
+        executor: BaseExecutor,
+        exchange: Exchange,
+        ticks_per_step: int,
+        backtest_data: IntradayBacktestData,
+        data_granularity: int = 1,
+    ): 
+   _next_time(self): 
+   update(
+        self,
+        execute_result: list,
+        last_step_range: Tuple[int, int],
+    ): 
+   generate_metrics_after_done(self): 
+   _collect_multi_order_metric(
+        self,
+        order: Order,
+        datetime: pd.DatetimeIndex,
+        market_vol: np.ndarray,
+        market_price: np.ndarray,
+        exec_vol: np.ndarray,
+        pa: float,
+    ): 
+   _collect_single_order_metric(
+        self,
+        order: Order,
+        datetime: pd.Timestamp,
+        market_vol: np.ndarray,
+        market_price: np.ndarray,
+        amount: float,  # intended to trade such amount
+        exec_vol: np.ndarray,
+    ): 
+   saoe_state(self): 
+}
+class node106 as "qlib.rl.order_execution.strategy.SAOEStrategy" {
+   _last_step_range: 
+   _data_granularity: 
+   adapter_dict: 
+   __init__(
+        self,
+        policy: BasePolicy,
+        outer_trade_decision: BaseTradeDecision | None = None,
+        level_infra: LevelInfrastructure | None = None,
+        common_infra: CommonInfrastructure | None = None,
+        data_granularity: int = 1,
+        **kwargs: Any,
+    ): 
+   _create_qlib_backtest_adapter(
+        self,
+        order: Order,
+        trade_decision: BaseTradeDecision,
+        trade_range: TradeRange,
+    ): 
+   reset(self, outer_trade_decision: BaseTradeDecision | None = None, **kwargs: Any): 
+   get_saoe_state_by_order(self, order: Order): 
+   post_upper_level_exe_step(self): 
+   post_exe_step(self, execute_result: Optional[list]): 
+   generate_trade_decision(
+        self,
+        execute_result: list | None = None,
+    ): 
+   _generate_trade_decision(
+        self,
+        execute_result: list | None = None,
+    ): 
+}
+class node92 as "qlib.rl.reward.Reward" {
+   env: 
+   __call__(self, simulator_state: SimulatorState): 
+   reward(self, simulator_state: SimulatorState): 
+   log(self, name: str, value: Any): 
+}
+class node74 as "qlib.rl.reward.RewardCombination" {
+   rewards: 
+   __init__(self, rewards: Dict[str, Tuple[Reward, float]]): 
+   reward(self, simulator_state: Any): 
+}
+class node57 as "qlib.rl.simulator.Simulator" {
+   env: 
+   __init__(self, initial: InitialStateType, **kwargs: Any): 
+   step(self, action: ActType): 
+   get_state(self): 
+   done(self): 
+}
+class node66 as "qlib.rl.strategy.single_order.SingleOrderStrategy" {
+   _order: 
+   _trade_range: 
+   __init__(
+        self,
+        order: Order,
+        trade_range: TradeRange | None = None,
+    ): 
+   generate_trade_decision(self, execute_result: list | None = None): 
+}
+class node53 as "qlib.rl.trainer.callbacks.Callback" {
+   on_fit_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_fit_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_train_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_train_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_validate_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_validate_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_test_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_test_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_iter_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_iter_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   state_dict(self): 
+   load_state_dict(self, state_dict: Any): 
+}
+class node95 as "qlib.rl.trainer.callbacks.Checkpoint" {
+   filename: 
+   save_latest: 
+   dirpath: 
+   every_n_iters: 
+   save_on_fit_end: 
+   _last_checkpoint_name: 
+   _last_checkpoint_iter: 
+   time_interval: 
+   _last_checkpoint_time: 
+   __init__(
+        self,
+        dirpath: Path,
+        filename: str = "{iter:03d}.pth",
+        save_latest: Literal["link", "copy"] | None = "link",
+        every_n_iters: int | None = None,
+        time_interval: int | None = None,
+        save_on_fit_end: bool = True,
+    ): 
+   on_fit_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_iter_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   _save_checkpoint(self, trainer: Trainer): 
+   _new_checkpoint_name(self, trainer: Trainer): 
+}
+class node38 as "qlib.rl.trainer.callbacks.EarlyStopping" {
+   min_delta: 
+   best_weights: 
+   monitor_op: 
+   wait: 
+   restore_best_weights: 
+   best_iter: 
+   patience: 
+   monitor: 
+   best: 
+   baseline: 
+   __init__(
+        self,
+        monitor: str = "reward",
+        min_delta: float = 0.0,
+        patience: int = 0,
+        mode: Literal["min", "max"] = "max",
+        baseline: float | None = None,
+        restore_best_weights: bool = False,
+    ): 
+   state_dict(self): 
+   load_state_dict(self, state_dict: dict): 
+   on_fit_start(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_validate_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   get_monitor_value(self, trainer: Trainer): 
+   _is_improvement(self, monitor_value, reference_value): 
+}
+class node59 as "qlib.rl.trainer.callbacks.MetricsWriter" {
+   dirpath: 
+   train_records: 
+   valid_records: 
+   __init__(self, dirpath: Path): 
+   on_train_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+   on_validate_end(self, trainer: Trainer, vessel: TrainingVesselBase): 
+}
+class node98 as "qlib.rl.trainer.trainer.Trainer" {
+   finite_env_type: 
+   loggers: 
+   callbacks: 
+   val_every_n_iters: 
+   fast_dev_run: 
+   current_episode: 
+   concurrency: 
+   should_stop: 
+   current_iter: 
+   vessel: 
+   max_iters: 
+   current_stage: 
+   metrics: 
+   should_stop: 
+   metrics: 
+   current_iter: 
+   loggers: 
+   __init__(
+        self,
+        *,
+        max_iters: int | None = None,
+        val_every_n_iters: int | None = None,
+        loggers: LogWriter | List[LogWriter] | None = None,
+        callbacks: List[Callback] | None = None,
+        finite_env_type: FiniteEnvType = "subproc",
+        concurrency: int = 2,
+        fast_dev_run: int | None = None,
+    ): 
+   initialize(self): 
+   initialize_iter(self): 
+   state_dict(self): 
+   get_policy_state_dict(ckpt_path: Path): 
+   load_state_dict(self, state_dict: dict): 
+   named_callbacks(self): 
+   named_loggers(self): 
+   fit(self, vessel: TrainingVesselBase, ckpt_path: Path | None = None): 
+   test(self, vessel: TrainingVesselBase): 
+   venv_from_iterator(self, iterator: Iterable[InitialStateType]): 
+   _metrics_callback(self, on_episode: bool, on_collect: bool, log_buffer: LogBuffer): 
+   _call_callback_hooks(self, hook_name: str, *args: Any, **kwargs: Any): 
+   _min_loglevel(self): 
+}
+class node82 as "qlib.rl.trainer.vessel.SeedIteratorNotAvailable"
+class node76 as "qlib.rl.trainer.vessel.TrainingVessel" {
+   reward: 
+   update_kwargs: 
+   action_interpreter: 
+   state_interpreter: 
+   simulator_fn: 
+   val_initial_states: 
+   buffer_size: 
+   test_initial_states: 
+   train_initial_states: 
+   episode_per_iter: 
+   policy: 
+   __init__(
+        self,
+        *,
+        simulator_fn: Callable[[InitialStateType], Simulator[InitialStateType, StateType, ActType]],
+        state_interpreter: StateInterpreter[StateType, ObsType],
+        action_interpreter: ActionInterpreter[StateType, PolicyActType, ActType],
+        policy: BasePolicy,
+        reward: Reward,
+        train_initial_states: Sequence[InitialStateType] | None = None,
+        val_initial_states: Sequence[InitialStateType] | None = None,
+        test_initial_states: Sequence[InitialStateType] | None = None,
+        buffer_size: int = 20000,
+        episode_per_iter: int = 1000,
+        update_kwargs: Dict[str, Any] = cast(Dict[str, Any], None),
+    ): 
+   train_seed_iterator(self): 
+   val_seed_iterator(self): 
+   test_seed_iterator(self): 
+   train(self, vector_env: FiniteVectorEnv): 
+   validate(self, vector_env: FiniteVectorEnv): 
+   test(self, vector_env: FiniteVectorEnv): 
+   _random_subset(name: str, collection: Sequence[T], size: int | None): 
+}
+class node55 as "qlib.rl.trainer.vessel.TrainingVesselBase" {
+   trainer: 
+   simulator_fn: 
+   state_interpreter: 
+   action_interpreter: 
+   policy: 
+   reward: 
+   trainer: 
+   assign_trainer(self, trainer: Trainer): 
+   train_seed_iterator(self): 
+   val_seed_iterator(self): 
+   test_seed_iterator(self): 
+   train(self, vector_env: BaseVectorEnv): 
+   validate(self, vector_env: FiniteVectorEnv): 
+   test(self, vector_env: FiniteVectorEnv): 
+   log(self, name: str, value: Any): 
+   log_dict(self, data: Dict[str, Any]): 
+   state_dict(self): 
+   load_state_dict(self, state_dict: Dict): 
+}
+class node36 as "qlib.rl.utils.data_queue.DataQueue" {
+   repeat: 
+   _done: 
+   _queue: 
+   _first_get: 
+   shuffle: 
+   producer_num_workers: 
+   dataset: 
+   _activated: 
+   __init__(
+        self,
+        dataset: Sequence[T],
+        repeat: int = 1,
+        shuffle: bool = True,
+        producer_num_workers: int = 0,
+        queue_maxsize: int = 0,
+    ): 
+   __enter__(self): 
+   __exit__(self, exc_type, exc_val, exc_tb): 
+   cleanup(self): 
+   get(self, block: bool = True): 
+   put(self, obj: Any, block: bool = True, timeout: int | None = None): 
+   mark_as_done(self): 
+   done(self): 
+   activate(self): 
+   __del__(self): 
+   __iter__(self): 
+   _consumer(self): 
+   _producer(self): 
+}
+class node48 as "qlib.rl.utils.env_wrapper.EnvWrapper" {
+   seed_iterator: 
+   action_interpreter: 
+   simulator: 
+   state_interpreter: 
+   simulator_fn: 
+   aux_info_collector: 
+   logger: 
+   reward_fn: 
+   status: 
+   simulator: 
+   seed_iterator: 
+   __init__(
+        self,
+        simulator_fn: Callable[..., Simulator[InitialStateType, StateType, ActType]],
+        state_interpreter: StateInterpreter[StateType, ObsType],
+        action_interpreter: ActionInterpreter[StateType, PolicyActType, ActType],
+        seed_iterator: Optional[Iterable[InitialStateType]],
+        reward_fn: Reward | None = None,
+        aux_info_collector: AuxiliaryInfoCollector[StateType, Any] | None = None,
+        logger: LogCollector | None = None,
+    ): 
+   action_space(self): 
+   observation_space(self): 
+   reset(self, **kwargs: Any): 
+   step(self, policy_action: PolicyActType, **kwargs: Any): 
+   render(self, mode: str = "human"): 
+}
+class node50 as "qlib.rl.utils.env_wrapper.EnvWrapperStatus" {
+   cur_step: 
+   done: 
+   initial_state: 
+   obs_history: 
+   action_history: 
+   reward_history: 
+}
+class node10 as "qlib.rl.utils.env_wrapper.InfoDict" {
+   aux_info: 
+   log: 
+}
+class node43 as "qlib.rl.utils.finite_env.FiniteDummyVectorEnv"
+class node46 as "qlib.rl.utils.finite_env.FiniteShmemVectorEnv"
+class node100 as "qlib.rl.utils.finite_env.FiniteSubprocVectorEnv"
+class node11 as "qlib.rl.utils.finite_env.FiniteVectorEnv" {
+   _default_rew: 
+   _default_info: 
+   _collector_guarded: 
+   _default_obs: 
+   _alive_env_ids: 
+   _logger: 
+   _zombie: 
+   _logger: 
+   __init__(
+        self, logger: LogWriter | list[LogWriter] | None, env_fns: list[Callable[..., gym.Env]], **kwargs: Any
+    ): 
+   _reset_alive_envs(self): 
+   _set_default_obs(self, obs: Any): 
+   _set_default_info(self, info: Any): 
+   _set_default_rew(self, rew: Any): 
+   _get_default_obs(self): 
+   _get_default_info(self): 
+   _get_default_rew(self): 
+   _postproc_env_obs(obs: Any): 
+   collector_guard(self): 
+   reset(
+        self,
+        id: int | List[int] | np.ndarray | None = None,
+    ): 
+   step(
+        self,
+        action: np.ndarray,
+        id: int | List[int] | np.ndarray | None = None,
+    ): 
+}
+class node28 as "qlib.rl.utils.log.ConsoleWriter" {
+   console_logger: 
+   prefix: 
+   metric_sums: 
+   float_format: 
+   log_every_n_episode: 
+   counter_format: 
+   metric_counts: 
+   total_episodes: 
+   prefix: 
+   __init__(
+        self,
+        log_every_n_episode: int = 20,
+        total_episodes: int | None = None,
+        float_format: str = ":.4f",
+        counter_format: str = ":4d",
+        loglevel: int | LogLevel = LogLevel.PERIODIC,
+    ): 
+   clear(self): 
+   log_episode(self, length: int, rewards: List[float], contents: List[Dict[str, Any]]): 
+   generate_log_message(self, logs: Dict[str, float]): 
+}
+class node68 as "qlib.rl.utils.log.CsvWriter" {
+   output_dir: 
+   all_records: 
+   SUPPORTED_TYPES: 
+   all_records: 
+   __init__(self, output_dir: Path, loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   clear(self): 
+   log_episode(self, length: int, rewards: List[float], contents: List[Dict[str, Any]]): 
+   on_env_all_done(self): 
+}
+class node1 as "qlib.rl.utils.log.LogBuffer" {
+   callback: 
+   _aggregated_metrics: 
+   _latest_metrics: 
+   __init__(self, callback: Callable[[bool, bool, LogBuffer], None], loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   state_dict(self): 
+   load_state_dict(self, state_dict: dict): 
+   clear(self): 
+   log_episode(self, length: int, rewards: list[float], contents: list[dict[str, Any]]): 
+   on_env_all_done(self): 
+   episode_metrics(self): 
+   collect_metrics(self): 
+}
+class node54 as "qlib.rl.utils.log.LogCollector" {
+   _logged: 
+   _min_loglevel: 
+   _logged: 
+   _min_loglevel: 
+   __init__(self, min_loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   reset(self): 
+   _add_metric(self, name: str, metric: Any, loglevel: int | LogLevel): 
+   add_string(self, name: str, string: str, loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   add_scalar(self, name: str, scalar: Any, loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   add_array(
+        self,
+        name: str,
+        array: np.ndarray | pd.DataFrame | pd.Series,
+        loglevel: int | LogLevel = LogLevel.PERIODIC,
+    ): 
+   add_any(self, name: str, obj: Any, loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   logs(self): 
+}
+class node14 as "qlib.rl.utils.log.LogLevel" {
+   DEBUG: 
+   PERIODIC: 
+   INFO: 
+   CRITICAL: 
+}
+class node87 as "qlib.rl.utils.log.LogWriter" {
+   episode_count: 
+   global_episode: 
+   loglevel: 
+   episode_rewards: 
+   step_count: 
+   episode_logs: 
+   active_env_ids: 
+   global_step: 
+   episode_lengths: 
+   episode_count: 
+   step_count: 
+   global_step: 
+   global_episode: 
+   active_env_ids: 
+   episode_lengths: 
+   episode_rewards: 
+   episode_logs: 
+   __init__(self, loglevel: int | LogLevel = LogLevel.PERIODIC): 
+   clear(self): 
+   state_dict(self): 
+   load_state_dict(self, state_dict: dict): 
+   aggregation(array: Sequence[Any], name: str | None = None): 
+   log_episode(self, length: int, rewards: List[float], contents: List[Dict[str, Any]]): 
+   log_step(self, reward: float, contents: Dict[str, Any]): 
+   on_env_step(self, env_id: int, obs: ObsType, rew: float, done: bool, info: InfoDict): 
+   on_env_reset(self, env_id: int, _: ObsType): 
+   on_env_all_ready(self): 
+   on_env_all_done(self): 
+}
+class node30 as "qlib.rl.utils.log.MlflowWriter"
+class node85 as "qlib.rl.utils.log.PickleWriter"
+class node61 as "qlib.rl.utils.log.TensorboardWriter"
+class node13 as "qlib.strategy.base.BaseStrategy" {
+   common_infra: 
+   outer_trade_decision: 
+   level_infra: 
+   _trade_exchange: 
+   __init__(
+        self,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        trade_exchange: Exchange = None,
+    ): 
+   executor(self): 
+   trade_calendar(self): 
+   trade_position(self): 
+   trade_exchange(self): 
+   reset_level_infra(self, level_infra: LevelInfrastructure): 
+   reset_common_infra(self, common_infra: CommonInfrastructure): 
+   reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+        **kwargs,
+    ): 
+   _reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+    ): 
+   generate_trade_decision(
+        self,
+        execute_result: list = None,
+    ): 
+   get_data_cal_avail_range(self, rtype: str = "full"): 
+   update_trade_decision(
+        trade_decision: BaseTradeDecision,
+        trade_calendar: TradeCalendarManager,
+    ): 
+   alter_outer_trade_decision(self, outer_trade_decision: BaseTradeDecision): 
+   post_upper_level_exe_step(self): 
+   post_exe_step(self, execute_result: Optional[list]): 
+}
+class node49 as "qlib.strategy.base.RLStrategy" {
+   policy: 
+   __init__(
+        self,
+        policy,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        **kwargs,
+    ): 
+}
+class node77 as "tianshou.env.venvs.BaseVectorEnv" {
+   env_num: 
+   is_async: 
+   waiting_id: 
+   wait_num: 
+   worker_class: 
+   waiting_conn: 
+   ready_id: 
+   workers: 
+   timeout: 
+   _env_fns: 
+   is_closed: 
+   __init__(
+        self,
+        env_fns: List[Callable[[], ENV_TYPE]],
+        worker_fn: Callable[[Callable[[], gym.Env]], EnvWorker],
+        wait_num: Optional[int] = None,
+        timeout: Optional[float] = None,
+    ): 
+   _assert_is_not_closed(self): 
+   __len__(self): 
+   __getattribute__(self, key: str): 
+   get_env_attr(
+        self,
+        key: str,
+        id: Optional[Union[int, List[int], np.ndarray]] = None,
+    ): 
+   set_env_attr(
+        self,
+        key: str,
+        value: Any,
+        id: Optional[Union[int, List[int], np.ndarray]] = None,
+    ): 
+   _wrap_id(
+        self,
+        id: Optional[Union[int, List[int], np.ndarray]] = None,
+    ): 
+   _assert_id(self, id: Union[List[int], np.ndarray]): 
+   reset(
+        self,
+        id: Optional[Union[int, List[int], np.ndarray]] = None,
+        **kwargs: Any,
+    ): 
+   step(
+        self,
+        action: np.ndarray,
+        id: Optional[Union[int, List[int], np.ndarray]] = None,
+    ): 
+   seed(
+        self,
+        seed: Optional[Union[int, List[int]]] = None,
+    ): 
+   render(self, **kwargs: Any): 
+   close(self): 
+}
+class node79 as "tianshou.env.venvs.DummyVectorEnv" {
+   __init__(self, env_fns: List[Callable[[], ENV_TYPE]], **kwargs: Any): 
+}
+class node44 as "tianshou.env.venvs.ShmemVectorEnv" {
+   __init__(self, env_fns: List[Callable[[], ENV_TYPE]], **kwargs: Any): 
+}
+class node47 as "tianshou.env.venvs.SubprocVectorEnv" {
+   __init__(self, env_fns: List[Callable[[], ENV_TYPE]], **kwargs: Any): 
+}
+class node64 as "tianshou.policy.base.BasePolicy" {
+   observation_space: 
+   action_space: 
+   updating: 
+   agent_id: 
+   lr_scheduler: 
+   action_type: 
+   action_scaling: 
+   action_bound_method: 
+   weight: 
+   returns: 
+   __init__(
+        self,
+        observation_space: Optional[gym.Space] = None,
+        action_space: Optional[gym.Space] = None,
+        action_scaling: bool = False,
+        action_bound_method: str = "",
+        lr_scheduler: Optional[Union[torch.optim.lr_scheduler.LambdaLR,
+                                     MultipleLRSchedulers]] = None,
+    ): 
+   set_agent_id(self, agent_id: int): 
+   exploration_noise(self, act: Union[np.ndarray, Batch],
+                          batch: Batch): 
+   soft_update(self, tgt: nn.Module, src: nn.Module, tau: float): 
+   forward(
+        self,
+        batch: Batch,
+        state: Optional[Union[dict, Batch, np.ndarray]] = None,
+        **kwargs: Any,
+    ): 
+   map_action(self, act: Union[Batch, np.ndarray]): 
+   map_action_inverse(
+        self, act: Union[Batch, List, np.ndarray]
+    ): 
+   process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   learn(self, batch: Batch, **kwargs: Any): 
+   post_process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   update(self, sample_size: int, buffer: Optional[ReplayBuffer],
+               **kwargs: Any): 
+   value_mask(buffer: ReplayBuffer, indices: np.ndarray): 
+   compute_episodic_return(
+        batch: Batch,
+        buffer: ReplayBuffer,
+        indices: np.ndarray,
+        v_s_: Optional[Union[np.ndarray, torch.Tensor]] = None,
+        v_s: Optional[Union[np.ndarray, torch.Tensor]] = None,
+        gamma: float = 0.99,
+        gae_lambda: float = 0.95,
+    ): 
+   compute_nstep_return(
+        batch: Batch,
+        buffer: ReplayBuffer,
+        indice: np.ndarray,
+        target_q_fn: Callable[[ReplayBuffer, np.ndarray], torch.Tensor],
+        gamma: float = 0.99,
+        n_step: int = 1,
+        rew_norm: bool = False,
+    ): 
+   _compile(self): 
+}
+class node22 as "tianshou.policy.modelfree.a2c.A2CPolicy" {
+   _weight_vf: 
+   _grad_norm: 
+   critic: 
+   _lambda: 
+   _batch: 
+   _weight_ent: 
+   _actor_critic: 
+   __init__(
+        self,
+        actor: torch.nn.Module,
+        critic: torch.nn.Module,
+        optim: torch.optim.Optimizer,
+        dist_fn: Type[torch.distributions.Distribution],
+        vf_coef: float = 0.5,
+        ent_coef: float = 0.01,
+        max_grad_norm: Optional[float] = None,
+        gae_lambda: float = 0.95,
+        max_batchsize: int = 256,
+        **kwargs: Any
+    ): 
+   process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   _compute_returns(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   learn(  # type: ignore
+        self, batch: Batch, batch_size: int, repeat: int, **kwargs: Any
+    ): 
+}
+class node89 as "tianshou.policy.modelfree.dqn.DQNPolicy" {
+   _clip_loss_grad: 
+   _is_double: 
+   max_action_num: 
+   optim: 
+   eps: 
+   _n_step: 
+   _rew_norm: 
+   training: 
+   model: 
+   _iter: 
+   model_old: 
+   _gamma: 
+   _freq: 
+   _target: 
+   __init__(
+        self,
+        model: torch.nn.Module,
+        optim: torch.optim.Optimizer,
+        discount_factor: float = 0.99,
+        estimation_step: int = 1,
+        target_update_freq: int = 0,
+        reward_normalization: bool = False,
+        is_double: bool = True,
+        clip_loss_grad: bool = False,
+        **kwargs: Any,
+    ): 
+   set_eps(self, eps: float): 
+   train(self, mode: bool = True): 
+   sync_weight(self): 
+   _target_q(self, buffer: ReplayBuffer, indices: np.ndarray): 
+   process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   compute_q_value(
+        self, logits: torch.Tensor, mask: Optional[np.ndarray]
+    ): 
+   forward(
+        self,
+        batch: Batch,
+        state: Optional[Union[dict, Batch, np.ndarray]] = None,
+        model: str = "model",
+        input: str = "obs",
+        **kwargs: Any,
+    ): 
+   learn(self, batch: Batch, **kwargs: Any): 
+   exploration_noise(
+        self,
+        act: Union[np.ndarray, Batch],
+        batch: Batch,
+    ): 
+}
+class node26 as "tianshou.policy.modelfree.pg.PGPolicy" {
+   actor: 
+   ret_rms: 
+   _eps: 
+   optim: 
+   dist_fn: 
+   _rew_norm: 
+   _deterministic_eval: 
+   _gamma: 
+   __init__(
+        self,
+        model: torch.nn.Module,
+        optim: torch.optim.Optimizer,
+        dist_fn: Type[torch.distributions.Distribution],
+        discount_factor: float = 0.99,
+        reward_normalization: bool = False,
+        action_scaling: bool = True,
+        action_bound_method: str = "clip",
+        deterministic_eval: bool = False,
+        **kwargs: Any,
+    ): 
+   process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   forward(
+        self,
+        batch: Batch,
+        state: Optional[Union[dict, Batch, np.ndarray]] = None,
+        **kwargs: Any,
+    ): 
+   learn(  # type: ignore
+        self, batch: Batch, batch_size: int, repeat: int, **kwargs: Any
+    ): 
+}
+class node81 as "tianshou.policy.modelfree.ppo.PPOPolicy" {
+   _norm_adv: 
+   _dual_clip: 
+   _buffer: 
+   _eps_clip: 
+   _value_clip: 
+   _recompute_adv: 
+   _indices: 
+   __init__(
+        self,
+        actor: torch.nn.Module,
+        critic: torch.nn.Module,
+        optim: torch.optim.Optimizer,
+        dist_fn: Type[torch.distributions.Distribution],
+        eps_clip: float = 0.2,
+        dual_clip: Optional[float] = None,
+        value_clip: bool = False,
+        advantage_normalization: bool = True,
+        recompute_advantage: bool = False,
+        **kwargs: Any,
+    ): 
+   process_fn(
+        self, batch: Batch, buffer: ReplayBuffer, indices: np.ndarray
+    ): 
+   learn(  # type: ignore
+        self, batch: Batch, batch_size: int, repeat: int, **kwargs: Any
+    ): 
+}
+class node6 as "torch.nn.modules.module.Module" {
+   _compiled_call_impl: 
+   _backward_pre_hooks: 
+   training: 
+   _is_full_backward_hook: 
+   _forward_hooks_with_kwargs: 
+   _forward_hooks_always_called: 
+   _non_persistent_buffers_set: 
+   _forward_pre_hooks_with_kwargs: 
+   _state_dict_pre_hooks: 
+   _forward_pre_hooks: 
+   _state_dict_hooks: 
+   _load_state_dict_pre_hooks: 
+   _load_state_dict_post_hooks: 
+   dump_patches: 
+   _version: 
+   training: 
+   _parameters: 
+   _buffers: 
+   _non_persistent_buffers_set: 
+   _backward_pre_hooks: 
+   _backward_hooks: 
+   _is_full_backward_hook: 
+   _forward_hooks: 
+   _forward_hooks_with_kwargs: 
+   _forward_hooks_always_called: 
+   _forward_pre_hooks: 
+   _forward_pre_hooks_with_kwargs: 
+   _state_dict_hooks: 
+   _load_state_dict_pre_hooks: 
+   _state_dict_pre_hooks: 
+   _load_state_dict_post_hooks: 
+   _modules: 
+   call_super_init: 
+   _compiled_call_impl: 
+   forward: 
+   __call__: 
+   T_destination: 
+   __init__(self, *args, **kwargs): 
+   register_buffer(self, name: str, tensor: Optional[Tensor], persistent: bool = True): 
+   register_parameter(self, name: str, param: Optional[Parameter]): 
+   add_module(self, name: str, module: Optional['Module']): 
+   register_module(self, name: str, module: Optional['Module']): 
+   get_submodule(self, target: str): 
+   get_parameter(self, target: str): 
+   get_buffer(self, target: str): 
+   get_extra_state(self): 
+   set_extra_state(self, state: Any): 
+   _apply(self, fn, recurse=True): 
+   apply(self: T, fn: Callable[['Module'], None]): 
+   cuda(self: T, device: Optional[Union[int, device]] = None): 
+   ipu(self: T, device: Optional[Union[int, device]] = None): 
+   xpu(self: T, device: Optional[Union[int, device]] = None): 
+   cpu(self: T): 
+   type(self: T, dst_type: Union[dtype, str]): 
+   float(self: T): 
+   double(self: T): 
+   half(self: T): 
+   bfloat16(self: T): 
+   to_empty(self: T, *, device: Optional[DeviceLikeType], recurse: bool = True): 
+   to(self, device: Optional[DeviceLikeType] = ..., dtype: Optional[dtype] = ...,
+           non_blocking: bool = ...): 
+   to(self, dtype: dtype, non_blocking: bool = ...): 
+   to(self, tensor: Tensor, non_blocking: bool = ...): 
+   to(self, *args, **kwargs): 
+   register_full_backward_pre_hook(
+        self,
+        hook: Callable[["Module", _grad_t], Union[None, _grad_t]],
+        prepend: bool = False,
+    ): 
+   register_backward_hook(
+        self, hook: Callable[['Module', _grad_t, _grad_t], Union[None, _grad_t]]
+    ): 
+   register_full_backward_hook(
+        self,
+        hook: Callable[["Module", _grad_t, _grad_t], Union[None, _grad_t]],
+        prepend: bool = False,
+    ): 
+   _get_backward_hooks(self): 
+   _get_backward_pre_hooks(self): 
+   _maybe_warn_non_full_backward_hook(self, inputs, result, grad_fn): 
+   register_forward_pre_hook(
+        self,
+        hook: Union[
+            Callable[[T, Tuple[Any, ...]], Optional[Any]],
+            Callable[[T, Tuple[Any, ...], Dict[str, Any]], Optional[Tuple[Any, Dict[str, Any]]]],
+        ],
+        *,
+        prepend: bool = False,
+        with_kwargs: bool = False,
+    ): 
+   register_forward_hook(
+        self,
+        hook: Union[
+            Callable[[T, Tuple[Any, ...], Any], Optional[Any]],
+            Callable[[T, Tuple[Any, ...], Dict[str, Any], Any], Optional[Any]],
+        ],
+        *,
+        prepend: bool = False,
+        with_kwargs: bool = False,
+        always_call: bool = False,
+    ): 
+   _slow_forward(self, *input, **kwargs): 
+   _wrapped_call_impl(self, *args, **kwargs): 
+   _call_impl(self, *args, **kwargs): 
+   __getstate__(self): 
+   __setstate__(self, state): 
+   __getattr__(self, name: str): 
+   __setattr__(self, name: str, value: Union[Tensor, 'Module']): 
+   __delattr__(self, name): 
+   _register_state_dict_hook(self, hook): 
+   register_state_dict_pre_hook(self, hook): 
+   _save_to_state_dict(self, destination, prefix, keep_vars): 
+   state_dict(self, *, destination: T_destination, prefix: str = ..., keep_vars: bool = ...): 
+   state_dict(self, *, prefix: str = ..., keep_vars: bool = ...): 
+   state_dict(self, *args, destination=None, prefix='', keep_vars=False): 
+   _register_load_state_dict_pre_hook(self, hook, with_module=False): 
+   register_load_state_dict_post_hook(self, hook): 
+   _load_from_state_dict(self, state_dict, prefix, local_metadata, strict,
+                              missing_keys, unexpected_keys, error_msgs): 
+   load_state_dict(self, state_dict: Mapping[str, Any],
+                        strict: bool = True, assign: bool = False): 
+   _named_members(self, get_members_fn, prefix='', recurse=True, remove_duplicate: bool = True): 
+   parameters(self, recurse: bool = True): 
+   named_parameters(
+            self,
+            prefix: str = '',
+            recurse: bool = True,
+            remove_duplicate: bool = True
+    ): 
+   buffers(self, recurse: bool = True): 
+   named_buffers(self, prefix: str = '', recurse: bool = True, remove_duplicate: bool = True): 
+   children(self): 
+   named_children(self): 
+   modules(self): 
+   named_modules(self, memo: Optional[Set['Module']] = None, prefix: str = '', remove_duplicate: bool = True): 
+   train(self: T, mode: bool = True): 
+   eval(self: T): 
+   requires_grad_(self: T, requires_grad: bool = True): 
+   zero_grad(self, set_to_none: bool = True): 
+   share_memory(self: T): 
+   _get_name(self): 
+   extra_repr(self): 
+   __repr__(self): 
+   __dir__(self): 
+   _replicate_for_data_parallel(self): 
+   compile(self, *args, **kwargs): 
+}
+class node84 as "torch.utils.data.dataset.Dataset" {
+   __getitem__(self, index): 
+   __add__(self, other: "Dataset[T_co]"): 
+}
+class tuple {
+   __new__(cls: type[Self], __iterable: Iterable[_T_co] = ...): 
+   __len__(self): 
+   __contains__(self, __key: object): 
+   __getitem__(self, __key: SupportsIndex): 
+   __getitem__(self, __key: slice): 
+   __iter__(self): 
+   __lt__(self, __value: tuple[_T_co, ...]): 
+   __le__(self, __value: tuple[_T_co, ...]): 
+   __gt__(self, __value: tuple[_T_co, ...]): 
+   __ge__(self, __value: tuple[_T_co, ...]): 
+   __eq__(self, __value: object): 
+   __hash__(self): 
+   __add__(self, __value: tuple[_T_co, ...]): 
+   __add__(self, __value: tuple[_T, ...]): 
+   __mul__(self, __value: SupportsIndex): 
+   __rmul__(self, __value: SupportsIndex): 
+   count(self, __value: Any): 
+   index(self, __value: Any, __start: SupportsIndex = 0, __stop: SupportsIndex = sys.maxsize): 
+}
+class node78 as "typing.Collection" {
+   __len__(self): 
+}
+class node72 as "typing.Container" {
+   __contains__(self, x: object, /): 
+}
+class node15 as "typing.Hashable" {
+   __hash__(self): 
+}
+class node20 as "typing.Iterable" {
+   __iter__(self): 
+}
+class node62 as "typing.Iterator" {
+   __next__(self): 
+   __iter__(self): 
+}
+class node24 as "typing.Mapping" {
+   __getitem__(self, key: _KT, /): 
+   get(self, key: _KT, /): 
+   get(self, key: _KT, /, default: _VT_co | _T): 
+   items(self): 
+   keys(self): 
+   values(self): 
+   __contains__(self, key: object, /): 
+   __eq__(self, other: object, /): 
+}
+class node5 as "typing.MutableMapping" {
+   __setitem__(self, key: _KT, value: _VT, /): 
+   __delitem__(self, key: _KT, /): 
+   clear(self): 
+   pop(self, key: _KT, /): 
+   pop(self, key: _KT, /, default: _VT): 
+   pop(self, key: _KT, /, default: _T): 
+   popitem(self): 
+   setdefault(self: MutableMapping[_KT, _T | None], key: _KT, default: None = None, /): 
+   setdefault(self, key: _KT, default: _VT, /): 
+   update(self, m: SupportsKeysAndGetItem[_KT, _VT], /, **kwargs: _VT): 
+   update(self, m: Iterable[tuple[_KT, _VT]], /, **kwargs: _VT): 
+   update(self, **kwargs: _VT): 
+}
+class node31 as "typing.NamedTuple" {
+   _field_types: 
+   _field_defaults: 
+   _fields: 
+   __init__(self, typename: str, fields: Iterable[tuple[str, Any]], /): 
+   __init__(self, typename: str, fields: None = None, /, **kwargs: Any): 
+   _make(cls, iterable: Iterable[Any]): 
+   _asdict(self): 
+   _replace(self, **kwargs: Any): 
+}
+class node40 as "typing.Reversible" {
+   __reversed__(self): 
+}
+class node27 as "typing.Sequence" {
+   __getitem__(self, index: int): 
+   __getitem__(self, index: slice): 
+   index(self, value: Any, start: int = 0, stop: int = ...): 
+   count(self, value: Any): 
+   __contains__(self, value: object): 
+   __iter__(self): 
+   __reversed__(self): 
+}
+class node67 as "typing.Sized" {
+   __len__(self): 
+}
+
+BaseException  ^-[#595959,plain]-  object        
+Exception      ^-[#595959,plain]-  BaseException 
+TypedDict      ^-[#595959,plain]-  object        
+node3          <-[#595959,dashed]- "isinstanceof" node7         
+node3          ^-[#595959,plain]-  object        
+dict           ^-[#595959,dashed]-  node15        
+dict           ^-[#595959,dashed]-  node62        
+dict           ^-[#595959,plain]-  node5         
+dict           ^-[#595959,dashed]-  node67        
+node0          <-[#595959,dashed]- "isinstanceof" node42        
+node0          ^-[#595959,plain]-  object        
+node0          ^-[#595959,dashed]-  node15        
+node42         ^-[#595959,dashed]-  node72        
+node42         ^-[#595959,dashed]-  node20        
+node42         ^-[#595959,dashed]-  node62        
+node42         ^-[#595959,dashed]-  node27        
+node42         ^-[#595959,dashed]-  node67        
+node65         ^-[#595959,plain]-  node0         
+node65         ^-[#595959,plain]-  int           
+node88         ^-[#595959,plain]-  object        
+int            ^-[#595959,plain]-  object        
+int            ^-[#595959,dashed]-  node15        
+object         ^-[#595959,dashed]-  node15        
+node25         ^-[#595959,plain]-  object        
+node75         ^-[#595959,plain]-  node84        
+node75         ^-[#595959,dashed]-  node20        
+node75         ^-[#595959,dashed]-  node62        
+node75         ^-[#595959,dashed]-  node67        
+node97         ^-[#595959,plain]-  object        
+node97         ^-[#595959,dashed]-  node67        
+node86         ^-[#595959,plain]-  object        
+node18         ^-[#595959,plain]-  object        
+node83         ^-[#595959,plain]-  node97        
+node83         ^-[#595959,dashed]-  node67        
+node56         ^-[#595959,plain]-  node86        
+node58         ^-[#595959,plain]-  node18        
+node104        ^-[#595959,plain]-  node97        
+node104        ^-[#595959,dashed]-  node67        
+node101        ^-[#595959,plain]-  node86        
+node37         ^-[#595959,plain]-  node18        
+node9          ^-[#595959,plain]-  node97        
+node9          ^-[#595959,dashed]-  node67        
+node70         ^-[#595959,plain]-  node94        
+node71         ^-[#595959,plain]-  Exception     
+node94         ^-[#595959,plain]-  object        
+node39         ^-[#595959,plain]-  node94        
+node96         ^-[#595959,plain]-  node70        
+node32         ^-[#595959,plain]-  TypedDict     
+node32         ^-[#595959,plain]-  object        
+node4          ^-[#595959,plain]-  node39        
+node90         ^-[#595959,plain]-  node39        
+node33         ^-[#595959,plain]-  TypedDict     
+node33         ^-[#595959,plain]-  object        
+node99         ^-[#595959,plain]-  node39        
+node105        ^-[#595959,plain]-  node70        
+node91         ^-[#595959,plain]-  node6         
+node41         ^-[#595959,plain]-  node6         
+node51         ^-[#595959,plain]-  node21        
+node16         ^-[#595959,plain]-  node89        
+node21         ^-[#595959,plain]-  node64        
+node80         ^-[#595959,plain]-  node81        
+node8          ^-[#595959,plain]-  node6         
+node45         ^-[#595959,plain]-  node6         
+node35         ^-[#595959,plain]-  node92        
+node29         ^-[#595959,plain]-  node92        
+node103        ^-[#595959,plain]-  node57        
+node69         ^-[#595959,plain]-  node57        
+node93         ^-[#595959,plain]-  TypedDict     
+node93         ^-[#595959,plain]-  object        
+node19         ^-[#595959,plain]-  node31        
+node73         ^-[#595959,plain]-  node106       
+node60         ^-[#595959,plain]-  node106       
+node63         ^-[#595959,plain]-  object        
+node106        ^-[#595959,plain]-  node49        
+node92         ^-[#595959,plain]-  object        
+node74         ^-[#595959,plain]-  node92        
+node57         ^-[#595959,plain]-  object        
+node66         ^-[#595959,plain]-  node13        
+node53         ^-[#595959,plain]-  object        
+node95         ^-[#595959,plain]-  node53        
+node38         ^-[#595959,plain]-  node53        
+node59         ^-[#595959,plain]-  node53        
+node98         ^-[#595959,plain]-  object        
+node82         ^-[#595959,plain]-  BaseException 
+node76         ^-[#595959,plain]-  node55        
+node55         ^-[#595959,plain]-  object        
+node36         ^-[#595959,plain]-  object        
+node36         ^-[#595959,dashed]-  node20        
+node48         ^-[#595959,plain]-  node88        
+node50         ^-[#595959,plain]-  TypedDict     
+node50         ^-[#595959,plain]-  object        
+node10         ^-[#595959,plain]-  TypedDict     
+node10         ^-[#595959,plain]-  object        
+node43         ^-[#595959,plain]-  node11        
+node43         ^-[#595959,plain]-  node79        
+node46         ^-[#595959,plain]-  node11        
+node46         ^-[#595959,plain]-  node44        
+node100        ^-[#595959,plain]-  node11        
+node100        ^-[#595959,plain]-  node47        
+node11         ^-[#595959,plain]-  node77        
+node28         ^-[#595959,plain]-  node87        
+node68         ^-[#595959,plain]-  node87        
+node1          ^-[#595959,plain]-  node87        
+node54         ^-[#595959,plain]-  object        
+node14         ^-[#595959,plain]-  node65        
+node87         ^-[#595959,plain]-  object        
+node30         ^-[#595959,plain]-  node87        
+node85         ^-[#595959,plain]-  node87        
+node61         ^-[#595959,plain]-  node87        
+node13         ^-[#595959,plain]-  object        
+node49         <-[#595959,dashed]- "isinstanceof" node7         
+node49         ^-[#595959,plain]-  node13        
+node77         ^-[#595959,plain]-  object        
+node77         ^-[#595959,dashed]-  node67        
+node79         ^-[#595959,plain]-  node77        
+node44         ^-[#595959,plain]-  node77        
+node47         ^-[#595959,plain]-  node77        
+node64         ^-[#595959,plain]-  node3         
+node64         ^-[#595959,plain]-  node6         
+node22         ^-[#595959,plain]-  node26        
+node89         ^-[#595959,plain]-  node64        
+node26         ^-[#595959,plain]-  node64        
+node81         ^-[#595959,plain]-  node22        
+node6          ^-[#595959,plain]-  object        
+node84         ^-[#595959,plain]-  object        
+node84         ^-[#595959,dashed]-  node20        
+node84         ^-[#595959,dashed]-  node62        
+tuple          ^-[#595959,dashed]-  node15        
+tuple          ^-[#595959,dashed]-  node62        
+tuple          ^-[#595959,plain]-  node27        
+tuple          ^-[#595959,dashed]-  node67        
+node78         ^-[#595959,plain]-  node72        
+node78         ^-[#595959,plain]-  node20        
+node78         ^-[#595959,dashed]-  node67        
+node5          ^-[#595959,plain]-  node24        
+node31         ^-[#595959,plain]-  tuple         
+node40         ^-[#595959,plain]-  node20        
+@enduml

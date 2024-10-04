@@ -307,4 +307,4 @@ class Run(BaseRun):
 
 
 if __name__ == "__main__":
-    fire.Fire(Run)
+    fire.Fire(Run,command=' download_data --source_dir ~/.qlib/crypto_data/source/1d --start 2015-01-01 --end 2021-11-30 --delay 1 --interval 1d')

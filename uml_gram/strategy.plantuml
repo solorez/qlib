@@ -1,0 +1,123 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class node4 as "abc.ABCMeta" {
+   __abstractmethods__: 
+   __new__(
+            mcls: type[_typeshed.Self], name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs: Any
+        ): 
+   __instancecheck__(cls: ABCMeta, instance: Any): 
+   __subclasscheck__(cls: ABCMeta, subclass: type): 
+   _dump_registry(cls: ABCMeta, file: SupportsWrite[str] | None = None): 
+   register(cls: ABCMeta, subclass: type[_T]): 
+}
+class object {
+   __doc__: 
+   __dict__: 
+   __module__: 
+   __annotations__: 
+   __class__(self): 
+   __class__(self, __type: type[object]): 
+   __init__(self): 
+   __new__(cls): 
+   __setattr__(self, __name: str, __value: Any): 
+   __delattr__(self, __name: str): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __str__(self): 
+   __repr__(self): 
+   __hash__(self): 
+   __format__(self, __format_spec: str): 
+   __getattribute__(self, __name: str): 
+   __sizeof__(self): 
+   __reduce__(self): 
+   __reduce_ex__(self, __protocol: SupportsIndex): 
+   __dir__(self): 
+   __init_subclass__(cls): 
+   __subclasshook__(cls, __subclass: type): 
+}
+class node1 as "qlib.strategy.base.BaseStrategy" {
+   common_infra: 
+   outer_trade_decision: 
+   level_infra: 
+   _trade_exchange: 
+   __init__(
+        self,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        trade_exchange: Exchange = None,
+    ): 
+   executor(self): 
+   trade_calendar(self): 
+   trade_position(self): 
+   trade_exchange(self): 
+   reset_level_infra(self, level_infra: LevelInfrastructure): 
+   reset_common_infra(self, common_infra: CommonInfrastructure): 
+   reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+        **kwargs,
+    ): 
+   _reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+    ): 
+   generate_trade_decision(
+        self,
+        execute_result: list = None,
+    ): 
+   get_data_cal_avail_range(self, rtype: str = "full"): 
+   update_trade_decision(
+        trade_decision: BaseTradeDecision,
+        trade_calendar: TradeCalendarManager,
+    ): 
+   alter_outer_trade_decision(self, outer_trade_decision: BaseTradeDecision): 
+   post_upper_level_exe_step(self): 
+   post_exe_step(self, execute_result: Optional[list]): 
+}
+class node2 as "qlib.strategy.base.RLIntStrategy" {
+   action_interpreter: 
+   state_interpreter: 
+   policy: 
+   __init__(
+        self,
+        policy,
+        state_interpreter: dict | StateInterpreter,
+        action_interpreter: dict | ActionInterpreter,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        **kwargs,
+    ): 
+   generate_trade_decision(self, execute_result: list = None): 
+}
+class node5 as "qlib.strategy.base.RLStrategy" {
+   policy: 
+   __init__(
+        self,
+        policy,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        **kwargs,
+    ): 
+}
+class node3 as "typing.Hashable" {
+   __hash__(self): 
+}
+
+object  ^-[#595959,dashed]-  node3  
+node1   ^-[#595959,plain]-  object 
+node2   <-[#595959,dashed]- "isinstanceof" node4  
+node2   ^-[#595959,plain]-  node5  
+node5   <-[#595959,dashed]- "isinstanceof" node4  
+node5   ^-[#595959,plain]-  node1  
+@enduml

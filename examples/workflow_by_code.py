@@ -13,7 +13,9 @@ from qlib.utils import init_instance_by_config, flatten_dict
 from qlib.workflow import R
 from qlib.workflow.record_temp import SignalRecord, PortAnaRecord, SigAnaRecord
 from qlib.tests.data import GetData
-from qlib.tests.config import CSI300_BENCH, CSI300_GBDT_TASK
+from qlib.tests.config import CSI300_BENCH, CSI300_GBDT_TASK  # GBDT（Gradient Boosting Decision Tree），即梯度提升决策树，
+# 是一种集成学习算法，它通过构建多个弱学习器（通常是决策树）并将它们的结果累加起来，以提高预测的准确性。GBDT的核心在于梯度提升，它是一种迭代的优化
+# 方法，通过逐步减少损失函数来优化模型。
 
 
 if __name__ == "__main__":
@@ -63,6 +65,7 @@ if __name__ == "__main__":
     # It demonstrates that the dataset can be used standalone.
     example_df = dataset.prepare("train")
     print(example_df.head())
+    print(example_df.shape)
 
     # start exp
     with R.start(experiment_name="workflow"):

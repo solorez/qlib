@@ -1018,4 +1018,4 @@ class Run(BaseRun):
 
 
 if __name__ == "__main__":
-    fire.Fire(Run)
+    fire.Fire(Run, command='download_data --target_dir ~/.qlib/qlib_data/cn_data --region cn')

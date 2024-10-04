@@ -172,4 +172,6 @@ class HighfreqWorkflow:
 
 
 if __name__ == "__main__":
-    fire.Fire(HighfreqWorkflow)
+    fire.Fire(HighfreqWorkflow
+              ,command='get_data'
+              )

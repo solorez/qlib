@@ -1,0 +1,102 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class node5 as "abc.ABCMeta"
+class node0 as "enum.Enum"
+class node20 as "enum.EnumMeta"
+class node16 as "enum.IntEnum"
+class int
+class object
+class node19 as "qlib.backtest.account.Account"
+class node27 as "qlib.backtest.account.AccumulatedInfo"
+class node23 as "qlib.backtest.decision.BaseTradeDecision"
+class node25 as "qlib.backtest.decision.EmptyTradeDecision"
+class node10 as "qlib.backtest.decision.IdxTradeRange"
+class node34 as "qlib.backtest.decision.Order"
+class node4 as "qlib.backtest.decision.OrderDir"
+class node24 as "qlib.backtest.decision.OrderHelper"
+class node31 as "qlib.backtest.decision.TradeDecisionWO"
+class node41 as "qlib.backtest.decision.TradeDecisionWithDetails"
+class node28 as "qlib.backtest.decision.TradeRange"
+class node3 as "qlib.backtest.decision.TradeRangeByTime"
+class node6 as "qlib.backtest.exchange.Exchange"
+class node9 as "qlib.backtest.executor.BaseExecutor"
+class node40 as "qlib.backtest.executor.NestedExecutor"
+class node39 as "qlib.backtest.executor.SimulatorExecutor"
+class node8 as "qlib.backtest.high_performance_ds.BaseOrderIndicator"
+class node18 as "qlib.backtest.high_performance_ds.BaseQuote"
+class node33 as "qlib.backtest.high_performance_ds.BaseSingleMetric"
+class node37 as "qlib.backtest.high_performance_ds.NumpyOrderIndicator"
+class node32 as "qlib.backtest.high_performance_ds.NumpyQuote"
+class node36 as "qlib.backtest.high_performance_ds.PandasOrderIndicator"
+class node11 as "qlib.backtest.high_performance_ds.PandasQuote"
+class node44 as "qlib.backtest.high_performance_ds.PandasSingleMetric"
+class node38 as "qlib.backtest.high_performance_ds.SingleMetric"
+class node43 as "qlib.backtest.position.BasePosition"
+class node14 as "qlib.backtest.position.InfPosition"
+class node26 as "qlib.backtest.position.Position"
+class node42 as "qlib.backtest.report.Indicator"
+class node30 as "qlib.backtest.report.PortfolioMetrics"
+class node12 as "qlib.backtest.signal.ModelSignal"
+class node15 as "qlib.backtest.signal.Signal"
+class node2 as "qlib.backtest.signal.SignalWCache"
+class node7 as "qlib.backtest.utils.BaseInfrastructure"
+class node1 as "qlib.backtest.utils.CommonInfrastructure"
+class node22 as "qlib.backtest.utils.LevelInfrastructure"
+class node29 as "qlib.backtest.utils.TradeCalendarManager"
+class node17 as "typing.Hashable"
+class node21 as "typing.Sized"
+
+node0   <-[#595959,dashed]- "isinstanceof" node20 
+node0   ^-[#595959,plain]-  object 
+node0   ^-[#595959,dashed]-  node17 
+node20  ^-[#595959,dashed]-  node21 
+node16  ^-[#595959,plain]-  node0  
+node16  ^-[#595959,plain]-  int    
+int     ^-[#595959,plain]-  object 
+int     ^-[#595959,dashed]-  node17 
+object  ^-[#595959,dashed]-  node17 
+node19  ^-[#595959,plain]-  object 
+node27  ^-[#595959,plain]-  object 
+node23  ^-[#595959,plain]-  object 
+node25  ^-[#595959,plain]-  node23 
+node10  ^-[#595959,plain]-  node28 
+node34  ^-[#595959,plain]-  object 
+node4   ^-[#595959,plain]-  node16 
+node24  ^-[#595959,plain]-  object 
+node31  ^-[#595959,plain]-  node23 
+node41  ^-[#595959,plain]-  node31 
+node28  ^-[#595959,plain]-  object 
+node3   ^-[#595959,plain]-  node28 
+node6   ^-[#595959,plain]-  object 
+node9   ^-[#595959,plain]-  object 
+node40  ^-[#595959,plain]-  node9  
+node39  ^-[#595959,plain]-  node9  
+node8   ^-[#595959,plain]-  object 
+node18  ^-[#595959,plain]-  object 
+node33  ^-[#595959,plain]-  object 
+node33  ^-[#595959,dashed]-  node21 
+node37  ^-[#595959,plain]-  node8  
+node32  ^-[#595959,plain]-  node18 
+node36  ^-[#595959,plain]-  node8  
+node11  ^-[#595959,plain]-  node18 
+node44  ^-[#595959,plain]-  node38 
+node38  ^-[#595959,plain]-  node33 
+node38  ^-[#595959,dashed]-  node21 
+node43  ^-[#595959,plain]-  object 
+node14  ^-[#595959,plain]-  node43 
+node26  ^-[#595959,plain]-  node43 
+node42  ^-[#595959,plain]-  object 
+node30  ^-[#595959,plain]-  object 
+node12  ^-[#595959,plain]-  node2  
+node15  <-[#595959,dashed]- "isinstanceof" node5  
+node15  ^-[#595959,plain]-  object 
+node2   ^-[#595959,plain]-  node15 
+node7   ^-[#595959,plain]-  object 
+node1   ^-[#595959,plain]-  node7  
+node22  ^-[#595959,plain]-  node7  
+node29  ^-[#595959,plain]-  object 
+@enduml

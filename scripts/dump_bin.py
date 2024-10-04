@@ -308,6 +308,7 @@ class DumpDataAll(DumpDataBase):
         with tqdm(total=len(self.csv_files)) as p_bar:
             with ProcessPoolExecutor(max_workers=self.works) as executor:
                 for _ in executor.map(_dump_func, self.csv_files):
+                #executor.map是并发执行的方法，它将_dump_func函数应用到self.csv_files列表中的每个元素。
                     p_bar.update()
 
         logger.info("end of features dump.\n")

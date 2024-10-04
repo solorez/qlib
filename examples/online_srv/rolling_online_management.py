@@ -141,4 +141,4 @@ if __name__ == "__main__":
 
     ####### to define your own parameters, use `--`
     # python rolling_online_management.py first_run --exp_name='your_exp_name' --rolling_step=40
-    fire.Fire(RollingOnlineExample)
+    fire.Fire(RollingOnlineExample, command="first_run --trace")

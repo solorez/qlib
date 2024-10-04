@@ -1,0 +1,672 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class node7 as "abc.ABCMeta" {
+   __abstractmethods__: 
+   __new__(
+            mcls: type[_typeshed.Self], name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs: Any
+        ): 
+   __instancecheck__(cls: ABCMeta, instance: Any): 
+   __subclasscheck__(cls: ABCMeta, subclass: type): 
+   _dump_registry(cls: ABCMeta, file: SupportsWrite[str] | None = None): 
+   register(cls: ABCMeta, subclass: type[_T]): 
+}
+class object {
+   __doc__: 
+   __dict__: 
+   __module__: 
+   __annotations__: 
+   __class__(self): 
+   __class__(self, __type: type[object]): 
+   __init__(self): 
+   __new__(cls): 
+   __setattr__(self, __name: str, __value: Any): 
+   __delattr__(self, __name: str): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __str__(self): 
+   __repr__(self): 
+   __hash__(self): 
+   __format__(self, __format_spec: str): 
+   __getattribute__(self, __name: str): 
+   __sizeof__(self): 
+   __reduce__(self): 
+   __reduce_ex__(self, __protocol: SupportsIndex): 
+   __dir__(self): 
+   __init_subclass__(cls): 
+   __subclasshook__(cls, __subclass: type): 
+}
+class node29 as "qlib.utils.Wrapper" {
+   _provider: 
+   __init__(self): 
+   register(self, provider): 
+   __repr__(self): 
+   __getattr__(self, key): 
+}
+class node5 as "qlib.utils.serial.Serializable" {
+   _exclude: 
+   _dump_all: 
+   pickle_backend: 
+   default_dump_all: 
+   config_attr: 
+   exclude_attr: 
+   include_attr: 
+   FLAG_KEY: 
+   __init__(self): 
+   _is_kept(self, key): 
+   __getstate__(self): 
+   __setstate__(self, state: dict): 
+   dump_all(self): 
+   _get_attr_list(self, attr_type: str): 
+   config(self, recursive=False, **kwargs): 
+   to_pickle(self, path: Union[Path, str], **kwargs): 
+   load(cls, filepath): 
+   get_backend(cls): 
+   general_dump(obj, path: Union[Path, str]): 
+}
+class node8 as "qlib.workflow.QlibRecorder" {
+   exp_manager: 
+   __init__(self, exp_manager: ExpManager): 
+   __repr__(self): 
+   start(
+        self,
+        *,
+        experiment_id: Optional[Text] = None,
+        experiment_name: Optional[Text] = None,
+        recorder_id: Optional[Text] = None,
+        recorder_name: Optional[Text] = None,
+        uri: Optional[Text] = None,
+        resume: bool = False,
+    ): 
+   start_exp(
+        self,
+        *,
+        experiment_id=None,
+        experiment_name=None,
+        recorder_id=None,
+        recorder_name=None,
+        uri=None,
+        resume=False,
+    ): 
+   end_exp(self, recorder_status=Recorder.STATUS_FI): 
+   search_records(self, experiment_ids, **kwargs): 
+   list_experiments(self): 
+   list_recorders(self, experiment_id=None, experiment_name=None): 
+   get_exp(
+        self, *, experiment_id=None, experiment_name=None, create: bool = True, start: bool = False
+    ): 
+   delete_exp(self, experiment_id=None, experiment_name=None): 
+   get_uri(self): 
+   set_uri(self, uri: Optional[Text]): 
+   uri_context(self, uri: Text): 
+   get_recorder(
+        self,
+        *,
+        recorder_id=None,
+        recorder_name=None,
+        experiment_id=None,
+        experiment_name=None,
+    ): 
+   delete_recorder(self, recorder_id=None, recorder_name=None): 
+   save_objects(self, local_path=None, artifact_path=None, **kwargs: Dict[Text, Any]): 
+   load_object(self, name: Text): 
+   log_params(self, **kwargs): 
+   log_metrics(self, step=None, **kwargs): 
+   log_artifact(self, local_path: str, artifact_path: Optional[str] = None): 
+   download_artifact(self, path: str, dst_path: Optional[str] = None): 
+   set_tags(self, **kwargs): 
+}
+class node13 as "qlib.workflow.RecorderWrapper" {
+   _provider: 
+   register(self, provider): 
+}
+class node24 as "qlib.workflow.exp.Experiment" {
+   name: 
+   id: 
+   _default_rec_name: 
+   active_recorder: 
+   RT_D: 
+   RT_L: 
+   __init__(self, id, name): 
+   __repr__(self): 
+   __str__(self): 
+   info(self): 
+   start(self, *, recorder_id=None, recorder_name=None, resume=False): 
+   end(self, recorder_status=Recorder.STATUS_S): 
+   create_recorder(self, recorder_name=None): 
+   search_records(self, **kwargs): 
+   delete_recorder(self, recorder_id): 
+   get_recorder(self, recorder_id=None, recorder_name=None, create: bool = True, start: bool = False): 
+   _get_or_create_rec(self, recorder_id=None, recorder_name=None): 
+   _get_recorder(self, recorder_id=None, recorder_name=None): 
+   list_recorders(
+        self, rtype: Literal["dict", "list"] = RT_D, **flt_kwargs
+    ): 
+}
+class node4 as "qlib.workflow.exp.MLflowExperiment" {
+   _uri: 
+   _client: 
+   _default_rec_name: 
+   active_recorder: 
+   UNLIMITED: 
+   __init__(self, id, name, uri): 
+   __repr__(self): 
+   start(self, *, recorder_id=None, recorder_name=None, resume=False): 
+   end(self, recorder_status=Recorder.STATUS_S): 
+   create_recorder(self, recorder_name=None): 
+   _get_recorder(self, recorder_id=None, recorder_name=None): 
+   search_records(self, **kwargs): 
+   delete_recorder(self, recorder_id=None, recorder_name=None): 
+   list_recorders(
+        self,
+        rtype: Literal["dict", "list"] = Experiment.RT_D,
+        max_results: int = UNLIMITED,
+        status: Union[str, None] = None,
+        filter_string: str = "",
+    ): 
+}
+class node21 as "qlib.workflow.expm.ExpManager" {
+   default_uri: 
+   _active_exp_uri: 
+   _default_exp_name: 
+   active_experiment: 
+   active_experiment: 
+   __init__(self, uri: Text, default_exp_name: Optional[Text]): 
+   __repr__(self): 
+   start_exp(
+        self,
+        *,
+        experiment_id: Optional[Text] = None,
+        experiment_name: Optional[Text] = None,
+        recorder_id: Optional[Text] = None,
+        recorder_name: Optional[Text] = None,
+        uri: Optional[Text] = None,
+        resume: bool = False,
+        **kwargs,
+    ): 
+   _start_exp(self, *args, **kwargs): 
+   end_exp(self, recorder_status: Text = Recorder.STATUS_S, **kwargs): 
+   _end_exp(self, recorder_status: Text = Recorder.STATUS_S, **kwargs): 
+   create_exp(self, experiment_name: Optional[Text] = None): 
+   search_records(self, experiment_ids=None, **kwargs): 
+   get_exp(self, *, experiment_id=None, experiment_name=None, create: bool = True, start: bool = False): 
+   _get_or_create_exp(self, experiment_id=None, experiment_name=None): 
+   _get_exp(self, experiment_id=None, experiment_name=None): 
+   delete_exp(self, experiment_id=None, experiment_name=None): 
+   default_uri(self): 
+   default_uri(self, value): 
+   uri(self): 
+   list_experiments(self): 
+}
+class node28 as "qlib.workflow.expm.MLflowExpManager" {
+   active_experiment: 
+   client(self): 
+   _start_exp(
+        self,
+        *,
+        experiment_id: Optional[Text] = None,
+        experiment_name: Optional[Text] = None,
+        recorder_id: Optional[Text] = None,
+        recorder_name: Optional[Text] = None,
+        resume: bool = False,
+    ): 
+   _end_exp(self, recorder_status: Text = Recorder.STATUS_S): 
+   create_exp(self, experiment_name: Optional[Text] = None): 
+   _get_exp(self, experiment_id=None, experiment_name=None): 
+   search_records(self, experiment_ids=None, **kwargs): 
+   delete_exp(self, experiment_id=None, experiment_name=None): 
+   list_experiments(self): 
+}
+class node25 as "qlib.workflow.online.manager.OnlineManager" {
+   signals: 
+   strategies: 
+   trainer: 
+   logger: 
+   freq: 
+   begin_time: 
+   cur_time: 
+   history: 
+   status: 
+   STATUS_SIMULATING: 
+   STATUS_ONLINE: 
+   SIM_LOG_LEVEL: 
+   SIM_LOG_NAME: 
+   __init__(
+        self,
+        strategies: Union[OnlineStrategy, List[OnlineStrategy]],
+        trainer: Trainer = None,
+        begin_time: Union[str, pd.Timestamp] = None,
+        freq="day",
+    ): 
+   _postpone_action(self): 
+   first_train(self, strategies: List[OnlineStrategy] = None, model_kwargs: dict = {}): 
+   routine(
+        self,
+        cur_time: Union[str, pd.Timestamp] = None,
+        task_kwargs: dict = {},
+        model_kwargs: dict = {},
+        signal_kwargs: dict = {},
+    ): 
+   get_collector(self, **kwargs): 
+   add_strategy(self, strategies: Union[OnlineStrategy, List[OnlineStrategy]]): 
+   prepare_signals(self, prepare_func: Callable = AverageEnsemble(), over_write=False): 
+   get_signals(self): 
+   simulate(
+        self, end_time=None, frequency="day", task_kwargs={}, model_kwargs={}, signal_kwargs={}
+    ): 
+   delay_prepare(self, model_kwargs={}, signal_kwargs={}): 
+}
+class node6 as "qlib.workflow.online.strategy.OnlineStrategy" {
+   logger: 
+   name_id: 
+   tool: 
+   __init__(self, name_id: str): 
+   prepare_tasks(self, cur_time, **kwargs): 
+   prepare_online_models(self, trained_models, cur_time=None): 
+   first_tasks(self): 
+   get_collector(self): 
+}
+class node14 as "qlib.workflow.online.strategy.RollingStrategy" {
+   exp_name: 
+   rg: 
+   task_template: 
+   ta: 
+   tool: 
+   __init__(
+        self,
+        name_id: str,
+        task_template: Union[dict, List[dict]],
+        rolling_gen: RollingGen,
+    ): 
+   get_collector(self, process_list=[RollingGroup()], rec_key_func=None, rec_filter_func=None, artifacts_key=None): 
+   first_tasks(self): 
+   prepare_tasks(self, cur_time): 
+   _list_latest(self, rec_list: List[Recorder]): 
+}
+class node20 as "qlib.workflow.online.update.DSBasedUpdater" {
+   fname: 
+   hist_ref: 
+   old_data: 
+   to_date: 
+   rmdl: 
+   freq: 
+   last_end: 
+   __init__(
+        self,
+        record: Recorder,
+        to_date=None,
+        from_date=None,
+        hist_ref: Optional[int] = None,
+        freq="day",
+        fname="pred.pkl",
+        loader_cls: type = RMDLoader,
+    ): 
+   prepare_data(self, unprepared_dataset: Optional[DatasetH] = None): 
+   update(self, dataset: DatasetH = None, write: bool = True, ret_new: bool = False): 
+   get_update_data(self, dataset: Dataset): 
+}
+class node15 as "qlib.workflow.online.update.LabelUpdater" {
+   __init__(self, record: Recorder, to_date=None, **kwargs): 
+   get_update_data(self, dataset: Dataset): 
+}
+class node17 as "qlib.workflow.online.update.PredUpdater" {
+   get_update_data(self, dataset: Dataset): 
+}
+class node19 as "qlib.workflow.online.update.RMDLoader" {
+   rec: 
+   __init__(self, rec: Recorder): 
+   get_dataset(
+        self, start_time, end_time, segments=None, unprepared_dataset: Optional[DatasetH] = None
+    ): 
+   get_model(self): 
+}
+class node18 as "qlib.workflow.online.update.RecordUpdater" {
+   record: 
+   logger: 
+   __init__(self, record: Recorder, *args, **kwargs): 
+   update(self, *args, **kwargs): 
+}
+class node33 as "qlib.workflow.online.utils.OnlineTool" {
+   logger: 
+   ONLINE_KEY: 
+   ONLINE_TAG: 
+   OFFLINE_TAG: 
+   __init__(self): 
+   set_online_tag(self, tag, recorder: Union[list, object]): 
+   get_online_tag(self, recorder: object): 
+   reset_online_tag(self, recorder: Union[list, object]): 
+   online_models(self): 
+   update_online_pred(self, to_date=None): 
+}
+class node35 as "qlib.workflow.online.utils.OnlineToolR" {
+   default_exp_name: 
+   __init__(self, default_exp_name: str = None): 
+   set_online_tag(self, tag, recorder: Union[Recorder, List]): 
+   get_online_tag(self, recorder: Recorder): 
+   reset_online_tag(self, recorder: Union[Recorder, List], exp_name: str = None): 
+   online_models(self, exp_name: str = None): 
+   update_online_pred(self, to_date=None, from_date=None, exp_name: str = None): 
+   _get_exp_name(self, exp_name): 
+}
+class node32 as "qlib.workflow.record_temp.ACRecordTemp" {
+   skip_existing: 
+   __init__(self, recorder, skip_existing=False): 
+   generate(self, *args, **kwargs): 
+   _generate(self, *args, **kwargs): 
+}
+class node37 as "qlib.workflow.record_temp.HFSignalRecord" {
+   artifact_path: 
+   depend_cls: 
+   __init__(self, recorder, **kwargs): 
+   generate(self): 
+   list(self): 
+}
+class node23 as "qlib.workflow.record_temp.MultiPassPortAnaRecord" {
+   original_strategy: 
+   pass_num: 
+   strategy_config: 
+   shuffle_init_score: 
+   depend_cls: 
+   __init__(self, recorder, pass_num=10, shuffle_init_score=True, **kwargs): 
+   random_init(self): 
+   _generate(self, **kwargs): 
+   list(self): 
+}
+class node22 as "qlib.workflow.record_temp.PortAnaRecord" {
+   indicator_analysis_method: 
+   indicator_analysis_freq: 
+   executor_config: 
+   strategy_config: 
+   risk_analysis_freq: 
+   backtest_config: 
+   all_freq: 
+   artifact_path: 
+   depend_cls: 
+   __init__(
+        self,
+        recorder,
+        config=None,
+        risk_analysis_freq: Union[List, str] = None,
+        indicator_analysis_freq: Union[List, str] = None,
+        indicator_analysis_method=None,
+        skip_existing=False,
+        **kwargs,
+    ): 
+   _get_report_freq(self, executor_config): 
+   _generate(self, **kwargs): 
+   list(self): 
+}
+class node36 as "qlib.workflow.record_temp.RecordTemp" {
+   _recorder: 
+   artifact_path: 
+   depend_cls: 
+   get_path(cls, path=None): 
+   save(self, **kwargs): 
+   __init__(self, recorder): 
+   recorder(self): 
+   generate(self, **kwargs): 
+   load(self, name: str, parents: bool = True): 
+   list(self): 
+   check(self, include_self: bool = False, parents: bool = True): 
+}
+class node26 as "qlib.workflow.record_temp.SigAnaRecord" {
+   ana_long_short: 
+   ann_scaler: 
+   label_col: 
+   artifact_path: 
+   depend_cls: 
+   __init__(self, recorder, ana_long_short=False, ann_scaler=252, label_col=0, skip_existing=False): 
+   _generate(self, label: Optional[pd.DataFrame] = None, **kwargs): 
+   list(self): 
+}
+class node1 as "qlib.workflow.record_temp.SignalRecord" {
+   model: 
+   dataset: 
+   __init__(self, model=None, dataset=None, recorder=None): 
+   generate_label(dataset): 
+   generate(self, **kwargs): 
+   list(self): 
+}
+class node9 as "qlib.workflow.recorder.MLflowRecorder" {
+   _uri: 
+   start_time: 
+   name: 
+   end_time: 
+   client: 
+   id: 
+   _artifact_uri: 
+   async_log: 
+   status: 
+   __init__(self, experiment_id, uri, name=None, mlflow_run=None): 
+   __repr__(self): 
+   __hash__(self): 
+   __eq__(self, o: object): 
+   uri(self): 
+   artifact_uri(self): 
+   get_local_dir(self): 
+   start_run(self): 
+   _log_uncommitted_code(self): 
+   end_run(self, status: str = Recorder.STATUS_S): 
+   save_objects(self, local_path=None, artifact_path=None, **kwargs): 
+   load_object(self, name, unpickler=pickle.Unpickler): 
+   log_params(self, **kwargs): 
+   log_metrics(self, step=None, **kwargs): 
+   log_artifact(self, local_path, artifact_path: Optional[str] = None): 
+   set_tags(self, **kwargs): 
+   delete_tags(self, *keys): 
+   get_artifact_uri(self): 
+   list_artifacts(self, artifact_path=None): 
+   download_artifact(self, path: str, dst_path: Optional[str] = None): 
+   list_metrics(self): 
+   list_params(self): 
+   list_tags(self): 
+}
+class node0 as "qlib.workflow.recorder.Recorder" {
+   start_time: 
+   experiment_id: 
+   name: 
+   end_time: 
+   id: 
+   status: 
+   recorder_name: 
+   STATUS_S: 
+   STATUS_R: 
+   STATUS_FI: 
+   STATUS_FA: 
+   __init__(self, experiment_id, name): 
+   __repr__(self): 
+   __str__(self): 
+   __hash__(self): 
+   info(self): 
+   set_recorder_name(self, rname): 
+   save_objects(self, local_path=None, artifact_path=None, **kwargs): 
+   load_object(self, name): 
+   start_run(self): 
+   end_run(self): 
+   log_params(self, **kwargs): 
+   log_metrics(self, step=None, **kwargs): 
+   log_artifact(self, local_path: str, artifact_path: Optional[str] = None): 
+   set_tags(self, **kwargs): 
+   delete_tags(self, *keys): 
+   list_artifacts(self, artifact_path: str = None): 
+   download_artifact(self, path: str, dst_path: Optional[str] = None): 
+   list_metrics(self): 
+   list_params(self): 
+   list_tags(self): 
+}
+class node30 as "qlib.workflow.task.collect.Collector" {
+   process_list: 
+   pickle_backend: 
+   __init__(self, process_list=[]): 
+   collect(self): 
+   process_collect(collected_dict, process_list=[], *args, **kwargs): 
+   __call__(self, *args, **kwargs): 
+}
+class node12 as "qlib.workflow.task.collect.MergeCollector" {
+   collector_dict: 
+   merge_func: 
+   __init__(self, collector_dict: Dict[str, Collector], process_list: List[Callable] = [], merge_func=None): 
+   collect(self): 
+}
+class node11 as "qlib.workflow.task.collect.RecorderCollector" {
+   artifacts_path: 
+   rec_filter_func: 
+   experiment: 
+   artifacts_key: 
+   list_kwargs: 
+   rec_key_func: 
+   status: 
+   ART_KEY_RAW: 
+   __init__(
+        self,
+        experiment,
+        process_list=[],
+        rec_key_func=None,
+        rec_filter_func=None,
+        artifacts_path={"pred": "pred.pkl"},
+        artifacts_key=None,
+        list_kwargs={},
+        status: Iterable = {Recorder.STATUS_FI},
+    ): 
+   collect(self, artifacts_key=None, rec_filter_func=None, only_exist=True): 
+   get_exp_name(self): 
+}
+class node3 as "qlib.workflow.task.gen.MultiHorizonGenBase" {
+   label_leak_n: 
+   horizon: 
+   test_key: 
+   ta: 
+   __init__(self, horizon: List[int] = [5], label_leak_n=2): 
+   set_horizon(self, task: dict, hr: int): 
+   generate(self, task: dict): 
+}
+class node34 as "qlib.workflow.task.gen.RollingGen" {
+   rtype: 
+   train_key: 
+   task_copy_func: 
+   test_key: 
+   step: 
+   trunc_days: 
+   ds_extra_mod_func: 
+   ta: 
+   ROLL_EX: 
+   ROLL_SD: 
+   __init__(
+        self,
+        step: int = 40,
+        rtype: str = ROLL_EX,
+        ds_extra_mod_func: Union[None, Callable] = handler_mod,
+        test_key="test",
+        train_key="train",
+        trunc_days: int = None,
+        task_copy_func: Callable = copy.deepcopy,
+    ): 
+   _update_task_segs(self, task, segs): 
+   gen_following_tasks(self, task: dict, test_end: pd.Timestamp): 
+   generate(self, task: dict): 
+}
+class node2 as "qlib.workflow.task.gen.TaskGen" {
+   generate(self, task: dict): 
+   __call__(self, *args, **kwargs): 
+}
+class node10 as "qlib.workflow.task.manage.TaskManager" {
+   task_pool: 
+   logger: 
+   STATUS_WAITING: 
+   STATUS_RUNNING: 
+   STATUS_DONE: 
+   STATUS_PART_DONE: 
+   ENCODE_FIELDS_PREFIX: 
+   __init__(self, task_pool: str): 
+   list(): 
+   _encode_task(self, task): 
+   _decode_task(self, task): 
+   _dict_to_str(self, flt): 
+   _decode_query(self, query): 
+   replace_task(self, task, new_task): 
+   insert_task(self, task): 
+   insert_task_def(self, task_def): 
+   create_task(self, task_def_l, dry_run=False, print_nt=False): 
+   fetch_task(self, query={}, status=STATUS_WAITING): 
+   safe_fetch_task(self, query={}, status=STATUS_WAITING): 
+   task_fetcher_iter(self, query={}): 
+   query(self, query={}, decode=True): 
+   re_query(self, _id): 
+   commit_task_res(self, task, res, status=STATUS_DONE): 
+   return_task(self, task, status=STATUS_WAITING): 
+   remove(self, query={}): 
+   task_stat(self, query={}): 
+   reset_waiting(self, query={}): 
+   reset_status(self, query, status): 
+   prioritize(self, task, priority: int): 
+   _get_undone_n(self, task_stat): 
+   _get_total(self, task_stat): 
+   wait(self, query={}): 
+   __str__(self): 
+}
+class node31 as "qlib.workflow.task.utils.TimeAdjuster" {
+   _future: 
+   cals: 
+   SHIFT_SD: 
+   SHIFT_EX: 
+   __init__(self, future=True, end_time=None): 
+   set_end_time(self, end_time=None): 
+   get(self, idx: int): 
+   max(self): 
+   align_idx(self, time_point, tp_type="start"): 
+   cal_interval(self, time_point_A, time_point_B): 
+   align_time(self, time_point, tp_type="start"): 
+   align_seg(self, segment: Union[dict, tuple]): 
+   truncate(self, segment: tuple, test_start, days: int): 
+   _add_step(self, index, step): 
+   shift(self, seg: tuple, step: int, rtype=SHIFT_SD): 
+}
+class node16 as "typing.Hashable" {
+   __hash__(self): 
+}
+
+object  ^-[#595959,dashed]-  node16 
+node29  ^-[#595959,plain]-  object 
+node5   ^-[#595959,plain]-  object 
+node8   ^-[#595959,plain]-  object 
+node13  ^-[#595959,plain]-  node29 
+node24  ^-[#595959,plain]-  object 
+node4   ^-[#595959,plain]-  node24 
+node21  ^-[#595959,plain]-  object 
+node28  ^-[#595959,plain]-  node21 
+node25  ^-[#595959,plain]-  node5  
+node6   ^-[#595959,plain]-  object 
+node14  ^-[#595959,plain]-  node6  
+node20  <-[#595959,dashed]- "isinstanceof" node7  
+node20  ^-[#595959,plain]-  node18 
+node15  ^-[#595959,plain]-  node20 
+node17  ^-[#595959,plain]-  node20 
+node19  ^-[#595959,plain]-  object 
+node18  <-[#595959,dashed]- "isinstanceof" node7  
+node18  ^-[#595959,plain]-  object 
+node33  ^-[#595959,plain]-  object 
+node35  ^-[#595959,plain]-  node33 
+node32  ^-[#595959,plain]-  node36 
+node37  ^-[#595959,plain]-  node1  
+node23  ^-[#595959,plain]-  node22 
+node22  ^-[#595959,plain]-  node32 
+node36  ^-[#595959,plain]-  object 
+node26  ^-[#595959,plain]-  node32 
+node1   ^-[#595959,plain]-  node36 
+node9   ^-[#595959,plain]-  node0  
+node9   ^-[#595959,dashed]-  node16 
+node0   ^-[#595959,plain]-  object 
+node0   ^-[#595959,dashed]-  node16 
+node30  ^-[#595959,plain]-  node5  
+node12  ^-[#595959,plain]-  node30 
+node11  ^-[#595959,plain]-  node30 
+node3   ^-[#595959,plain]-  node2  
+node34  ^-[#595959,plain]-  node2  
+node2   <-[#595959,dashed]- "isinstanceof" node7  
+node2   ^-[#595959,plain]-  object 
+node10  ^-[#595959,plain]-  object 
+node31  ^-[#595959,plain]-  object 
+@enduml

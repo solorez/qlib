@@ -1,0 +1,4226 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class node15 as "abc.ABC" {
+   __slots__: 
+}
+class node110 as "abc.ABCMeta" {
+   __abstractmethods__: 
+   __new__(
+            mcls: type[_typeshed.Self], name: str, bases: tuple[type, ...], namespace: dict[str, Any], **kwargs: Any
+        ): 
+   __instancecheck__(cls: ABCMeta, instance: Any): 
+   __subclasscheck__(cls: ABCMeta, subclass: type): 
+   _dump_registry(cls: ABCMeta, file: SupportsWrite[str] | None = None): 
+   register(cls: ABCMeta, subclass: type[_T]): 
+}
+class object {
+   __doc__: 
+   __dict__: 
+   __module__: 
+   __annotations__: 
+   __class__(self): 
+   __class__(self, __type: type[object]): 
+   __init__(self): 
+   __new__(cls): 
+   __setattr__(self, __name: str, __value: Any): 
+   __delattr__(self, __name: str): 
+   __eq__(self, __value: object): 
+   __ne__(self, __value: object): 
+   __str__(self): 
+   __repr__(self): 
+   __hash__(self): 
+   __format__(self, __format_spec: str): 
+   __getattribute__(self, __name: str): 
+   __sizeof__(self): 
+   __reduce__(self): 
+   __reduce_ex__(self, __protocol: SupportsIndex): 
+   __dir__(self): 
+   __init_subclass__(cls): 
+   __subclasshook__(cls, __subclass: type): 
+}
+class node183 as "qlib.contrib.data.data.ArcticFeatureProvider" {
+   retry_time: 
+   market_transaction_time_list: 
+   uri: 
+   __init__(
+        self, uri="127.0.0.1", retry_time=0, market_transaction_time_list=[("09:15", "11:30"), ("13:00", "15:00")]
+    ): 
+   feature(self, instrument, field, start_index, end_index, freq): 
+}
+class node73 as "qlib.contrib.data.dataset.MTSDatasetH" {
+   _data: 
+   batch_size: 
+   _index: 
+   n_samples: 
+   drop_last: 
+   num_states: 
+   params: 
+   _label: 
+   _daily_slices: 
+   memory_mode: 
+   _zeros: 
+   input_size: 
+   horizon: 
+   _memory: 
+   _batch_slices: 
+   shuffle: 
+   _daily_index: 
+   seq_len: 
+   __init__(
+        self,
+        handler,
+        segments,
+        seq_len=60,
+        horizon=0,
+        num_states=0,
+        memory_mode="sample",
+        batch_size=-1,
+        n_samples=None,
+        shuffle=True,
+        drop_last=False,
+        input_size=None,
+        **kwargs,
+    ): 
+   setup_data(self, handler_kwargs: dict = None, **kwargs): 
+   _prepare_seg(self, slc, **kwargs): 
+   restore_index(self, index): 
+   restore_daily_index(self, daily_index): 
+   assign_data(self, index, vals): 
+   clear_memory(self): 
+   train(self): 
+   eval(self): 
+   _get_slices(self): 
+   __len__(self): 
+   __iter__(self): 
+}
+class node117 as "qlib.contrib.data.handler.Alpha158" {
+   __init__(
+        self,
+        instruments="csi500",
+        start_time=None,
+        end_time=None,
+        freq="day",
+        infer_processors=[],
+        learn_processors=_DEFAULT_LEARN_PROCESSORS,
+        fit_start_time=None,
+        fit_end_time=None,
+        process_type=DataHandlerLP.PTYPE_A,
+        filter_pipe=None,
+        inst_processors=None,
+        **kwargs
+    ): 
+   get_feature_config(self): 
+   get_label_config(self): 
+}
+class node155 as "qlib.contrib.data.handler.Alpha158vwap" {
+   get_label_config(self): 
+}
+class node79 as "qlib.contrib.data.handler.Alpha360" {
+   __init__(
+        self,
+        instruments="csi500",
+        start_time=None,
+        end_time=None,
+        freq="day",
+        infer_processors=_DEFAULT_INFER_PROCESSORS,
+        learn_processors=_DEFAULT_LEARN_PROCESSORS,
+        fit_start_time=None,
+        fit_end_time=None,
+        filter_pipe=None,
+        inst_processors=None,
+        **kwargs
+    ): 
+   get_label_config(self): 
+}
+class node196 as "qlib.contrib.data.handler.Alpha360vwap" {
+   get_label_config(self): 
+}
+class node198 as "qlib.contrib.data.highfreq_handler.HighFreqBacktestHandler" {
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+    ): 
+   get_feature_config(self): 
+}
+class node0 as "qlib.contrib.data.highfreq_handler.HighFreqBacktestOrderHandler" {
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+    ): 
+   get_feature_config(self): 
+}
+class node119 as "qlib.contrib.data.highfreq_handler.HighFreqGeneralBacktestHandler" {
+   day_length: 
+   columns: 
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+        day_length=240,
+        freq="1min",
+        columns=["$close", "$vwap", "$volume"],
+        inst_processors=None,
+    ): 
+   get_feature_config(self): 
+}
+class node162 as "qlib.contrib.data.highfreq_handler.HighFreqGeneralHandler" {
+   day_length: 
+   columns: 
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+        infer_processors=[],
+        learn_processors=[],
+        fit_start_time=None,
+        fit_end_time=None,
+        drop_raw=True,
+        day_length=240,
+        freq="1min",
+        columns=["$open", "$high", "$low", "$close", "$vwap"],
+        inst_processors=None,
+    ): 
+   get_feature_config(self): 
+}
+class node34 as "qlib.contrib.data.highfreq_handler.HighFreqHandler" {
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+        infer_processors=[],
+        learn_processors=[],
+        fit_start_time=None,
+        fit_end_time=None,
+        drop_raw=True,
+    ): 
+   get_feature_config(self): 
+}
+class node29 as "qlib.contrib.data.highfreq_handler.HighFreqOrderHandler" {
+   __init__(
+        self,
+        instruments="csi300",
+        start_time=None,
+        end_time=None,
+        infer_processors=[],
+        learn_processors=[],
+        fit_start_time=None,
+        fit_end_time=None,
+        inst_processors=None,
+        drop_raw=True,
+    ): 
+   get_feature_config(self): 
+}
+class node152 as "qlib.contrib.data.highfreq_processor.HighFreqNorm" {
+   feature_mean: 
+   norm_groups: 
+   fit_end_time: 
+   feature_std: 
+   fit_start_time: 
+   feature_save_dir: 
+   __init__(
+        self,
+        fit_start_time: pd.Timestamp,
+        fit_end_time: pd.Timestamp,
+        feature_save_dir: str,
+        norm_groups: Dict[str, int],
+    ): 
+   fit(self, df_features): 
+   __call__(self, df_features): 
+}
+class node69 as "qlib.contrib.data.highfreq_processor.HighFreqTrans" {
+   dtype: 
+   __init__(self, dtype: str = "bool"): 
+   fit(self, df_features): 
+   __call__(self, df_features): 
+}
+class node74 as "qlib.contrib.data.highfreq_provider.HighFreqProvider" {
+   start_time: 
+   valid_start_time: 
+   test_start_time: 
+   feature_conf: 
+   backtest_conf: 
+   logger: 
+   end_time: 
+   label_conf: 
+   freq: 
+   qlib_conf: 
+   train_end_time: 
+   valid_end_time: 
+   __init__(
+        self,
+        start_time: str,
+        end_time: str,
+        train_end_time: str,
+        valid_start_time: str,
+        valid_end_time: str,
+        test_start_time: str,
+        qlib_conf: dict,
+        feature_conf: dict,
+        label_conf: Optional[dict] = None,
+        backtest_conf: dict = None,
+        freq: str = "1min",
+        **kwargs,
+    ): 
+   get_pre_datasets(self): 
+   get_backtest(self, **kwargs): 
+   _init_qlib(self, qlib_conf): 
+   _prepare_calender_cache(self): 
+   _gen_dataframe(self, config, datasets=["train", "valid", "test"]): 
+   _gen_data(self, config, datasets=["train", "valid", "test"]): 
+   _gen_dataset(self, config): 
+   _gen_day_dataset(self, config, conf_type): 
+   _gen_stock_dataset(self, config, conf_type): 
+}
+class node130 as "qlib.contrib.data.loader.Alpha158DL" {
+   __init__(self, config=None, **kwargs): 
+   get_feature_config(
+        config={
+            "kbar": {},
+            "price": {
+                "windows": [0],
+                "feature": ["OPEN", "HIGH", "LOW", "VWAP"],
+            },
+            "rolling": {},
+        }
+    ): 
+}
+class node160 as "qlib.contrib.data.loader.Alpha360DL" {
+   __init__(self, config=None, **kwargs): 
+   get_feature_config(): 
+}
+class node65 as "qlib.contrib.data.processor.ConfigSectionProcessor" {
+   clip_label_outlier: 
+   fillna_label: 
+   fields_group: 
+   fillna_feature: 
+   clip_feature_outlier: 
+   shrink_feature_outlier: 
+   __init__(self, fields_group=None, **kwargs): 
+   __call__(self, df): 
+   _transform(self, df): 
+}
+class node23 as "qlib.contrib.data.utils.sepdf.SDFLoc" {
+   _sdf: 
+   join: 
+   axis: 
+   __init__(self, sdf: SepDataFrame, join): 
+   __call__(self, axis): 
+   __getitem__(self, args): 
+}
+class node165 as "qlib.contrib.data.utils.sepdf.SepDataFrame" {
+   _df_dict: 
+   join: 
+   __init__(self, df_dict: Dict[str, pd.DataFrame], join: str, skip_align=False): 
+   loc(self): 
+   index(self): 
+   apply_each(self, method: str, skip_align=True, *args, **kwargs): 
+   sort_index(self, *args, **kwargs): 
+   copy(self, *args, **kwargs): 
+   _update_join(self): 
+   __getitem__(self, item): 
+   __setitem__(self, item: str, df: Union[pd.DataFrame, pd.Series]): 
+   __delitem__(self, item: str): 
+   __contains__(self, item): 
+   __len__(self): 
+   droplevel(self, *args, **kwargs): 
+   columns(self): 
+   merge(df_dict: Dict[str, pd.DataFrame], join: str): 
+}
+class node207 as "qlib.contrib.meta.data_selection.dataset.InternalData" {
+   exp_name: 
+   task_tpl: 
+   dh: 
+   data_ic_df: 
+   step: 
+   __init__(self, task_tpl: dict, step: int, exp_name: str): 
+   setup(self, trainer=TrainerR, trainer_kwargs={}): 
+   _calc_perf(self, pred, label): 
+   update(self): 
+}
+class node30 as "qlib.contrib.meta.data_selection.dataset.MetaDatasetDS" {
+   meta_task_l: 
+   task_tpl: 
+   internal_data: 
+   hist_step_n: 
+   step: 
+   trunc_days: 
+   task_list: 
+   ta: 
+   __init__(
+        self,
+        *,
+        task_tpl: Union[dict, list],
+        step: int,
+        trunc_days: int = None,
+        rolling_ext_days: int = 0,
+        exp_name: Union[str, InternalData],
+        segments: Union[Dict[Text, Tuple], float, str],
+        hist_step_n: int = 10,
+        task_mode: str = MetaTask.PROC_MODE_FULL,
+        fill_method: str = "max",
+    ): 
+   _prepare_meta_ipt(self, task): 
+   _prepare_seg(self, segment: Text): 
+}
+class node28 as "qlib.contrib.meta.data_selection.dataset.MetaTaskDS" {
+   processed_meta_input: 
+   fill_method: 
+   __init__(self, task: dict, meta_info: pd.DataFrame, mode: str = MetaTask.PROC_MODE_FULL, fill_method="max"): 
+   _get_processed_meta_info(self): 
+   get_meta_input(self): 
+}
+class node214 as "qlib.contrib.meta.data_selection.model.MetaModelDS" {
+   criterion: 
+   clip_weight: 
+   hist_step_n: 
+   lr: 
+   clip_method: 
+   alpha: 
+   step: 
+   tn: 
+   loss_skip_thresh: 
+   fitted: 
+   max_epoch: 
+   __init__(
+        self,
+        step,
+        hist_step_n,
+        clip_method="tanh",
+        clip_weight=2.0,
+        criterion="ic_loss",
+        lr=0.0001,
+        max_epoch=100,
+        seed=43,
+        alpha=0.0,
+        loss_skip_thresh=50,
+    ): 
+   run_epoch(self, phase, task_list, epoch, opt, loss_l, ignore_weight=False): 
+   fit(self, meta_dataset: MetaDatasetDS): 
+   _prepare_task(self, task: MetaTask): 
+   inference(self, meta_dataset: MetaTaskDataset): 
+}
+class node176 as "qlib.contrib.meta.data_selection.model.TimeReweighter" {
+   time_weight: 
+   __init__(self, time_weight: pd.Series): 
+   reweight(self, data: Union[pd.DataFrame, pd.Series]): 
+}
+class node205 as "qlib.contrib.meta.data_selection.net.PredNet" {
+   alpha: 
+   step: 
+   twm: 
+   __init__(self, step, hist_step_n, clip_weight=None, clip_method="tanh", alpha: float = 0.0): 
+   get_sample_weights(self, X, time_perf, time_belong, ignore_weight=False): 
+   forward(self, X, y, time_perf, time_belong, X_test, ignore_weight=False): 
+   init_paramters(self, hist_step_n): 
+}
+class node191 as "qlib.contrib.meta.data_selection.net.TimeWeightMeta" {
+   linear: 
+   k: 
+   __init__(self, hist_step_n, clip_weight=None, clip_method="clamp"): 
+   forward(self, time_perf, time_belong=None, return_preds=False): 
+}
+class node141 as "qlib.contrib.meta.data_selection.utils.ICLoss" {
+   skip_size: 
+   __init__(self, skip_size=50): 
+   forward(self, pred, y, idx): 
+}
+class node83 as "qlib.contrib.meta.data_selection.utils.SingleMetaBase" {
+   clip_weight: 
+   clip_method: 
+   __init__(self, hist_n, clip_weight=None, clip_method="clamp"): 
+   is_enabled(self): 
+}
+class node13 as "qlib.contrib.model.catboost_model.CatBoostModel" {
+   model: 
+   _params: 
+   __init__(self, loss="RMSE", **kwargs): 
+   fit(
+        self,
+        dataset: DatasetH,
+        num_boost_round=1000,
+        early_stopping_rounds=50,
+        verbose_eval=20,
+        evals_result=dict(),
+        reweighter=None,
+        **kwargs
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   get_feature_importance(self, *args, **kwargs): 
+}
+class node180 as "qlib.contrib.model.double_ensemble.DEnsembleModel" {
+   bins_sr: 
+   enable_sr: 
+   base_model: 
+   logger: 
+   early_stopping_rounds: 
+   decay: 
+   ensemble: 
+   params: 
+   enable_fs: 
+   loss: 
+   num_models: 
+   bins_fs: 
+   sample_ratios: 
+   alpha2: 
+   sub_weights: 
+   epochs: 
+   sub_features: 
+   alpha1: 
+   __init__(
+        self,
+        base_model="gbm",
+        loss="mse",
+        num_models=6,
+        enable_sr=True,
+        enable_fs=True,
+        alpha1=1.0,
+        alpha2=1.0,
+        bins_sr=10,
+        bins_fs=5,
+        decay=None,
+        sample_ratios=None,
+        sub_weights=None,
+        epochs=100,
+        early_stopping_rounds=None,
+        **kwargs
+    ): 
+   fit(self, dataset: DatasetH): 
+   train_submodel(self, df_train, df_valid, weights, features): 
+   _prepare_data_gbm(self, df_train, df_valid, weights, features): 
+   sample_reweight(self, loss_curve, loss_values, k_th): 
+   feature_selection(self, df_train, loss_values): 
+   get_loss(self, label, pred): 
+   retrieve_loss_curve(self, model, df_train, features): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   predict_sub(self, submodel, df_data, features): 
+   get_feature_importance(self, *args, **kwargs): 
+}
+class node33 as "qlib.contrib.model.gbdt.LGBModel" {
+   num_boost_round: 
+   early_stopping_rounds: 
+   model: 
+   params: 
+   __init__(self, loss="mse", early_stopping_rounds=50, num_boost_round=1000, **kwargs): 
+   _prepare_data(self, dataset: DatasetH, reweighter=None): 
+   fit(
+        self,
+        dataset: DatasetH,
+        num_boost_round=None,
+        early_stopping_rounds=None,
+        verbose_eval=20,
+        evals_result=None,
+        reweighter=None,
+        **kwargs,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   finetune(self, dataset: DatasetH, num_boost_round=10, verbose_eval=20, reweighter=None): 
+}
+class node211 as "qlib.contrib.model.highfreq_gdbt_model.HFLGBModel" {
+   model: 
+   params: 
+   __init__(self, loss="mse", **kwargs): 
+   _cal_signal_metrics(self, y_test, l_cut, r_cut): 
+   hf_signal_test(self, dataset: DatasetH, threhold=0.2): 
+   _prepare_data(self, dataset: DatasetH): 
+   fit(
+        self,
+        dataset: DatasetH,
+        num_boost_round=1000,
+        early_stopping_rounds=50,
+        verbose_eval=20,
+        evals_result=None,
+    ): 
+   predict(self, dataset): 
+   finetune(self, dataset: DatasetH, num_boost_round=10, verbose_eval=20): 
+}
+class node120 as "qlib.contrib.model.linear.LinearModel" {
+   intercept_: 
+   fit_intercept: 
+   estimator: 
+   coef_: 
+   alpha: 
+   include_valid: 
+   OLS: 
+   NNLS: 
+   RIDGE: 
+   LASSO: 
+   __init__(self, estimator="ols", alpha=0.0, fit_intercept=False, include_valid: bool = False): 
+   fit(self, dataset: DatasetH, reweighter: Reweighter = None): 
+   _fit(self, X, y, w): 
+   _fit_nnls(self, X, y, w=None): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node167 as "qlib.contrib.model.pytorch_adarnn.ADARNN" {
+   len_seq: 
+   pre_epoch: 
+   n_splits: 
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   len_win: 
+   early_stop: 
+   train_optimizer: 
+   loss_type: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   dw: 
+   optimizer: 
+   metric: 
+   dropout: 
+   model: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        pre_epoch=40,
+        dw=0.5,
+        loss_type="cosine",
+        len_seq=60,
+        len_win=0,
+        lr=0.001,
+        metric="mse",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        n_splits=2,
+        GPU=0,
+        seed=None,
+        **_
+    ): 
+   use_gpu(self): 
+   train_AdaRNN(self, train_loader_list, epoch, dist_old=None, weight_mat=None): 
+   calc_all_metrics(pred): 
+   test_epoch(self, df): 
+   log_metrics(self, mode, metrics): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   infer(self, x_test): 
+   transform_type(self, init_weight): 
+}
+class node201 as "qlib.contrib.model.pytorch_adarnn.AdaRNN" {
+   len_seq: 
+   fc_out: 
+   model_type: 
+   hiddens: 
+   bn_lst: 
+   n_output: 
+   trans_loss: 
+   softmax: 
+   features: 
+   bottleneck: 
+   num_layers: 
+   gate: 
+   n_input: 
+   use_bottleneck: 
+   device: 
+   fc: 
+   __init__(
+        self,
+        use_bottleneck=False,
+        bottleneck_width=256,
+        n_input=128,
+        n_hiddens=[64, 64],
+        n_output=6,
+        dropout=0.0,
+        len_seq=9,
+        model_type="AdaRNN",
+        trans_loss="mmd",
+        GPU=0,
+    ): 
+   init_layers(self): 
+   forward_pre_train(self, x, len_win=0): 
+   gru_features(self, x, predict=False): 
+   process_gate_weight(self, out, index): 
+   get_features(output_list): 
+   forward_Boosting(self, x, weight_mat=None): 
+   update_weight_Boosting(self, weight_mat, dist_old, dist_new): 
+   predict(self, x): 
+}
+class node184 as "qlib.contrib.model.pytorch_adarnn.Discriminator" {
+   input_dim: 
+   hidden_dim: 
+   dis2: 
+   dis1: 
+   __init__(self, input_dim=256, hidden_dim=256): 
+   forward(self, x): 
+}
+class node126 as "qlib.contrib.model.pytorch_adarnn.MMD_loss" {
+   kernel_type: 
+   fix_sigma: 
+   kernel_num: 
+   kernel_mul: 
+   __init__(self, kernel_type="linear", kernel_mul=2.0, kernel_num=5): 
+   guassian_kernel(source, target, kernel_mul=2.0, kernel_num=5, fix_sigma=None): 
+   linear_mmd(X, Y): 
+   forward(self, source, target): 
+}
+class node185 as "qlib.contrib.model.pytorch_adarnn.Mine" {
+   fc2: 
+   fc1_y: 
+   fc1_x: 
+   __init__(self, input_dim=2048, hidden_dim=512): 
+   forward(self, x, y): 
+}
+class node212 as "qlib.contrib.model.pytorch_adarnn.Mine_estimator" {
+   mine_model: 
+   __init__(self, input_dim=2048, hidden_dim=512): 
+   forward(self, X, Y): 
+}
+class node100 as "qlib.contrib.model.pytorch_adarnn.ReverseLayerF" {
+   alpha: 
+   forward(ctx, x, alpha): 
+   backward(ctx, grad_output): 
+}
+class node45 as "qlib.contrib.model.pytorch_adarnn.TransferLoss" {
+   input_dim: 
+   loss_type: 
+   device: 
+   __init__(self, loss_type="cosine", input_dim=512, GPU=0): 
+   compute(self, X, Y): 
+}
+class node145 as "qlib.contrib.model.pytorch_adarnn.data_loader" {
+   df_label_reg: 
+   df_index: 
+   df_feature: 
+   __init__(self, df): 
+   __getitem__(self, index): 
+   __len__(self): 
+}
+class node157 as "qlib.contrib.model.pytorch_add.ADD" {
+   hi: 
+   d_feat: 
+   batch_size: 
+   base_model: 
+   ADD_model: 
+   lo: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   mu: 
+   model_path: 
+   fitted: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   gamma_clip: 
+   num_layers: 
+   dec_dropout: 
+   device: 
+   gamma: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        dec_dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="mse",
+        batch_size=5000,
+        early_stop=20,
+        base_model="GRU",
+        model_path=None,
+        optimizer="adam",
+        gamma=0.1,
+        gamma_clip=0.4,
+        mu=0.05,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   loss_pre_excess(self, pred_excess, label_excess, record=None): 
+   loss_pre_market(self, pred_market, label_market, record=None): 
+   loss_pre(self, pred_excess, label_excess, pred_market, label_market, record=None): 
+   loss_adv_excess(self, adv_excess, label_excess, record=None): 
+   loss_adv_market(self, adv_market, label_market, record=None): 
+   loss_adv(self, adv_excess, label_excess, adv_market, label_market, record=None): 
+   loss_fn(self, x, preds, label_excess, label_market, record=None): 
+   loss_rec(self, x, rec_x, record=None): 
+   get_daily_inter(self, df, shuffle=False): 
+   cal_ic_metrics(self, pred, label): 
+   test_epoch(self, data_x, data_y, data_m): 
+   train_epoch(self, x_train_values, y_train_values, m_train_values): 
+   log_metrics(self, mode, metrics): 
+   bootstrap_fit(self, x_train, y_train, m_train, x_valid, y_valid, m_valid): 
+   gen_market_label(self, df, raw_label): 
+   fit_thresh(self, train_label): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node223 as "qlib.contrib.model.pytorch_add.ADDModel" {
+   d_feat: 
+   enc_excess: 
+   base_model: 
+   enc_market: 
+   dec: 
+   before_adv_excess: 
+   before_adv_market: 
+   pred_excess: 
+   adv_excess: 
+   adv_market: 
+   pred_market: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=1,
+        dropout=0.0,
+        dec_dropout=0.5,
+        base_model="GRU",
+        gamma=0.1,
+        gamma_clip=0.4,
+    ): 
+   forward(self, x): 
+}
+class node40 as "qlib.contrib.model.pytorch_add.Decoder" {
+   base_model: 
+   rnn: 
+   fc: 
+   __init__(self, d_feat=6, hidden_size=128, num_layers=1, dropout=0.5, base_model="GRU"): 
+   forward(self, x, hidden): 
+}
+class node32 as "qlib.contrib.model.pytorch_add.RevGrad" {
+   _p: 
+   gamma_clip: 
+   _alpha: 
+   gamma: 
+   __init__(self, gamma=0.1, gamma_clip=0.4, *args, **kwargs): 
+   step_alpha(self): 
+   forward(self, input_): 
+}
+class node78 as "qlib.contrib.model.pytorch_add.RevGradFunc" {
+   forward(ctx, input_, alpha_): 
+   backward(ctx, grad_output): 
+}
+class node149 as "qlib.contrib.model.pytorch_alstm.ALSTM" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   ALSTM_model: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node81 as "qlib.contrib.model.pytorch_alstm.ALSTMModel" {
+   hid_size: 
+   input_size: 
+   rnn_layer: 
+   att_net: 
+   fc_out: 
+   rnn: 
+   dropout: 
+   net: 
+   rnn_type: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, rnn_type="GRU"): 
+   _build_model(self): 
+   forward(self, inputs): 
+}
+class node161 as "qlib.contrib.model.pytorch_alstm_ts.ALSTM" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   n_jobs: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   ALSTM_model: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label, weight): 
+   loss_fn(self, pred, label, weight=None): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset,
+        evals_result=dict(),
+        save_path=None,
+        reweighter=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node171 as "qlib.contrib.model.pytorch_alstm_ts.ALSTMModel" {
+   hid_size: 
+   input_size: 
+   rnn_layer: 
+   att_net: 
+   fc_out: 
+   rnn: 
+   dropout: 
+   net: 
+   rnn_type: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, rnn_type="GRU"): 
+   _build_model(self): 
+   forward(self, inputs): 
+}
+class node75 as "qlib.contrib.model.pytorch_gats.GATModel" {
+   softmax: 
+   a: 
+   d_feat: 
+   fc_out: 
+   rnn: 
+   hidden_size: 
+   leaky_relu: 
+   a_t: 
+   transformation: 
+   fc: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, base_model="GRU"): 
+   cal_attention(self, x, y): 
+   forward(self, x): 
+}
+class node56 as "qlib.contrib.model.pytorch_gats.GATs" {
+   d_feat: 
+   base_model: 
+   seed: 
+   hidden_size: 
+   lr: 
+   GAT_model: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   model_path: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        early_stop=20,
+        loss="mse",
+        base_model="GRU",
+        model_path=None,
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   get_daily_inter(self, df, shuffle=False): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node177 as "qlib.contrib.model.pytorch_gats_ts.DailyBatchSampler" {
+   daily_count: 
+   data_source: 
+   daily_index: 
+   __init__(self, data_source): 
+   __iter__(self): 
+   __len__(self): 
+}
+class node154 as "qlib.contrib.model.pytorch_gats_ts.GATModel" {
+   softmax: 
+   a: 
+   d_feat: 
+   fc_out: 
+   rnn: 
+   hidden_size: 
+   leaky_relu: 
+   a_t: 
+   transformation: 
+   fc: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, base_model="GRU"): 
+   cal_attention(self, x, y): 
+   forward(self, x): 
+}
+class node58 as "qlib.contrib.model.pytorch_gats_ts.GATs" {
+   d_feat: 
+   base_model: 
+   seed: 
+   hidden_size: 
+   lr: 
+   n_jobs: 
+   GAT_model: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   model_path: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=20,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        early_stop=20,
+        loss="mse",
+        base_model="GRU",
+        model_path=None,
+        optimizer="adam",
+        GPU=0,
+        n_jobs=10,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   get_daily_inter(self, df, shuffle=False): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset): 
+}
+class node108 as "qlib.contrib.model.pytorch_general_nn.GeneralPTNN" {
+   pt_model_kwargs: 
+   batch_size: 
+   weight_decay: 
+   seed: 
+   lr: 
+   n_jobs: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   dnn_model: 
+   metric: 
+   pt_model_uri: 
+   device: 
+   __init__(
+        self,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        weight_decay=0.0,
+        optimizer="adam",
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        pt_model_uri="qlib.contrib.model.pytorch_gru_ts.GRUModel",
+        pt_model_kwargs={
+            "d_feat": 6,
+            "hidden_size": 64,
+            "num_layers": 2,
+            "dropout": 0.0,
+        },
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label, weight): 
+   loss_fn(self, pred, label, weight=None): 
+   metric_fn(self, pred, label): 
+   _get_fl(self, data: torch.Tensor): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset: Union[DatasetH, TSDatasetH],
+        evals_result=dict(),
+        save_path=None,
+        reweighter=None,
+    ): 
+   predict(self, dataset: Union[DatasetH, TSDatasetH]): 
+}
+class node122 as "qlib.contrib.model.pytorch_gru.GRU" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   gru_model: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node113 as "qlib.contrib.model.pytorch_gru.GRUModel" {
+   fc_out: 
+   d_feat: 
+   rnn: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0): 
+   forward(self, x): 
+}
+class node192 as "qlib.contrib.model.pytorch_gru_ts.GRU" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   n_jobs: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   GRU_model: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label, weight): 
+   loss_fn(self, pred, label, weight=None): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset,
+        evals_result=dict(),
+        save_path=None,
+        reweighter=None,
+    ): 
+   predict(self, dataset): 
+}
+class node118 as "qlib.contrib.model.pytorch_gru_ts.GRUModel" {
+   fc_out: 
+   d_feat: 
+   rnn: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0): 
+   forward(self, x): 
+}
+class node109 as "qlib.contrib.model.pytorch_hist.HIST" {
+   d_feat: 
+   base_model: 
+   stock2concept: 
+   seed: 
+   HIST_model: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   model_path: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   stock_index: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        early_stop=20,
+        loss="mse",
+        base_model="GRU",
+        model_path=None,
+        stock2concept=None,
+        stock_index=None,
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   get_daily_inter(self, df, shuffle=False): 
+   train_epoch(self, x_train, y_train, stock_index): 
+   test_epoch(self, data_x, data_y, stock_index): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node89 as "qlib.contrib.model.pytorch_hist.HISTModel" {
+   d_feat: 
+   fc_out: 
+   fc_es_middle: 
+   fc_is_back: 
+   fc_out_is: 
+   hidden_size: 
+   softmax_s2t: 
+   softmax_t2s: 
+   fc_is: 
+   fc_es_fore: 
+   fc_is_fore: 
+   fc_is_middle: 
+   rnn: 
+   fc_es_back: 
+   leaky_relu: 
+   fc_out_es: 
+   fc_out_indi: 
+   fc_es: 
+   fc_indi: 
+   fc_indi_fore: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, base_model="GRU"): 
+   cal_cos_similarity(self, x, y): 
+   forward(self, x, concept_matrix): 
+}
+class node169 as "qlib.contrib.model.pytorch_igmtf.IGMTF" {
+   d_feat: 
+   base_model: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   model_path: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   igmtf_model: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        early_stop=20,
+        loss="mse",
+        base_model="GRU",
+        model_path=None,
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   get_daily_inter(self, df, shuffle=False): 
+   get_train_hidden(self, x_train): 
+   train_epoch(self, x_train, y_train, train_hidden, train_hidden_day): 
+   test_epoch(self, data_x, data_y, train_hidden, train_hidden_day): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node219 as "qlib.contrib.model.pytorch_igmtf.IGMTFModel" {
+   lins: 
+   project2: 
+   project1: 
+   d_feat: 
+   rnn: 
+   leaky_relu: 
+   fc_output: 
+   fc_out_pred: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0, base_model="GRU"): 
+   cal_cos_similarity(self, x, y): 
+   sparse_dense_mul(self, s, d): 
+   forward(self, x, get_hidden=False, train_hidden=None, train_hidden_day=None, k_day=10, n_neighbor=10): 
+}
+class node218 as "qlib.contrib.model.pytorch_krnn.CNNEncoderBase" {
+   input_dim: 
+   conv: 
+   output_dim: 
+   device: 
+   kernel_size: 
+   __init__(self, input_dim, output_dim, kernel_size, device): 
+   forward(self, x): 
+}
+class node143 as "qlib.contrib.model.pytorch_krnn.CNNKRNNEncoder" {
+   cnn_encoder: 
+   krnn_encoder: 
+   __init__(
+        self, cnn_input_dim, cnn_output_dim, cnn_kernel_size, rnn_output_dim, rnn_dup_num, rnn_layers, dropout, device
+    ): 
+   forward(self, x): 
+}
+class node36 as "qlib.contrib.model.pytorch_krnn.KRNN" {
+   batch_size: 
+   seed: 
+   lr: 
+   logger: 
+   rnn_layers: 
+   early_stop: 
+   train_optimizer: 
+   rnn_dim: 
+   fitted: 
+   loss: 
+   fea_dim: 
+   rnn_dups: 
+   n_epochs: 
+   cnn_dim: 
+   optimizer: 
+   metric: 
+   dropout: 
+   cnn_kernel_size: 
+   krnn_model: 
+   device: 
+   __init__(
+        self,
+        fea_dim=6,
+        cnn_dim=64,
+        cnn_kernel_size=3,
+        rnn_dim=64,
+        rnn_dups=3,
+        rnn_layers=2,
+        dropout=0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   get_daily_inter(self, df, shuffle=False): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node103 as "qlib.contrib.model.pytorch_krnn.KRNNEncoderBase" {
+   input_dim: 
+   rnn_layers: 
+   dropout: 
+   dup_num: 
+   rnn_modules: 
+   output_dim: 
+   device: 
+   __init__(self, input_dim, output_dim, dup_num, rnn_layers, dropout, device): 
+   forward(self, x): 
+}
+class node104 as "qlib.contrib.model.pytorch_krnn.KRNNModel" {
+   encoder: 
+   device: 
+   out_fc: 
+   __init__(self, fea_dim, cnn_dim, cnn_kernel_size, rnn_dim, rnn_dups, rnn_layers, dropout, device, **params): 
+   forward(self, x): 
+}
+class node67 as "qlib.contrib.model.pytorch_localformer.LocalformerEncoder" {
+   layers: 
+   conv: 
+   num_layers: 
+   __constants__: 
+   __init__(self, encoder_layer, num_layers, d_model): 
+   forward(self, src, mask): 
+}
+class node128 as "qlib.contrib.model.pytorch_localformer.LocalformerModel" {
+   batch_size: 
+   seed: 
+   lr: 
+   n_jobs: 
+   early_stop: 
+   logger: 
+   train_optimizer: 
+   fitted: 
+   d_model: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   reg: 
+   metric: 
+   dropout: 
+   model: 
+   device: 
+   __init__(
+        self,
+        d_feat: int = 20,
+        d_model: int = 64,
+        batch_size: int = 2048,
+        nhead: int = 2,
+        num_layers: int = 2,
+        dropout: float = 0,
+        n_epochs=100,
+        lr=0.0001,
+        metric="",
+        early_stop=5,
+        loss="mse",
+        optimizer="adam",
+        reg=1e-3,
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node53 as "qlib.contrib.model.pytorch_localformer.PositionalEncoding" {
+   __init__(self, d_model, max_len=1000): 
+   forward(self, x): 
+}
+class node124 as "qlib.contrib.model.pytorch_localformer.Transformer" {
+   feature_layer: 
+   transformer_encoder: 
+   d_feat: 
+   rnn: 
+   pos_encoder: 
+   decoder_layer: 
+   encoder_layer: 
+   device: 
+   __init__(self, d_feat=6, d_model=8, nhead=4, num_layers=2, dropout=0.5, device=None): 
+   forward(self, src): 
+}
+class node199 as "qlib.contrib.model.pytorch_localformer_ts.LocalformerEncoder" {
+   layers: 
+   conv: 
+   num_layers: 
+   __constants__: 
+   __init__(self, encoder_layer, num_layers, d_model): 
+   forward(self, src, mask): 
+}
+class node135 as "qlib.contrib.model.pytorch_localformer_ts.LocalformerModel" {
+   batch_size: 
+   seed: 
+   lr: 
+   n_jobs: 
+   early_stop: 
+   logger: 
+   train_optimizer: 
+   fitted: 
+   d_model: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   reg: 
+   metric: 
+   dropout: 
+   model: 
+   device: 
+   __init__(
+        self,
+        d_feat: int = 20,
+        d_model: int = 64,
+        batch_size: int = 8192,
+        nhead: int = 2,
+        num_layers: int = 2,
+        dropout: float = 0,
+        n_epochs=100,
+        lr=0.0001,
+        metric="",
+        early_stop=5,
+        loss="mse",
+        optimizer="adam",
+        reg=1e-3,
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset): 
+}
+class node85 as "qlib.contrib.model.pytorch_localformer_ts.PositionalEncoding" {
+   __init__(self, d_model, max_len=1000): 
+   forward(self, x): 
+}
+class node18 as "qlib.contrib.model.pytorch_localformer_ts.Transformer" {
+   feature_layer: 
+   transformer_encoder: 
+   d_feat: 
+   rnn: 
+   pos_encoder: 
+   decoder_layer: 
+   encoder_layer: 
+   device: 
+   __init__(self, d_feat=6, d_model=8, nhead=4, num_layers=2, dropout=0.5, device=None): 
+   forward(self, src): 
+}
+class node114 as "qlib.contrib.model.pytorch_lstm.LSTM" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   lstm_model: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node140 as "qlib.contrib.model.pytorch_lstm.LSTMModel" {
+   fc_out: 
+   d_feat: 
+   rnn: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0): 
+   forward(self, x): 
+}
+class node138 as "qlib.contrib.model.pytorch_lstm_ts.LSTM" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   n_jobs: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   LSTM_model: 
+   num_layers: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label, weight): 
+   loss_fn(self, pred, label, weight): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset,
+        evals_result=dict(),
+        save_path=None,
+        reweighter=None,
+    ): 
+   predict(self, dataset): 
+}
+class node217 as "qlib.contrib.model.pytorch_lstm_ts.LSTMModel" {
+   fc_out: 
+   d_feat: 
+   rnn: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0): 
+   forward(self, x): 
+}
+class node76 as "qlib.contrib.model.pytorch_nn.AverageMeter" {
+   val: 
+   avg: 
+   count: 
+   sum: 
+   __init__(self): 
+   reset(self): 
+   update(self, val, n=1): 
+}
+class node52 as "qlib.contrib.model.pytorch_nn.DNNModelPytorch" {
+   batch_size: 
+   weight_decay: 
+   max_steps: 
+   seed: 
+   valid_key: 
+   lr: 
+   logger: 
+   train_optimizer: 
+   loss_type: 
+   _scorer: 
+   data_parall: 
+   eval_train_metric: 
+   fitted: 
+   early_stop_rounds: 
+   scheduler: 
+   optimizer: 
+   dnn_model: 
+   eval_steps: 
+   device: 
+   best_step: 
+   __init__(
+        self,
+        lr=0.001,
+        max_steps=300,
+        batch_size=2000,
+        early_stop_rounds=50,
+        eval_steps=20,
+        optimizer="gd",
+        loss="mse",
+        GPU=0,
+        seed=None,
+        weight_decay=0.0,
+        data_parall=False,
+        scheduler: Optional[Union[Callable]] = "default",  # when it is Callable, it accept one argument named optimizer
+        init_model=None,
+        eval_train_metric=False,
+        pt_model_uri="qlib.contrib.model.pytorch_nn.Net",
+        pt_model_kwargs={
+            "input_dim": 360,
+            "layers": (256,),
+        },
+        valid_key=DataHandlerLP.DK_L,
+        # TODO: Infer Key is a more reasonable key. But it requires more detailed processing on label processing
+    ): 
+   use_gpu(self): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        verbose=True,
+        save_path=None,
+        reweighter=None,
+    ): 
+   get_lr(self): 
+   get_loss(self, pred, w, target, loss_type): 
+   get_metric(self, pred, target, index): 
+   _nn_predict(self, data, return_cpu=True): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   save(self, filename, **kwargs): 
+   load(self, buffer, **kwargs): 
+}
+class node35 as "qlib.contrib.model.pytorch_nn.Net" {
+   dnn_layers: 
+   __init__(self, input_dim, output_dim=1, layers=(256,), act="LeakyReLU"): 
+   _weight_init(self): 
+   forward(self, x): 
+}
+class node94 as "qlib.contrib.model.pytorch_sandwich.Sandwich" {
+   batch_size: 
+   seed: 
+   lr: 
+   logger: 
+   rnn_layers: 
+   early_stop: 
+   train_optimizer: 
+   cnn_dim_1: 
+   cnn_dim_2: 
+   fitted: 
+   loss: 
+   fea_dim: 
+   rnn_dups: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   sandwich_model: 
+   dropout: 
+   rnn_dim_2: 
+   rnn_dim_1: 
+   cnn_kernel_size: 
+   device: 
+   __init__(
+        self,
+        fea_dim=6,
+        cnn_dim_1=64,
+        cnn_dim_2=32,
+        cnn_kernel_size=3,
+        rnn_dim_1=16,
+        rnn_dim_2=8,
+        rnn_dups=3,
+        rnn_layers=2,
+        dropout=0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node46 as "qlib.contrib.model.pytorch_sandwich.SandwichModel" {
+   first_encoder: 
+   second_encoder: 
+   device: 
+   out_fc: 
+   __init__(
+        self,
+        fea_dim,
+        cnn_dim_1,
+        cnn_dim_2,
+        cnn_kernel_size,
+        rnn_dim_1,
+        rnn_dim_2,
+        rnn_dups,
+        rnn_layers,
+        dropout,
+        device,
+        **params
+    ): 
+   forward(self, x): 
+}
+class node111 as "qlib.contrib.model.pytorch_sfm.AverageMeter" {
+   val: 
+   avg: 
+   count: 
+   sum: 
+   __init__(self): 
+   reset(self): 
+   update(self, val, n=1): 
+}
+class node151 as "qlib.contrib.model.pytorch_sfm.SFM" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   hidden_size: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   sfm_model: 
+   fitted: 
+   dropout_W: 
+   loss: 
+   dropout_U: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   eval_steps: 
+   output_dim: 
+   freq_dim: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        output_dim=1,
+        freq_dim=10,
+        dropout_W=0.0,
+        dropout_U=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        eval_steps=5,
+        loss="mse",
+        optimizer="gd",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   test_epoch(self, data_x, data_y): 
+   train_epoch(self, x_train, y_train): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node31 as "qlib.contrib.model.pytorch_sfm.SFM_Model" {
+   W_i: 
+   U_o: 
+   b_a: 
+   W_o: 
+   W_fre: 
+   b_c: 
+   W_p: 
+   W_ste: 
+   b_i: 
+   states: 
+   input_dim: 
+   dropout_W: 
+   b_p: 
+   hidden_dim: 
+   b_o: 
+   dropout_U: 
+   b_ste: 
+   output_dim: 
+   U_ste: 
+   inner_activation: 
+   fc_out: 
+   b_fre: 
+   U_fre: 
+   U_a: 
+   U_c: 
+   W_c: 
+   activation: 
+   freq_dim: 
+   device: 
+   U_i: 
+   __init__(
+        self,
+        d_feat=6,
+        output_dim=1,
+        freq_dim=10,
+        hidden_size=64,
+        dropout_W=0.0,
+        dropout_U=0.0,
+        device="cpu",
+    ): 
+   forward(self, input): 
+   init_states(self, x): 
+   get_constants(self, x): 
+}
+class node146 as "qlib.contrib.model.pytorch_tabnet.AttentionTransformer" {
+   r: 
+   bn: 
+   fc: 
+   __init__(self, d_a, inp_dim, relax, vbs=1024): 
+   forward(self, a, priors): 
+}
+class node137 as "qlib.contrib.model.pytorch_tabnet.DecisionStep" {
+   atten_tran: 
+   fea_tran: 
+   __init__(self, inp_dim, n_d, n_a, shared, n_ind, relax, vbs): 
+   forward(self, x, a, priors): 
+}
+class node90 as "qlib.contrib.model.pytorch_tabnet.DecoderStep" {
+   fea_tran: 
+   fc: 
+   __init__(self, inp_dim, out_dim, shared, n_ind, vbs): 
+   forward(self, x): 
+}
+class node121 as "qlib.contrib.model.pytorch_tabnet.FeatureTransformer" {
+   independ: 
+   shared: 
+   scale: 
+   __init__(self, inp_dim, out_dim, shared, n_ind, vbs): 
+   forward(self, x): 
+}
+class node22 as "qlib.contrib.model.pytorch_tabnet.FinetuneModel" {
+   model: 
+   fc: 
+   __init__(self, input_dim, output_dim, trained_model): 
+   forward(self, x, priors): 
+}
+class node194 as "qlib.contrib.model.pytorch_tabnet.GBN" {
+   vbs: 
+   bn: 
+   __init__(self, inp, vbs=1024, momentum=0.01): 
+   forward(self, x): 
+}
+class node186 as "qlib.contrib.model.pytorch_tabnet.GLU" {
+   od: 
+   bn: 
+   fc: 
+   __init__(self, inp_dim, out_dim, fc=None, vbs=1024): 
+   forward(self, x): 
+}
+class node21 as "qlib.contrib.model.pytorch_tabnet.SparsemaxFunction" {
+   dim: 
+   forward(ctx, input, dim=-1): 
+   backward(ctx, grad_output): 
+   threshold_and_support(input, dim=-1): 
+}
+class node221 as "qlib.contrib.model.pytorch_tabnet.TabNet" {
+   shared: 
+   first_step: 
+   n_d: 
+   bn: 
+   steps: 
+   fc: 
+   __init__(self, inp_dim=6, out_dim=6, n_d=64, n_a=64, n_shared=2, n_ind=2, n_steps=5, relax=1.2, vbs=1024): 
+   forward(self, x, priors): 
+}
+class node127 as "qlib.contrib.model.pytorch_tabnet.TabNet_Decoder" {
+   shared: 
+   n_steps: 
+   out_dim: 
+   steps: 
+   __init__(self, inp_dim, out_dim, n_shared, n_ind, vbs, n_steps): 
+   forward(self, x): 
+}
+class node17 as "qlib.contrib.model.pytorch_tabnet.TabnetModel" {
+   d_feat: 
+   batch_size: 
+   ps: 
+   seed: 
+   lr: 
+   pretrain_optimizer: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   tabnet_decoder: 
+   final_out_dim: 
+   fitted: 
+   pretrain_loss: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   tabnet_model: 
+   out_dim: 
+   pretrain_n_epochs: 
+   device: 
+   pretrain: 
+   pretrain_file: 
+   __init__(
+        self,
+        d_feat=158,
+        out_dim=64,
+        final_out_dim=1,
+        batch_size=4096,
+        n_d=64,
+        n_a=64,
+        n_shared=2,
+        n_ind=2,
+        n_steps=5,
+        n_epochs=100,
+        pretrain_n_epochs=50,
+        relax=1.3,
+        vbs=2048,
+        seed=993,
+        optimizer="adam",
+        loss="mse",
+        metric="",
+        early_stop=20,
+        GPU=0,
+        pretrain_loss="custom",
+        ps=0.3,
+        lr=0.01,
+        pretrain=True,
+        pretrain_file=None,
+    ): 
+   use_gpu(self): 
+   pretrain_fn(self, dataset=DatasetH, pretrain_file="./pretrain/best.model"): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   test_epoch(self, data_x, data_y): 
+   train_epoch(self, x_train, y_train): 
+   pretrain_epoch(self, x_train): 
+   pretrain_test_epoch(self, x_train): 
+   pretrain_loss_fn(self, f_hat, f, S): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   mse(self, pred, label): 
+}
+class node116 as "qlib.contrib.model.pytorch_tcn.TCN" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   lr: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   fitted: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   n_chans: 
+   device: 
+   tcn_model: 
+   kernel_size: 
+   __init__(
+        self,
+        d_feat=6,
+        n_chans=128,
+        kernel_size=5,
+        num_layers=5,
+        dropout=0.5,
+        n_epochs=200,
+        lr=0.0001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node62 as "qlib.contrib.model.pytorch_tcn.TCNModel" {
+   num_input: 
+   linear: 
+   tcn: 
+   __init__(self, num_input, output_size, num_channels, kernel_size, dropout): 
+   forward(self, x): 
+}
+class node105 as "qlib.contrib.model.pytorch_tcn_ts.TCN" {
+   d_feat: 
+   batch_size: 
+   seed: 
+   lr: 
+   n_jobs: 
+   logger: 
+   early_stop: 
+   train_optimizer: 
+   fitted: 
+   TCN_model: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   metric: 
+   dropout: 
+   num_layers: 
+   n_chans: 
+   device: 
+   kernel_size: 
+   __init__(
+        self,
+        d_feat=6,
+        n_chans=128,
+        kernel_size=5,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        lr=0.001,
+        metric="",
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        optimizer="adam",
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset): 
+}
+class node51 as "qlib.contrib.model.pytorch_tcn_ts.TCNModel" {
+   num_input: 
+   linear: 
+   tcn: 
+   __init__(self, num_input, output_size, num_channels, kernel_size, dropout): 
+   forward(self, x): 
+}
+class node1 as "qlib.contrib.model.pytorch_tcts.GRUModel" {
+   fc_out: 
+   d_feat: 
+   rnn: 
+   __init__(self, d_feat=6, hidden_size=64, num_layers=2, dropout=0.0): 
+   forward(self, x): 
+}
+class node175 as "qlib.contrib.model.pytorch_tcts.MLPModel" {
+   mlp: 
+   softmax: 
+   __init__(self, d_feat, hidden_size=256, num_layers=3, dropout=0.0, output_dim=1): 
+   forward(self, x): 
+}
+class node98 as "qlib.contrib.model.pytorch_tcts.TCTS" {
+   _fore_optimizer: 
+   seed: 
+   hidden_size: 
+   use_gpu: 
+   logger: 
+   _weight_optimizer: 
+   lowest_valid_performance: 
+   target_label: 
+   input_dim: 
+   mode: 
+   loss: 
+   weight_optimizer: 
+   n_epochs: 
+   fore_optimizer: 
+   num_layers: 
+   output_dim: 
+   d_feat: 
+   batch_size: 
+   early_stop: 
+   weight_lr: 
+   steps: 
+   fitted: 
+   weight_model: 
+   fore_lr: 
+   dropout: 
+   fore_model: 
+   device: 
+   __init__(
+        self,
+        d_feat=6,
+        hidden_size=64,
+        num_layers=2,
+        dropout=0.0,
+        n_epochs=200,
+        batch_size=2000,
+        early_stop=20,
+        loss="mse",
+        fore_optimizer="adam",
+        weight_optimizer="adam",
+        input_dim=360,
+        output_dim=5,
+        fore_lr=5e-7,
+        weight_lr=5e-7,
+        steps=3,
+        GPU=0,
+        target_label=0,
+        mode="soft",
+        seed=None,
+        lowest_valid_performance=0.993,
+        **kwargs
+    ): 
+   loss_fn(self, pred, label, weight): 
+   train_epoch(self, x_train, y_train, x_valid, y_valid): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        verbose=True,
+        save_path=None,
+    ): 
+   training(
+        self,
+        x_train,
+        y_train,
+        x_valid,
+        y_valid,
+        x_test,
+        y_test,
+        verbose=True,
+        save_path=None,
+    ): 
+   predict(self, dataset): 
+}
+class node59 as "qlib.contrib.model.pytorch_tra.PositionalEncoding" {
+   dropout: 
+   __init__(self, d_model, dropout=0.1, max_len=5000): 
+   forward(self, x): 
+}
+class node88 as "qlib.contrib.model.pytorch_tra.RNN" {
+   input_size: 
+   rnn_arch: 
+   rnn: 
+   output_size: 
+   hidden_size: 
+   u: 
+   input_proj: 
+   W: 
+   num_layers: 
+   use_attn: 
+   __init__(
+        self,
+        input_size=16,
+        hidden_size=64,
+        num_layers=2,
+        rnn_arch="GRU",
+        use_attn=True,
+        dropout=0.0,
+        **kwargs,
+    ): 
+   forward(self, x): 
+}
+class node213 as "qlib.contrib.model.pytorch_tra.TRA" {
+   src_info: 
+   predictors: 
+   rnn_arch: 
+   router: 
+   num_states: 
+   tau: 
+   fc: 
+   __init__(
+        self,
+        input_size,
+        num_states=1,
+        hidden_size=8,
+        rnn_arch="GRU",
+        num_layers=1,
+        dropout=0.0,
+        tau=1.0,
+        src_info="LR_TPE",
+    ): 
+   reset_parameters(self): 
+   forward(self, hidden, hist_loss): 
+}
+class node173 as "qlib.contrib.model.pytorch_tra.TRAModel" {
+   seed: 
+   lr: 
+   logger: 
+   transport_fn: 
+   eval_train: 
+   max_steps_per_epoch: 
+   freeze_predictors: 
+   freeze_model: 
+   n_epochs: 
+   optimizer: 
+   eval_test: 
+   alpha: 
+   model: 
+   tra_config: 
+   use_daily_transport: 
+   logdir: 
+   reset_router: 
+   tra: 
+   update_freq: 
+   early_stop: 
+   model_type: 
+   _writer: 
+   fitted: 
+   model_config: 
+   lamb: 
+   rho: 
+   transport_method: 
+   pretrain: 
+   init_state: 
+   global_step: 
+   __init__(
+        self,
+        model_config,
+        tra_config,
+        model_type="RNN",
+        lr=1e-3,
+        n_epochs=500,
+        early_stop=50,
+        update_freq=1,
+        max_steps_per_epoch=None,
+        lamb=0.0,
+        rho=0.99,
+        alpha=1.0,
+        seed=None,
+        logdir=None,
+        eval_train=False,
+        eval_test=False,
+        pretrain=False,
+        init_state=None,
+        reset_router=False,
+        freeze_model=False,
+        freeze_predictors=False,
+        transport_method="none",
+        memory_mode="sample",
+    ): 
+   _init_model(self): 
+   train_epoch(self, epoch, data_set, is_pretrain=False): 
+   test_epoch(self, epoch, data_set, return_pred=False, prefix="test", is_pretrain=False): 
+   _fit(self, train_set, valid_set, test_set, evals_result, is_pretrain=True): 
+   fit(self, dataset, evals_result=dict()): 
+   predict(self, dataset, segment="test"): 
+}
+class node16 as "qlib.contrib.model.pytorch_tra.Transformer" {
+   input_size: 
+   output_size: 
+   hidden_size: 
+   pe: 
+   num_heads: 
+   input_proj: 
+   num_layers: 
+   encoder: 
+   __init__(
+        self,
+        input_size=16,
+        hidden_size=64,
+        num_layers=2,
+        num_heads=2,
+        dropout=0.0,
+        **kwargs,
+    ): 
+   forward(self, x): 
+}
+class node49 as "qlib.contrib.model.pytorch_transformer.PositionalEncoding" {
+   __init__(self, d_model, max_len=1000): 
+   forward(self, x): 
+}
+class node47 as "qlib.contrib.model.pytorch_transformer.Transformer" {
+   feature_layer: 
+   transformer_encoder: 
+   d_feat: 
+   pos_encoder: 
+   decoder_layer: 
+   encoder_layer: 
+   device: 
+   __init__(self, d_feat=6, d_model=8, nhead=4, num_layers=2, dropout=0.5, device=None): 
+   forward(self, src): 
+}
+class node57 as "qlib.contrib.model.pytorch_transformer.TransformerModel" {
+   batch_size: 
+   seed: 
+   lr: 
+   n_jobs: 
+   early_stop: 
+   logger: 
+   train_optimizer: 
+   fitted: 
+   d_model: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   reg: 
+   metric: 
+   dropout: 
+   model: 
+   device: 
+   __init__(
+        self,
+        d_feat: int = 20,
+        d_model: int = 64,
+        batch_size: int = 2048,
+        nhead: int = 2,
+        num_layers: int = 2,
+        dropout: float = 0,
+        n_epochs=100,
+        lr=0.0001,
+        metric="",
+        early_stop=5,
+        loss="mse",
+        optimizer="adam",
+        reg=1e-3,
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, x_train, y_train): 
+   test_epoch(self, data_x, data_y): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+}
+class node164 as "qlib.contrib.model.pytorch_transformer_ts.PositionalEncoding" {
+   __init__(self, d_model, max_len=1000): 
+   forward(self, x): 
+}
+class node225 as "qlib.contrib.model.pytorch_transformer_ts.Transformer" {
+   feature_layer: 
+   transformer_encoder: 
+   d_feat: 
+   pos_encoder: 
+   decoder_layer: 
+   encoder_layer: 
+   device: 
+   __init__(self, d_feat=6, d_model=8, nhead=4, num_layers=2, dropout=0.5, device=None): 
+   forward(self, src): 
+}
+class node144 as "qlib.contrib.model.pytorch_transformer_ts.TransformerModel" {
+   batch_size: 
+   seed: 
+   lr: 
+   n_jobs: 
+   early_stop: 
+   logger: 
+   train_optimizer: 
+   fitted: 
+   d_model: 
+   loss: 
+   n_epochs: 
+   optimizer: 
+   reg: 
+   metric: 
+   dropout: 
+   model: 
+   device: 
+   __init__(
+        self,
+        d_feat: int = 20,
+        d_model: int = 64,
+        batch_size: int = 8192,
+        nhead: int = 2,
+        num_layers: int = 2,
+        dropout: float = 0,
+        n_epochs=100,
+        lr=0.0001,
+        metric="",
+        early_stop=5,
+        loss="mse",
+        optimizer="adam",
+        reg=1e-3,
+        n_jobs=10,
+        GPU=0,
+        seed=None,
+        **kwargs
+    ): 
+   use_gpu(self): 
+   mse(self, pred, label): 
+   loss_fn(self, pred, label): 
+   metric_fn(self, pred, label): 
+   train_epoch(self, data_loader): 
+   test_epoch(self, data_loader): 
+   fit(
+        self,
+        dataset: DatasetH,
+        evals_result=dict(),
+        save_path=None,
+    ): 
+   predict(self, dataset): 
+}
+class node131 as "qlib.contrib.model.tcn.Chomp1d" {
+   chomp_size: 
+   __init__(self, chomp_size): 
+   forward(self, x): 
+}
+class node102 as "qlib.contrib.model.tcn.TemporalBlock" {
+   relu2: 
+   downsample: 
+   relu1: 
+   dropout1: 
+   dropout2: 
+   chomp2: 
+   chomp1: 
+   conv2: 
+   relu: 
+   conv1: 
+   net: 
+   __init__(self, n_inputs, n_outputs, kernel_size, stride, dilation, padding, dropout=0.2): 
+   init_weights(self): 
+   forward(self, x): 
+}
+class node181 as "qlib.contrib.model.tcn.TemporalConvNet" {
+   network: 
+   __init__(self, num_inputs, num_channels, kernel_size=2, dropout=0.2): 
+   forward(self, x): 
+}
+class node64 as "qlib.contrib.model.xgboost.XGBModel" {
+   model: 
+   _params: 
+   __init__(self, **kwargs): 
+   fit(
+        self,
+        dataset: DatasetH,
+        num_boost_round=1000,
+        early_stopping_rounds=50,
+        verbose_eval=20,
+        evals_result=dict(),
+        reweighter=None,
+        **kwargs
+    ): 
+   predict(self, dataset: DatasetH, segment: Union[Text, slice] = "test"): 
+   get_feature_importance(self, *args, **kwargs): 
+}
+class node133 as "qlib.contrib.online.manager.UserManager" {
+   users_file: 
+   save_report: 
+   user_record: 
+   users: 
+   data_path: 
+   __init__(self, user_data_path, save_report=True): 
+   load_users(self): 
+   load_user(self, user_id): 
+   save_user_data(self, user_id): 
+   add_user(self, user_id, config_file, add_date): 
+   remove_user(self, user_id): 
+}
+class node48 as "qlib.contrib.online.online_model.ScoreFileModel" {
+   pred: 
+   __init__(self, score_path): 
+   get_data_with_date(self, date, **kwargs): 
+   predict(self, x_test, **kwargs): 
+   score(self, x_test, **kwargs): 
+   fit(self, x_train, y_train, x_valid, y_valid, w_train=None, w_valid=None, **kwargs): 
+   save(self, fname, **kwargs): 
+}
+class node101 as "qlib.contrib.online.operator.Operator" {
+   logger: 
+   client: 
+   __init__(self, client: str): 
+   init(client, path, date=None): 
+   add_user(self, id, config, path, date): 
+   remove_user(self, id, path): 
+   generate(self, date, path): 
+   execute(self, date, exchange_config, path): 
+   update(self, date, path, type="SIM"): 
+   simulate(self, id, config, exchange_config, start, end, path, bench="SH000905"): 
+   show(self, id, path, bench="SH000905"): 
+}
+class node195 as "qlib.contrib.online.user.User" {
+   logger: 
+   model: 
+   strategy: 
+   account: 
+   verbose: 
+   __init__(self, account, strategy, model, verbose=False): 
+   init_state(self, date): 
+   get_latest_trading_date(self): 
+   showReport(self, benchmark="SH000905"): 
+}
+class node71 as "qlib.contrib.ops.high_freq.BFillNan" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node123 as "qlib.contrib.ops.high_freq.Cut" {
+   left: 
+   right: 
+   __init__(self, feature, left=None, right=None): 
+   _load_internal(self, instrument, start_index, end_index, freq): 
+   get_extended_window_size(self): 
+}
+class node190 as "qlib.contrib.ops.high_freq.Date" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node215 as "qlib.contrib.ops.high_freq.DayCumsum" {
+   morning_close: 
+   feature: 
+   start_id: 
+   noon_close: 
+   morning_open: 
+   start: 
+   noon_open: 
+   end_id: 
+   end: 
+   data_granularity: 
+   __init__(self, feature, start: str = "9:30", end: str = "14:59", data_granularity: int = 1): 
+   period_cusum(self, df): 
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node82 as "qlib.contrib.ops.high_freq.DayLast" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node206 as "qlib.contrib.ops.high_freq.FFillNan" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node208 as "qlib.contrib.ops.high_freq.IsInf" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node66 as "qlib.contrib.ops.high_freq.IsNull" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node153 as "qlib.contrib.ops.high_freq.Select" {
+   _load_internal(self, instrument, start_index, end_index, freq): 
+}
+class node60 as "qlib.contrib.report.data.ana.CombFeaAna" {
+   _fea_ana_l: 
+   __init__(self, dataset: pd.DataFrame, *fea_ana_cls): 
+   skip(self, col): 
+   calc_stat_values(self): 
+   plot_all(self, *args, **kwargs): 
+}
+class node170 as "qlib.contrib.report.data.ana.FeaACAna" {
+   _fea_corr: 
+   ylim: 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+}
+class node115 as "qlib.contrib.report.data.ana.FeaDistAna" {
+   plot_single(self, col, ax): 
+}
+class node166 as "qlib.contrib.report.data.ana.FeaInfAna" {
+   _inf_cnt: 
+   calc_stat_values(self): 
+   skip(self, col): 
+   plot_single(self, col, ax): 
+}
+class node163 as "qlib.contrib.report.data.ana.FeaMeanStd" {
+   _std: 
+   _mean: 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+}
+class node6 as "qlib.contrib.report.data.ana.FeaNanAna" {
+   _nan_cnt: 
+   calc_stat_values(self): 
+   skip(self, col): 
+   plot_single(self, col, ax): 
+}
+class node92 as "qlib.contrib.report.data.ana.FeaNanAnaRatio" {
+   _total_cnt: 
+   _nan_cnt: 
+   calc_stat_values(self): 
+   skip(self, col): 
+   plot_single(self, col, ax): 
+}
+class node96 as "qlib.contrib.report.data.ana.FeaSkewTurt" {
+   _kurt: 
+   _skew: 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+}
+class node95 as "qlib.contrib.report.data.ana.NumFeaAnalyser" {
+   skip(self, col): 
+}
+class node129 as "qlib.contrib.report.data.ana.RawFeaAna" {
+   ylim: 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+}
+class node182 as "qlib.contrib.report.data.ana.ValueCNT" {
+   ratio: 
+   _val_cnt: 
+   ylim: 
+   __init__(self, dataset: pd.DataFrame, ratio=False): 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+}
+class node12 as "qlib.contrib.report.data.base.FeaAnalyser" {
+   _dataset: 
+   __init__(self, dataset: pd.DataFrame): 
+   calc_stat_values(self): 
+   plot_single(self, col, ax): 
+   skip(self, col): 
+   plot_all(self, *args, **kwargs): 
+}
+class node7 as "qlib.contrib.report.graph.BarGraph" {
+   _name: 
+}
+class node61 as "qlib.contrib.report.graph.BaseGraph" {
+   _df: 
+   _layout: 
+   _graph_type: 
+   data: 
+   _graph_kwargs: 
+   _name_dict: 
+   _name: 
+   __init__(
+        self, df: pd.DataFrame = None, layout: dict = None, graph_kwargs: dict = None, name_dict: dict = None, **kwargs
+    ): 
+   _init_data(self): 
+   _init_parameters(self, **kwargs): 
+   get_instance_with_graph_parameters(graph_type: str = None, **kwargs): 
+   show_graph_in_notebook(figure_list: Iterable[go.Figure] = None): 
+   _get_layout(self): 
+   _get_data(self): 
+   figure(self): 
+}
+class node19 as "qlib.contrib.report.graph.DistplotGraph" {
+   _name: 
+   _get_data(self): 
+}
+class node72 as "qlib.contrib.report.graph.HeatmapGraph" {
+   _name: 
+   _get_data(self): 
+}
+class node209 as "qlib.contrib.report.graph.HistogramGraph" {
+   _name: 
+   _get_data(self): 
+}
+class node38 as "qlib.contrib.report.graph.ScatterGraph" {
+   _name: 
+}
+class node10 as "qlib.contrib.report.graph.SubplotsGraph" {
+   _df: 
+   _sub_graph_layout: 
+   _layout: 
+   _kind_map: 
+   __rows: 
+   _figure: 
+   __cols: 
+   _subplot_titles: 
+   _subplots_kwargs: 
+   _sub_graph_data: 
+   __init__(
+        self,
+        df: pd.DataFrame = None,
+        kind_map: dict = None,
+        layout: dict = None,
+        sub_graph_layout: dict = None,
+        sub_graph_data: list = None,
+        subplots_kwargs: dict = None,
+        **kwargs
+    ): 
+   _init_sub_graph_data(self): 
+   _init_subplots_kwargs(self): 
+   _init_figure(self): 
+   figure(self): 
+}
+class node86 as "qlib.contrib.rolling.base.Rolling" {
+   horizon: 
+   exp_name: 
+   _rid: 
+   conf_path: 
+   test_end: 
+   logger: 
+   train_start: 
+   step: 
+   rolling_exp: 
+   h_path: 
+   task_ext_conf: 
+   __init__(
+        self,
+        conf_path: Union[str, Path],
+        exp_name: Optional[str] = None,
+        horizon: Optional[int] = 20,
+        step: int = 20,
+        h_path: Optional[str] = None,
+        train_start: Optional[str] = None,
+        test_end: Optional[str] = None,
+        task_ext_conf: Optional[dict] = None,
+        rolling_exp: Optional[str] = None,
+    ): 
+   _raw_conf(self): 
+   _replace_handler_with_cache(self, task: dict): 
+   _update_start_end_time(self, task: dict): 
+   basic_task(self, enable_handler_cache: Optional[bool] = True): 
+   run_basic_task(self): 
+   get_task_list(self): 
+   _train_rolling_tasks(self): 
+   _ens_rolling(self): 
+   _update_rolling_rec(self): 
+   run(self): 
+}
+class node210 as "qlib.contrib.rolling.ddgda.DDGDA" {
+   fea_imp_n: 
+   hist_step_n: 
+   meta_1st_train_end: 
+   working_dir: 
+   alpha: 
+   proxy_hd: 
+   loss_skip_thresh: 
+   meta_data_proc: 
+   meta_exp_name: 
+   sim_task_model: 
+   segments: 
+   __init__(
+        self,
+        sim_task_model: UTIL_MODEL_TYPE = "gbdt",
+        meta_1st_train_end: Optional[str] = None,
+        alpha: float = 0.01,
+        loss_skip_thresh: int = 50,
+        fea_imp_n: Optional[int] = 30,
+        meta_data_proc: Optional[str] = "V01",
+        segments: Union[float, str] = 0.62,
+        hist_step_n: int = 30,
+        working_dir: Optional[Union[str, Path]] = None,
+        **kwargs,
+    ): 
+   _adjust_task(self, task: dict, astype: UTIL_MODEL_TYPE): 
+   _get_feature_importance(self): 
+   _dump_data_for_proxy_model(self): 
+   _internal_data_path(self): 
+   _dump_meta_ipt(self): 
+   _train_meta_model(self, fill_method="max"): 
+   _task_path(self): 
+   get_task_list(self): 
+   run(self): 
+}
+class node189 as "qlib.contrib.strategy.cost_control.SoftTopkStrategy" {
+   topk: 
+   buy_method: 
+   risk_degree: 
+   max_sold_weight: 
+   __init__(
+        self,
+        model,
+        dataset,
+        topk,
+        order_generator_cls_or_obj=OrderGenWInteract,
+        max_sold_weight=1.0,
+        risk_degree=0.95,
+        buy_method="first_fill",
+        trade_exchange=None,
+        level_infra=None,
+        common_infra=None,
+        **kwargs,
+    ): 
+   get_risk_degree(self, trade_step=None): 
+   generate_target_weight_position(self, score, current, trade_start_time, trade_end_time): 
+}
+class node220 as "qlib.contrib.strategy.optimizer.base.BaseOptimizer" {
+   __call__(self, *args, **kwargs): 
+}
+class node136 as "qlib.contrib.strategy.optimizer.enhanced_indexing.EnhancedIndexingOptimizer" {
+   epsilon: 
+   scale_return: 
+   f_dev: 
+   lamb: 
+   delta: 
+   b_dev: 
+   solver_kwargs: 
+   __init__(
+        self,
+        lamb: float = 1,
+        delta: Optional[float] = 0.2,
+        b_dev: Optional[float] = 0.01,
+        f_dev: Optional[Union[List[float], np.ndarray]] = None,
+        scale_return: bool = True,
+        epsilon: float = 5e-5,
+        solver_kwargs: Optional[Dict[str, Any]] = {},
+    ): 
+   __call__(
+        self,
+        r: np.ndarray,
+        F: np.ndarray,
+        cov_b: np.ndarray,
+        var_u: np.ndarray,
+        w0: np.ndarray,
+        wb: np.ndarray,
+        mfh: Optional[np.ndarray] = None,
+        mfs: Optional[np.ndarray] = None,
+    ): 
+}
+class node200 as "qlib.contrib.strategy.optimizer.optimizer.PortfolioOptimizer" {
+   tol: 
+   scale_return: 
+   method: 
+   alpha: 
+   lamb: 
+   delta: 
+   OPT_GMV: 
+   OPT_MVO: 
+   OPT_RP: 
+   OPT_INV: 
+   __init__(
+        self,
+        method: str = "inv",
+        lamb: float = 0,
+        delta: float = 0,
+        alpha: float = 0.0,
+        scale_return: bool = True,
+        tol: float = 1e-8,
+    ): 
+   __call__(
+        self,
+        S: Union[np.ndarray, pd.DataFrame],
+        r: Optional[Union[np.ndarray, pd.Series]] = None,
+        w0: Optional[Union[np.ndarray, pd.Series]] = None,
+    ): 
+   _optimize(self, S: np.ndarray, r: Optional[np.ndarray] = None, w0: Optional[np.ndarray] = None): 
+   _optimize_inv(self, S: np.ndarray): 
+   _optimize_gmv(self, S: np.ndarray, w0: Optional[np.ndarray] = None): 
+   _optimize_mvo(
+        self, S: np.ndarray, r: Optional[np.ndarray] = None, w0: Optional[np.ndarray] = None
+    ): 
+   _optimize_rp(self, S: np.ndarray, w0: Optional[np.ndarray] = None): 
+   _get_objective_gmv(self, S: np.ndarray): 
+   _get_objective_mvo(self, S: np.ndarray, r: np.ndarray = None): 
+   _get_objective_rp(self, S: np.ndarray): 
+   _get_constrains(self, w0: Optional[np.ndarray] = None): 
+   _solve(self, n: int, obj: Callable, bounds: so.Bounds, cons: List): 
+}
+class node222 as "qlib.contrib.strategy.order_generator.OrderGenWInteract" {
+   generate_order_list_from_target_weight_position(
+        self,
+        current: Position,
+        trade_exchange: Exchange,
+        target_weight_position: dict,
+        risk_degree: float,
+        pred_start_time: pd.Timestamp,
+        pred_end_time: pd.Timestamp,
+        trade_start_time: pd.Timestamp,
+        trade_end_time: pd.Timestamp,
+    ): 
+}
+class node91 as "qlib.contrib.strategy.order_generator.OrderGenWOInteract" {
+   generate_order_list_from_target_weight_position(
+        self,
+        current: Position,
+        trade_exchange: Exchange,
+        target_weight_position: dict,
+        risk_degree: float,
+        pred_start_time: pd.Timestamp,
+        pred_end_time: pd.Timestamp,
+        trade_start_time: pd.Timestamp,
+        trade_end_time: pd.Timestamp,
+    ): 
+}
+class node204 as "qlib.contrib.strategy.order_generator.OrderGenerator" {
+   generate_order_list_from_target_weight_position(
+        self,
+        current: Position,
+        trade_exchange: Exchange,
+        target_weight_position: dict,
+        risk_degree: float,
+        pred_start_time: pd.Timestamp,
+        pred_end_time: pd.Timestamp,
+        trade_start_time: pd.Timestamp,
+        trade_end_time: pd.Timestamp,
+    ): 
+}
+class node93 as "qlib.contrib.strategy.rule_strategy.ACStrategy" {
+   window_size: 
+   eta: 
+   instruments: 
+   trade_amount: 
+   lamb: 
+   freq: 
+   signal: 
+   __init__(
+        self,
+        lamb: float = 1e-6,
+        eta: float = 2.5e-6,
+        window_size: int = 20,
+        outer_trade_decision: BaseTradeDecision = None,
+        instruments: Union[List, str] = "csi300",
+        freq: str = "day",
+        trade_exchange: Exchange = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        **kwargs,
+    ): 
+   _reset_signal(self): 
+   reset_level_infra(self, level_infra): 
+   reset(self, outer_trade_decision: BaseTradeDecision = None, **kwargs): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node106 as "qlib.contrib.strategy.rule_strategy.FileOrderStrategy" {
+   order_df: 
+   trade_range: 
+   __init__(
+        self,
+        file: Union[IO, str, Path, pd.DataFrame],
+        trade_range: Union[Tuple[int, int], TradeRange] = None,
+        *args,
+        **kwargs,
+    ): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node112 as "qlib.contrib.strategy.rule_strategy.RandomOrderStrategy" {
+   market: 
+   volume: 
+   volume_ratio: 
+   volume_df: 
+   sample_ratio: 
+   trade_range: 
+   direction: 
+   __init__(
+        self,
+        trade_range: Union[Tuple[int, int], TradeRange],  # The range is closed on both left and right.
+        sample_ratio: float = 1.0,
+        volume_ratio: float = 0.01,
+        market: str = "all",
+        direction: int = Order.BUY,
+        *args,
+        **kwargs,
+    ): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node37 as "qlib.contrib.strategy.rule_strategy.SBBStrategyBase" {
+   trade_trend: 
+   trade_amount: 
+   TREND_MID: 
+   TREND_SHORT: 
+   TREND_LONG: 
+   reset(self, outer_trade_decision: BaseTradeDecision = None, **kwargs): 
+   _pred_price_trend(self, stock_id, pred_start_time=None, pred_end_time=None): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node188 as "qlib.contrib.strategy.rule_strategy.SBBStrategyEMA" {
+   instruments: 
+   freq: 
+   signal: 
+   __init__(
+        self,
+        outer_trade_decision: BaseTradeDecision = None,
+        instruments: Union[List, str] = "csi300",
+        freq: str = "day",
+        trade_exchange: Exchange = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        **kwargs,
+    ): 
+   _reset_signal(self): 
+   reset_level_infra(self, level_infra): 
+   _pred_price_trend(self, stock_id, pred_start_time=None, pred_end_time=None): 
+}
+class node8 as "qlib.contrib.strategy.rule_strategy.TWAPStrategy" {
+   trade_amount_remain: 
+   reset(self, outer_trade_decision: BaseTradeDecision = None, **kwargs): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node148 as "qlib.contrib.strategy.signal_strategy.BaseSignalStrategy" {
+   risk_degree: 
+   signal: 
+   __init__(
+        self,
+        *,
+        signal: Union[Signal, Tuple[BaseModel, Dataset], List, Dict, Text, pd.Series, pd.DataFrame] = None,
+        model=None,
+        dataset=None,
+        risk_degree: float = 0.95,
+        trade_exchange=None,
+        level_infra=None,
+        common_infra=None,
+        **kwargs,
+    ): 
+   get_risk_degree(self, trade_step=None): 
+}
+class node42 as "qlib.contrib.strategy.signal_strategy.EnhancedIndexingStrategy" {
+   market: 
+   factor_exp_path: 
+   optimizer: 
+   logger: 
+   turn_limit: 
+   riskmodel_root: 
+   specific_risk_path: 
+   _riskdata_cache: 
+   factor_cov_path: 
+   blacklist_path: 
+   verbose: 
+   FACTOR_EXP_NAME: 
+   FACTOR_COV_NAME: 
+   SPECIFIC_RISK_NAME: 
+   BLACKLIST_NAME: 
+   __init__(
+        self,
+        *,
+        riskmodel_root,
+        market="csi500",
+        turn_limit=None,
+        name_mapping={},
+        optimizer_kwargs={},
+        verbose=False,
+        **kwargs,
+    ): 
+   get_risk_data(self, date): 
+   generate_target_weight_position(self, score, current, trade_start_time, trade_end_time): 
+}
+class node172 as "qlib.contrib.strategy.signal_strategy.TopkDropoutStrategy" {
+   topk: 
+   only_tradable: 
+   method_buy: 
+   hold_thresh: 
+   forbid_all_trade_at_limit: 
+   n_drop: 
+   method_sell: 
+   __init__(
+        self,
+        *,
+        topk,
+        n_drop,
+        method_sell="bottom",
+        method_buy="top",
+        hold_thresh=1,
+        only_tradable=False,
+        forbid_all_trade_at_limit=True,
+        **kwargs,
+    ): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node77 as "qlib.contrib.strategy.signal_strategy.WeightStrategyBase" {
+   order_generator: 
+   __init__(
+        self,
+        *,
+        order_generator_cls_or_obj=OrderGenWOInteract,
+        **kwargs,
+    ): 
+   generate_target_weight_position(self, score, current, trade_start_time, trade_end_time): 
+   generate_trade_decision(self, execute_result=None): 
+}
+class node11 as "qlib.contrib.tuner.config.OptimizationConfig" {
+   report_factor: 
+   optim_type: 
+   report_type: 
+   __init__(self, config, TUNER_CONFIG_MANAGER): 
+}
+class node43 as "qlib.contrib.tuner.config.PipelineExperimentConfig" {
+   global_dir: 
+   tuner_module_path: 
+   name: 
+   tuner_class: 
+   tuner_ex_dir: 
+   estimator_ex_dir: 
+   __init__(self, config, TUNER_CONFIG_MANAGER): 
+}
+class node80 as "qlib.contrib.tuner.config.TunerConfigManager" {
+   optim_config: 
+   pipeline_config: 
+   qlib_client_config: 
+   data_config: 
+   config_path: 
+   backtest_config: 
+   config: 
+   pipeline_ex_config: 
+   time_config: 
+   __init__(self, config_path): 
+}
+class node193 as "qlib.contrib.tuner.pipeline.Pipeline" {
+   best_tuner_index: 
+   logger: 
+   tuner_config_manager: 
+   optim_config: 
+   pipeline_config: 
+   global_best_params: 
+   qlib_client_config: 
+   global_best_res: 
+   data_config: 
+   backtest_config: 
+   pipeline_ex_config: 
+   time_config: 
+   GLOBAL_BEST_PARAMS_NAME: 
+   __init__(self, tuner_config_manager): 
+   run(self): 
+   init_tuner(self, tuner_index, tuner_config): 
+   save_tuner_exp_info(self): 
+}
+class node216 as "qlib.contrib.tuner.tuner.QLibTuner" {
+   best_res: 
+   best_params: 
+   ESTIMATOR_CONFIG_NAME: 
+   EXP_INFO_NAME: 
+   EXP_RESULT_DIR: 
+   EXP_RESULT_NAME: 
+   LOCAL_BEST_PARAMS_NAME: 
+   objective(self, params): 
+   fetch_result(self): 
+   setup_estimator_config(self, params): 
+   setup_space(self): 
+   save_local_best_params(self): 
+}
+class node224 as "qlib.contrib.tuner.tuner.Tuner" {
+   ex_dir: 
+   best_res: 
+   best_params: 
+   logger: 
+   optim_config: 
+   space: 
+   tuner_config: 
+   max_evals: 
+   __init__(self, tuner_config, optim_config): 
+   tune(self): 
+   objective(self, params): 
+   setup_space(self): 
+   save_local_best_params(self): 
+}
+class node158 as "qlib.contrib.workflow.record_temp.MultiSegRecord" {
+   model: 
+   dataset: 
+   __init__(self, model, dataset, recorder=None): 
+   generate(self, segments: Dict[Text, Any], save: bool = False): 
+}
+class node39 as "qlib.contrib.workflow.record_temp.SignalMseRecord" {
+   artifact_path: 
+   depend_cls: 
+   __init__(self, recorder, **kwargs): 
+   generate(self): 
+   list(self): 
+}
+class node197 as "qlib.data.base.Expression" {
+   __str__(self): 
+   __repr__(self): 
+   __gt__(self, other): 
+   __ge__(self, other): 
+   __lt__(self, other): 
+   __le__(self, other): 
+   __eq__(self, other): 
+   __ne__(self, other): 
+   __add__(self, other): 
+   __radd__(self, other): 
+   __sub__(self, other): 
+   __rsub__(self, other): 
+   __mul__(self, other): 
+   __rmul__(self, other): 
+   __div__(self, other): 
+   __rdiv__(self, other): 
+   __truediv__(self, other): 
+   __rtruediv__(self, other): 
+   __pow__(self, other): 
+   __rpow__(self, other): 
+   __and__(self, other): 
+   __rand__(self, other): 
+   __or__(self, other): 
+   __ror__(self, other): 
+   load(self, instrument, start_index, end_index, *args): 
+   _load_internal(self, instrument, start_index, end_index, *args): 
+   get_longest_back_rolling(self): 
+   get_extended_window_size(self): 
+}
+class node5 as "qlib.data.base.ExpressionOps"
+class node27 as "qlib.data.data.FeatureProvider" {
+   feature(self, instrument, field, start_time, end_time, freq): 
+}
+class node174 as "qlib.data.dataset.Dataset" {
+   __init__(self, **kwargs): 
+   config(self, **kwargs): 
+   setup_data(self, **kwargs): 
+   prepare(self, **kwargs): 
+}
+class node168 as "qlib.data.dataset.DatasetH" {
+   handler: 
+   fetch_kwargs: 
+   segments: 
+   __init__(
+        self,
+        handler: Union[Dict, DataHandler],
+        segments: Dict[Text, Tuple],
+        fetch_kwargs: Dict = {},
+        **kwargs,
+    ): 
+   config(self, handler_kwargs: dict = None, **kwargs): 
+   setup_data(self, handler_kwargs: dict = None, **kwargs): 
+   __repr__(self): 
+   _prepare_seg(self, slc, **kwargs): 
+   prepare(
+        self,
+        segments: Union[List[Text], Tuple[Text], Text, slice, pd.Index],
+        col_set=DataHandler.CS_ALL,
+        data_key=DataHandlerLP.DK_I,
+        **kwargs,
+    ): 
+   get_min_time(segments): 
+   get_max_time(segments): 
+   _get_extrema(segments, idx: int, cmp: Callable, key_func=pd.Timestamp): 
+}
+class node25 as "qlib.data.dataset.handler.DataHandler" {
+   _data: 
+   start_time: 
+   instruments: 
+   end_time: 
+   data_loader: 
+   fetch_orig: 
+   _data: 
+   CS_ALL: 
+   CS_RAW: 
+   __init__(
+        self,
+        instruments=None,
+        start_time=None,
+        end_time=None,
+        data_loader: Union[dict, str, DataLoader] = None,
+        init_data=True,
+        fetch_orig=True,
+    ): 
+   config(self, **kwargs): 
+   setup_data(self, enable_cache: bool = False): 
+   fetch(
+        self,
+        selector: Union[pd.Timestamp, slice, str, pd.Index] = slice(None, None),
+        level: Union[str, int] = "datetime",
+        col_set: Union[str, List[str]] = CS_ALL,
+        squeeze: bool = False,
+        proc_func: Callable = None,
+    ): 
+   _fetch_data(
+        self,
+        data_storage,
+        selector: Union[pd.Timestamp, slice, str, pd.Index] = slice(None, None),
+        level: Union[str, int] = "datetime",
+        col_set: Union[str, List[str]] = CS_ALL,
+        squeeze: bool = False,
+        proc_func: Callable = None,
+    ): 
+   get_cols(self, col_set=CS_ALL): 
+   get_range_selector(self, cur_date: Union[pd.Timestamp, str], periods: int): 
+   get_range_iterator(
+        self, periods: int, min_periods: Optional[int] = None, **kwargs
+    ): 
+}
+class node55 as "qlib.data.dataset.handler.DataHandlerLP" {
+   drop_raw: 
+   learn_processors: 
+   _infer: 
+   _learn: 
+   process_type: 
+   infer_processors: 
+   shared_processors: 
+   _infer: 
+   _learn: 
+   DK_R: 
+   DK_I: 
+   DK_L: 
+   ATTR_MAP: 
+   PTYPE_I: 
+   PTYPE_A: 
+   IT_FIT_SEQ: 
+   IT_FIT_IND: 
+   IT_LS: 
+   __init__(
+        self,
+        instruments=None,
+        start_time=None,
+        end_time=None,
+        data_loader: Union[dict, str, DataLoader] = None,
+        infer_processors: List = [],
+        learn_processors: List = [],
+        shared_processors: List = [],
+        process_type=PTYPE_A,
+        drop_raw=False,
+        **kwargs,
+    ): 
+   get_all_processors(self): 
+   fit(self): 
+   fit_process_data(self): 
+   _run_proc_l(
+        df: pd.DataFrame, proc_l: List[processor_module.Processor], with_fit: bool, check_for_infer: bool
+    ): 
+   _is_proc_readonly(proc_l: List[processor_module.Processor]): 
+   process_data(self, with_fit: bool = False): 
+   config(self, processor_kwargs: dict = None, **kwargs): 
+   setup_data(self, init_type: str = IT_FIT_SEQ, **kwargs): 
+   _get_df_by_key(self, data_key: DATA_KEY_TYPE = DK_I): 
+   fetch(
+        self,
+        selector: Union[pd.Timestamp, slice, str] = slice(None, None),
+        level: Union[str, int] = "datetime",
+        col_set=DataHandler.CS_ALL,
+        data_key: DATA_KEY_TYPE = DK_I,
+        squeeze: bool = False,
+        proc_func: Callable = None,
+    ): 
+   get_cols(self, col_set=DataHandler.CS_ALL, data_key: DATA_KEY_TYPE = DK_I): 
+   cast(cls, handler: "DataHandlerLP"): 
+   from_df(cls, df: pd.DataFrame): 
+}
+class node50 as "qlib.data.dataset.loader.DLWParser" {
+   fields: 
+   is_group: 
+   __init__(self, config: Union[list, tuple, dict]): 
+   _parse_fields_info(self, fields_info: Union[list, tuple]): 
+   load_group_df(
+        self,
+        instruments,
+        exprs: list,
+        names: list,
+        start_time: Union[str, pd.Timestamp] = None,
+        end_time: Union[str, pd.Timestamp] = None,
+        gp_name: str = None,
+    ): 
+   load(self, instruments=None, start_time=None, end_time=None): 
+}
+class node54 as "qlib.data.dataset.loader.DataLoader" {
+   load(self, instruments, start_time=None, end_time=None): 
+}
+class node4 as "qlib.data.dataset.loader.QlibDataLoader" {
+   inst_processors: 
+   filter_pipe: 
+   freq: 
+   swap_level: 
+   __init__(
+        self,
+        config: Tuple[list, tuple, dict],
+        filter_pipe: List = None,
+        swap_level: bool = True,
+        freq: Union[str, dict] = "day",
+        inst_processors: Union[dict, list] = None,
+    ): 
+   load_group_df(
+        self,
+        instruments,
+        exprs: list,
+        names: list,
+        start_time: Union[str, pd.Timestamp] = None,
+        end_time: Union[str, pd.Timestamp] = None,
+        gp_name: str = None,
+    ): 
+}
+class node187 as "qlib.data.dataset.processor.Processor" {
+   fit(self, df: pd.DataFrame = None): 
+   __call__(self, df: pd.DataFrame): 
+   is_for_infer(self): 
+   readonly(self): 
+   config(self, **kwargs): 
+}
+class node159 as "qlib.data.dataset.weight.Reweighter" {
+   __init__(self, *args, **kwargs): 
+   reweight(self, data: object): 
+}
+class node150 as "qlib.data.ops.ElemOperator" {
+   feature: 
+   __init__(self, feature): 
+   __str__(self): 
+   get_longest_back_rolling(self): 
+   get_extended_window_size(self): 
+}
+class node14 as "qlib.data.ops.PairOperator" {
+   feature_right: 
+   feature_left: 
+   __init__(self, feature_left, feature_right): 
+   __str__(self): 
+   get_longest_back_rolling(self): 
+   get_extended_window_size(self): 
+}
+class node41 as "qlib.model.base.BaseModel" {
+   predict(self, *args, **kwargs): 
+   __call__(self, *args, **kwargs): 
+}
+class node147 as "qlib.model.base.Model" {
+   fit(self, dataset: Dataset, reweighter: Reweighter): 
+   predict(self, dataset: Dataset, segment: Union[Text, slice] = "test"): 
+}
+class node178 as "qlib.model.base.ModelFT" {
+   finetune(self, dataset: Dataset): 
+}
+class node107 as "qlib.model.interpret.base.FeatureInt" {
+   get_feature_importance(self): 
+}
+class node97 as "qlib.model.interpret.base.LightGBMFInt" {
+   model: 
+   __init__(self): 
+   get_feature_importance(self, *args, **kwargs): 
+}
+class node63 as "qlib.model.meta.dataset.MetaTaskDataset" {
+   segments: 
+   __init__(self, segments: Union[Dict[Text, Tuple], float], *args, **kwargs): 
+   prepare_tasks(self, segments: Union[List[Text], Text], *args, **kwargs): 
+   _prepare_seg(self, segment: Text): 
+}
+class node125 as "qlib.model.meta.model.MetaModel" {
+   fit(self, *args, **kwargs): 
+   inference(self, *args, **kwargs): 
+}
+class node44 as "qlib.model.meta.model.MetaTaskModel" {
+   fit(self, meta_dataset: MetaTaskDataset): 
+   inference(self, meta_dataset: MetaTaskDataset): 
+}
+class node70 as "qlib.model.meta.task.MetaTask" {
+   mode: 
+   task: 
+   meta_info: 
+   PROC_MODE_FULL: 
+   PROC_MODE_TEST: 
+   PROC_MODE_TRANSFER: 
+   __init__(self, task: dict, meta_info: object, mode: str = PROC_MODE_FULL): 
+   get_dataset(self): 
+   get_meta_input(self): 
+   __repr__(self): 
+}
+class node134 as "qlib.strategy.base.BaseStrategy" {
+   common_infra: 
+   outer_trade_decision: 
+   level_infra: 
+   _trade_exchange: 
+   __init__(
+        self,
+        outer_trade_decision: BaseTradeDecision = None,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        trade_exchange: Exchange = None,
+    ): 
+   executor(self): 
+   trade_calendar(self): 
+   trade_position(self): 
+   trade_exchange(self): 
+   reset_level_infra(self, level_infra: LevelInfrastructure): 
+   reset_common_infra(self, common_infra: CommonInfrastructure): 
+   reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+        **kwargs,
+    ): 
+   _reset(
+        self,
+        level_infra: LevelInfrastructure = None,
+        common_infra: CommonInfrastructure = None,
+        outer_trade_decision: BaseTradeDecision = None,
+    ): 
+   generate_trade_decision(
+        self,
+        execute_result: list = None,
+    ): 
+   get_data_cal_avail_range(self, rtype: str = "full"): 
+   update_trade_decision(
+        trade_decision: BaseTradeDecision,
+        trade_calendar: TradeCalendarManager,
+    ): 
+   alter_outer_trade_decision(self, outer_trade_decision: BaseTradeDecision): 
+   post_upper_level_exe_step(self): 
+   post_exe_step(self, execute_result: Optional[list]): 
+}
+class node9 as "qlib.utils.serial.Serializable" {
+   _exclude: 
+   _dump_all: 
+   pickle_backend: 
+   default_dump_all: 
+   config_attr: 
+   exclude_attr: 
+   include_attr: 
+   FLAG_KEY: 
+   __init__(self): 
+   _is_kept(self, key): 
+   __getstate__(self): 
+   __setstate__(self, state: dict): 
+   dump_all(self): 
+   _get_attr_list(self, attr_type: str): 
+   config(self, recursive=False, **kwargs): 
+   to_pickle(self, path: Union[Path, str], **kwargs): 
+   load(cls, filepath): 
+   get_backend(cls): 
+   general_dump(obj, path: Union[Path, str]): 
+}
+class node26 as "qlib.workflow.record_temp.RecordTemp" {
+   _recorder: 
+   artifact_path: 
+   depend_cls: 
+   get_path(cls, path=None): 
+   save(self, **kwargs): 
+   __init__(self, recorder): 
+   recorder(self): 
+   generate(self, **kwargs): 
+   load(self, name: str, parents: bool = True): 
+   list(self): 
+   check(self, include_self: bool = False, parents: bool = True): 
+}
+class node203 as "torch._C._FunctionBase._FunctionBase" {
+   dirty_tensors: 
+   materialize_grads: 
+   metadata: 
+   needs_input_grad: 
+   next_functions: 
+   non_differentiable: 
+   requires_grad: 
+   saved_for_forward: 
+   saved_tensors: 
+   saved_variables: 
+   to_save: 
+   _compiled_autograd_backward_state: 
+   _materialize_non_diff_grads: 
+   _raw_saved_tensors: 
+   apply(cls, *args, **kwargs): 
+   maybe_clear_saved_tensors(self, *args, **kwargs): 
+   name(self, *args, **kwargs): 
+   register_hook(self, *args, **kwargs): 
+   register_prehook(self, *args, **kwargs): 
+   _get_compiled_autograd_symints(self, *args, **kwargs): 
+   _is_compiled_autograd_tracing(self, *args, **kwargs): 
+   _register_hook_dict(self, *args, **kwargs): 
+   _sequence_nr(self, *args, **kwargs): 
+   _set_sequence_nr(self, *args, **kwargs): 
+   __init__(self, *args, **kwargs): 
+   __new__(*args, **kwargs): 
+}
+class node139 as "torch.autograd.function.Function" {
+   generate_vmap_rule: 
+   __init__(self, *args, **kwargs): 
+   __call__(self, *args, **kwargs): 
+   vmap(info, in_dims, *args): 
+   apply(cls, *args, **kwargs): 
+   _compiled_autograd_key(ctx): 
+}
+class node179 as "torch.autograd.function.FunctionCtx" {
+   saved_for_forward: 
+   materialize_grads: 
+   non_differentiable: 
+   to_save: 
+   dirty_tensors: 
+   save_for_backward(self, *tensors: torch.Tensor): 
+   save_for_forward(self, *tensors: torch.Tensor): 
+   mark_dirty(self, *args: torch.Tensor): 
+   mark_shared_storage(self, *pairs): 
+   mark_non_differentiable(self, *args: torch.Tensor): 
+   set_materialize_grads(self, value: bool): 
+}
+class node24 as "torch.autograd.function.FunctionMeta" {
+   _backward_cls: 
+   __init__(cls, name, bases, attrs): 
+}
+class node132 as "torch.autograd.function._HookMixin" {
+   _register_hook(backward_hooks, hook): 
+}
+class node156 as "torch.autograd.function._SingleLevelFunction" {
+   vjp: 
+   forward(*args: Any, **kwargs: Any): 
+   setup_context(ctx: Any, inputs: Tuple[Any, ...], output: Any): 
+   backward(ctx: Any, *grad_outputs: Any): 
+   jvp(ctx: Any, *grad_inputs: Any): 
+}
+class node87 as "torch.nn.modules.module.Module" {
+   _compiled_call_impl: 
+   _backward_pre_hooks: 
+   training: 
+   _is_full_backward_hook: 
+   _forward_hooks_with_kwargs: 
+   _forward_hooks_always_called: 
+   _non_persistent_buffers_set: 
+   _forward_pre_hooks_with_kwargs: 
+   _state_dict_pre_hooks: 
+   _forward_pre_hooks: 
+   _state_dict_hooks: 
+   _load_state_dict_pre_hooks: 
+   _load_state_dict_post_hooks: 
+   dump_patches: 
+   _version: 
+   training: 
+   _parameters: 
+   _buffers: 
+   _non_persistent_buffers_set: 
+   _backward_pre_hooks: 
+   _backward_hooks: 
+   _is_full_backward_hook: 
+   _forward_hooks: 
+   _forward_hooks_with_kwargs: 
+   _forward_hooks_always_called: 
+   _forward_pre_hooks: 
+   _forward_pre_hooks_with_kwargs: 
+   _state_dict_hooks: 
+   _load_state_dict_pre_hooks: 
+   _state_dict_pre_hooks: 
+   _load_state_dict_post_hooks: 
+   _modules: 
+   call_super_init: 
+   _compiled_call_impl: 
+   forward: 
+   __call__: 
+   T_destination: 
+   __init__(self, *args, **kwargs): 
+   register_buffer(self, name: str, tensor: Optional[Tensor], persistent: bool = True): 
+   register_parameter(self, name: str, param: Optional[Parameter]): 
+   add_module(self, name: str, module: Optional['Module']): 
+   register_module(self, name: str, module: Optional['Module']): 
+   get_submodule(self, target: str): 
+   get_parameter(self, target: str): 
+   get_buffer(self, target: str): 
+   get_extra_state(self): 
+   set_extra_state(self, state: Any): 
+   _apply(self, fn, recurse=True): 
+   apply(self: T, fn: Callable[['Module'], None]): 
+   cuda(self: T, device: Optional[Union[int, device]] = None): 
+   ipu(self: T, device: Optional[Union[int, device]] = None): 
+   xpu(self: T, device: Optional[Union[int, device]] = None): 
+   cpu(self: T): 
+   type(self: T, dst_type: Union[dtype, str]): 
+   float(self: T): 
+   double(self: T): 
+   half(self: T): 
+   bfloat16(self: T): 
+   to_empty(self: T, *, device: Optional[DeviceLikeType], recurse: bool = True): 
+   to(self, device: Optional[DeviceLikeType] = ..., dtype: Optional[dtype] = ...,
+           non_blocking: bool = ...): 
+   to(self, dtype: dtype, non_blocking: bool = ...): 
+   to(self, tensor: Tensor, non_blocking: bool = ...): 
+   to(self, *args, **kwargs): 
+   register_full_backward_pre_hook(
+        self,
+        hook: Callable[["Module", _grad_t], Union[None, _grad_t]],
+        prepend: bool = False,
+    ): 
+   register_backward_hook(
+        self, hook: Callable[['Module', _grad_t, _grad_t], Union[None, _grad_t]]
+    ): 
+   register_full_backward_hook(
+        self,
+        hook: Callable[["Module", _grad_t, _grad_t], Union[None, _grad_t]],
+        prepend: bool = False,
+    ): 
+   _get_backward_hooks(self): 
+   _get_backward_pre_hooks(self): 
+   _maybe_warn_non_full_backward_hook(self, inputs, result, grad_fn): 
+   register_forward_pre_hook(
+        self,
+        hook: Union[
+            Callable[[T, Tuple[Any, ...]], Optional[Any]],
+            Callable[[T, Tuple[Any, ...], Dict[str, Any]], Optional[Tuple[Any, Dict[str, Any]]]],
+        ],
+        *,
+        prepend: bool = False,
+        with_kwargs: bool = False,
+    ): 
+   register_forward_hook(
+        self,
+        hook: Union[
+            Callable[[T, Tuple[Any, ...], Any], Optional[Any]],
+            Callable[[T, Tuple[Any, ...], Dict[str, Any], Any], Optional[Any]],
+        ],
+        *,
+        prepend: bool = False,
+        with_kwargs: bool = False,
+        always_call: bool = False,
+    ): 
+   _slow_forward(self, *input, **kwargs): 
+   _wrapped_call_impl(self, *args, **kwargs): 
+   _call_impl(self, *args, **kwargs): 
+   __getstate__(self): 
+   __setstate__(self, state): 
+   __getattr__(self, name: str): 
+   __setattr__(self, name: str, value: Union[Tensor, 'Module']): 
+   __delattr__(self, name): 
+   _register_state_dict_hook(self, hook): 
+   register_state_dict_pre_hook(self, hook): 
+   _save_to_state_dict(self, destination, prefix, keep_vars): 
+   state_dict(self, *, destination: T_destination, prefix: str = ..., keep_vars: bool = ...): 
+   state_dict(self, *, prefix: str = ..., keep_vars: bool = ...): 
+   state_dict(self, *args, destination=None, prefix='', keep_vars=False): 
+   _register_load_state_dict_pre_hook(self, hook, with_module=False): 
+   register_load_state_dict_post_hook(self, hook): 
+   _load_from_state_dict(self, state_dict, prefix, local_metadata, strict,
+                              missing_keys, unexpected_keys, error_msgs): 
+   load_state_dict(self, state_dict: Mapping[str, Any],
+                        strict: bool = True, assign: bool = False): 
+   _named_members(self, get_members_fn, prefix='', recurse=True, remove_duplicate: bool = True): 
+   parameters(self, recurse: bool = True): 
+   named_parameters(
+            self,
+            prefix: str = '',
+            recurse: bool = True,
+            remove_duplicate: bool = True
+    ): 
+   buffers(self, recurse: bool = True): 
+   named_buffers(self, prefix: str = '', recurse: bool = True, remove_duplicate: bool = True): 
+   children(self): 
+   named_children(self): 
+   modules(self): 
+   named_modules(self, memo: Optional[Set['Module']] = None, prefix: str = '', remove_duplicate: bool = True): 
+   train(self: T, mode: bool = True): 
+   eval(self: T): 
+   requires_grad_(self: T, requires_grad: bool = True): 
+   zero_grad(self, set_to_none: bool = True): 
+   share_memory(self: T): 
+   _get_name(self): 
+   extra_repr(self): 
+   __repr__(self): 
+   __dir__(self): 
+   _replicate_for_data_parallel(self): 
+   compile(self, *args, **kwargs): 
+}
+class node99 as "torch.utils.data.dataset.Dataset" {
+   __getitem__(self, index): 
+   __add__(self, other: "Dataset[T_co]"): 
+}
+class node202 as "torch.utils.data.sampler.Sampler" {
+   __init__(self, data_source: Optional[Sized] = None): 
+   __iter__(self): 
+}
+class node20 as "typing.Container" {
+   __contains__(self, x: object, /): 
+}
+class node68 as "typing.Hashable" {
+   __hash__(self): 
+}
+class node2 as "typing.Iterable" {
+   __iter__(self): 
+}
+class node84 as "typing.Iterator" {
+   __next__(self): 
+   __iter__(self): 
+}
+class node3 as "typing.Sized" {
+   __len__(self): 
+}
+
+node15   <-[#595959,dashed]- "isinstanceof" node110 
+node15   ^-[#595959,plain]-  object  
+object   ^-[#595959,dashed]-  node68  
+node183  ^-[#595959,plain]-  node27  
+node73   ^-[#595959,plain]-  node168 
+node73   ^-[#595959,dashed]-  node2   
+node73   ^-[#595959,dashed]-  node3   
+node117  ^-[#595959,plain]-  node55  
+node155  ^-[#595959,plain]-  node117 
+node79   ^-[#595959,plain]-  node55  
+node196  ^-[#595959,plain]-  node79  
+node198  ^-[#595959,plain]-  node25  
+node0    ^-[#595959,plain]-  node25  
+node119  ^-[#595959,plain]-  node25  
+node162  ^-[#595959,plain]-  node55  
+node34   ^-[#595959,plain]-  node55  
+node29   ^-[#595959,plain]-  node55  
+node152  ^-[#595959,plain]-  node187 
+node69   ^-[#595959,plain]-  node187 
+node74   ^-[#595959,plain]-  object  
+node130  ^-[#595959,plain]-  node4   
+node160  ^-[#595959,plain]-  node4   
+node65   ^-[#595959,plain]-  node187 
+node23   ^-[#595959,plain]-  object  
+node23   ^-[#595959,dashed]-  node2   
+node23   ^-[#595959,dashed]-  node84  
+node165  ^-[#595959,plain]-  object  
+node165  ^-[#595959,dashed]-  node20  
+node165  ^-[#595959,dashed]-  node2   
+node165  ^-[#595959,dashed]-  node84  
+node165  ^-[#595959,dashed]-  node3   
+node207  ^-[#595959,plain]-  object  
+node30   ^-[#595959,plain]-  node63  
+node28   ^-[#595959,plain]-  node70  
+node214  ^-[#595959,plain]-  node44  
+node176  ^-[#595959,plain]-  node159 
+node205  ^-[#595959,plain]-  node87  
+node191  ^-[#595959,plain]-  node83  
+node141  ^-[#595959,plain]-  node87  
+node83   ^-[#595959,plain]-  node87  
+node13   ^-[#595959,plain]-  node147 
+node13   ^-[#595959,plain]-  node107 
+node180  ^-[#595959,plain]-  node147 
+node180  ^-[#595959,plain]-  node107 
+node33   ^-[#595959,plain]-  node178 
+node33   ^-[#595959,plain]-  node97  
+node211  ^-[#595959,plain]-  node178 
+node211  ^-[#595959,plain]-  node97  
+node120  ^-[#595959,plain]-  node147 
+node167  ^-[#595959,plain]-  node147 
+node201  ^-[#595959,plain]-  node87  
+node184  ^-[#595959,plain]-  node87  
+node126  ^-[#595959,plain]-  node87  
+node185  ^-[#595959,plain]-  node87  
+node212  ^-[#595959,plain]-  node87  
+node100  ^-[#595959,plain]-  node139 
+node45   ^-[#595959,plain]-  object  
+node145  ^-[#595959,plain]-  node99  
+node145  ^-[#595959,dashed]-  node2   
+node145  ^-[#595959,dashed]-  node84  
+node145  ^-[#595959,dashed]-  node3   
+node157  ^-[#595959,plain]-  node147 
+node223  ^-[#595959,plain]-  node87  
+node40   ^-[#595959,plain]-  node87  
+node32   ^-[#595959,plain]-  node87  
+node78   ^-[#595959,plain]-  node139 
+node149  ^-[#595959,plain]-  node147 
+node81   ^-[#595959,plain]-  node87  
+node161  ^-[#595959,plain]-  node147 
+node171  ^-[#595959,plain]-  node87  
+node75   ^-[#595959,plain]-  node87  
+node56   ^-[#595959,plain]-  node147 
+node177  ^-[#595959,plain]-  node202 
+node177  ^-[#595959,dashed]-  node2   
+node177  ^-[#595959,dashed]-  node3   
+node154  ^-[#595959,plain]-  node87  
+node58   ^-[#595959,plain]-  node147 
+node108  ^-[#595959,plain]-  node147 
+node122  ^-[#595959,plain]-  node147 
+node113  ^-[#595959,plain]-  node87  
+node192  ^-[#595959,plain]-  node147 
+node118  ^-[#595959,plain]-  node87  
+node109  ^-[#595959,plain]-  node147 
+node89   ^-[#595959,plain]-  node87  
+node169  ^-[#595959,plain]-  node147 
+node219  ^-[#595959,plain]-  node87  
+node218  ^-[#595959,plain]-  node87  
+node143  ^-[#595959,plain]-  node87  
+node36   ^-[#595959,plain]-  node147 
+node103  ^-[#595959,plain]-  node87  
+node104  ^-[#595959,plain]-  node87  
+node67   ^-[#595959,plain]-  node87  
+node128  ^-[#595959,plain]-  node147 
+node53   ^-[#595959,plain]-  node87  
+node124  ^-[#595959,plain]-  node87  
+node199  ^-[#595959,plain]-  node87  
+node135  ^-[#595959,plain]-  node147 
+node85   ^-[#595959,plain]-  node87  
+node18   ^-[#595959,plain]-  node87  
+node114  ^-[#595959,plain]-  node147 
+node140  ^-[#595959,plain]-  node87  
+node138  ^-[#595959,plain]-  node147 
+node217  ^-[#595959,plain]-  node87  
+node76   ^-[#595959,plain]-  object  
+node52   ^-[#595959,plain]-  node147 
+node35   ^-[#595959,plain]-  node87  
+node94   ^-[#595959,plain]-  node147 
+node46   ^-[#595959,plain]-  node87  
+node111  ^-[#595959,plain]-  object  
+node151  ^-[#595959,plain]-  node147 
+node31   ^-[#595959,plain]-  node87  
+node146  ^-[#595959,plain]-  node87  
+node137  ^-[#595959,plain]-  node87  
+node90   ^-[#595959,plain]-  node87  
+node121  ^-[#595959,plain]-  node87  
+node22   ^-[#595959,plain]-  node87  
+node194  ^-[#595959,plain]-  node87  
+node186  ^-[#595959,plain]-  node87  
+node21   ^-[#595959,plain]-  node139 
+node221  ^-[#595959,plain]-  node87  
+node127  ^-[#595959,plain]-  node87  
+node17   ^-[#595959,plain]-  node147 
+node116  ^-[#595959,plain]-  node147 
+node62   ^-[#595959,plain]-  node87  
+node105  ^-[#595959,plain]-  node147 
+node51   ^-[#595959,plain]-  node87  
+node1    ^-[#595959,plain]-  node87  
+node175  ^-[#595959,plain]-  node87  
+node98   ^-[#595959,plain]-  node147 
+node59   ^-[#595959,plain]-  node87  
+node88   ^-[#595959,plain]-  node87  
+node213  ^-[#595959,plain]-  node87  
+node173  ^-[#595959,plain]-  node147 
+node16   ^-[#595959,plain]-  node87  
+node49   ^-[#595959,plain]-  node87  
+node47   ^-[#595959,plain]-  node87  
+node57   ^-[#595959,plain]-  node147 
+node164  ^-[#595959,plain]-  node87  
+node225  ^-[#595959,plain]-  node87  
+node144  ^-[#595959,plain]-  node147 
+node131  ^-[#595959,plain]-  node87  
+node102  ^-[#595959,plain]-  node87  
+node181  ^-[#595959,plain]-  node87  
+node64   ^-[#595959,plain]-  node147 
+node64   ^-[#595959,plain]-  node107 
+node133  ^-[#595959,plain]-  object  
+node48   ^-[#595959,plain]-  object  
+node101  ^-[#595959,plain]-  object  
+node195  ^-[#595959,plain]-  object  
+node71   ^-[#595959,plain]-  node150 
+node123  ^-[#595959,plain]-  node150 
+node190  ^-[#595959,plain]-  node150 
+node215  ^-[#595959,plain]-  node150 
+node82   ^-[#595959,plain]-  node150 
+node206  ^-[#595959,plain]-  node150 
+node208  ^-[#595959,plain]-  node150 
+node66   ^-[#595959,plain]-  node150 
+node153  ^-[#595959,plain]-  node14  
+node60   ^-[#595959,plain]-  node12  
+node170  ^-[#595959,plain]-  node12  
+node115  ^-[#595959,plain]-  node95  
+node166  ^-[#595959,plain]-  node95  
+node163  ^-[#595959,plain]-  node95  
+node6    ^-[#595959,plain]-  node12  
+node92   ^-[#595959,plain]-  node12  
+node96   ^-[#595959,plain]-  node95  
+node95   ^-[#595959,plain]-  node12  
+node129  ^-[#595959,plain]-  node12  
+node182  ^-[#595959,plain]-  node12  
+node12   ^-[#595959,plain]-  object  
+node7    ^-[#595959,plain]-  node61  
+node61   ^-[#595959,plain]-  object  
+node19   ^-[#595959,plain]-  node61  
+node72   ^-[#595959,plain]-  node61  
+node209  ^-[#595959,plain]-  node61  
+node38   ^-[#595959,plain]-  node61  
+node10   ^-[#595959,plain]-  object  
+node86   ^-[#595959,plain]-  object  
+node210  ^-[#595959,plain]-  node86  
+node189  ^-[#595959,plain]-  node77  
+node220  ^-[#595959,plain]-  node15  
+node136  ^-[#595959,plain]-  node220 
+node200  ^-[#595959,plain]-  node220 
+node222  ^-[#595959,plain]-  node204 
+node91   ^-[#595959,plain]-  node204 
+node204  ^-[#595959,plain]-  object  
+node93   ^-[#595959,plain]-  node134 
+node106  ^-[#595959,plain]-  node134 
+node112  ^-[#595959,plain]-  node134 
+node37   ^-[#595959,plain]-  node134 
+node188  ^-[#595959,plain]-  node37  
+node8    ^-[#595959,plain]-  node134 
+node148  ^-[#595959,plain]-  node15  
+node148  ^-[#595959,plain]-  node134 
+node42   ^-[#595959,plain]-  node77  
+node172  ^-[#595959,plain]-  node148 
+node77   ^-[#595959,plain]-  node148 
+node11   ^-[#595959,plain]-  object  
+node43   ^-[#595959,plain]-  object  
+node80   ^-[#595959,plain]-  object  
+node193  ^-[#595959,plain]-  object  
+node216  ^-[#595959,plain]-  node224 
+node224  ^-[#595959,plain]-  object  
+node158  ^-[#595959,plain]-  node26  
+node39   ^-[#595959,plain]-  node26  
+node197  ^-[#595959,plain]-  node15  
+node5    ^-[#595959,plain]-  node197 
+node27   ^-[#595959,plain]-  node15  
+node174  ^-[#595959,plain]-  node9   
+node168  ^-[#595959,plain]-  node174 
+node25   ^-[#595959,plain]-  node9   
+node55   ^-[#595959,plain]-  node25  
+node50   ^-[#595959,plain]-  node54  
+node54   ^-[#595959,plain]-  node15  
+node4    ^-[#595959,plain]-  node50  
+node187  ^-[#595959,plain]-  node9   
+node159  ^-[#595959,plain]-  object  
+node150  ^-[#595959,plain]-  node5   
+node14   ^-[#595959,plain]-  node5   
+node41   <-[#595959,dashed]- "isinstanceof" node110 
+node41   ^-[#595959,plain]-  node9   
+node147  ^-[#595959,plain]-  node41  
+node178  ^-[#595959,plain]-  node147 
+node107  ^-[#595959,plain]-  object  
+node97   ^-[#595959,plain]-  node107 
+node63   <-[#595959,dashed]- "isinstanceof" node110 
+node63   ^-[#595959,plain]-  node9   
+node125  <-[#595959,dashed]- "isinstanceof" node110 
+node125  ^-[#595959,plain]-  object  
+node44   ^-[#595959,plain]-  node125 
+node70   ^-[#595959,plain]-  object  
+node134  ^-[#595959,plain]-  object  
+node9    ^-[#595959,plain]-  object  
+node26   ^-[#595959,plain]-  object  
+node203  ^-[#595959,plain]-  object  
+node139  ^-[#595959,plain]-  node156 
+node179  ^-[#595959,plain]-  object  
+node132  ^-[#595959,plain]-  object  
+node156  ^-[#595959,plain]-  node203 
+node156  ^-[#595959,plain]-  node179 
+node156  <-[#595959,dashed]- "isinstanceof" node24  
+node156  ^-[#595959,plain]-  node132 
+node87   ^-[#595959,plain]-  object  
+node99   ^-[#595959,plain]-  object  
+node99   ^-[#595959,dashed]-  node2   
+node99   ^-[#595959,dashed]-  node84  
+node202  ^-[#595959,plain]-  object  
+node202  ^-[#595959,dashed]-  node2   
+@enduml
